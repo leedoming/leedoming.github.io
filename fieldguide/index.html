@@ -357,7 +357,7 @@ h1.hero-name { animation: up .5s .08s ease both; }
 </head>
 <body>
 <div class="page">
-<!-- NAV -->
+
 <nav>
 <a class="nav-name" href="#">SOOMIN LEE</a>
 <ul class="nav-links">
@@ -368,7 +368,7 @@ h1.hero-name { animation: up .5s .08s ease both; }
 <li><a href="#certs">Certs</a></li>
 </ul>
 </nav>
-<!-- HERO -->
+
 <section id="hero" style="border-bottom:1px solid var(--rule);">
 <div class="wrap">
 <div class="hero-inner">
@@ -396,8 +396,9 @@ h1.hero-name { animation: up .5s .08s ease both; }
 </div>
 </div>
 </div>
+
 </section>
-<!-- SKILLS -->
+
 <section id="skills">
 <div class="wrap">
 <div class="sec-head"><span class="sec-num">01</span><h2 class="sec-title">Technical Skills</h2></div>
@@ -444,7 +445,7 @@ h1.hero-name { animation: up .5s .08s ease both; }
 </div>
 </div>
 </section>
-<!-- PROJECT INDEX -->
+
 <section id="project-index" style="padding:60px 0;">
 <div class="wrap">
 <div class="sec-head" style="margin-bottom:32px;">
@@ -452,12 +453,7 @@ h1.hero-name { animation: up .5s .08s ease both; }
 <h2 class="sec-title">Fieldguide Fit Snapshot</h2>
 </div>
 <div class="proj-index">
-<!-- 01 YORILAB -->
-<!-- 02 GWANGJU CHATBOT -->
-<!-- 03 FACE SWAP -->
-<!-- 04 NOVA SONIC -->
-<!-- 05 X-RAY -->
-<!-- 06 MEAL RECOMMENDATION -->
+
 <div class="pi-card">
 <div class="pi-accent" style="background:var(--blue);"></div>
 <div class="pi-meta">PROJECT 01 · 2025.02–05 · Production Internship</div>
@@ -516,45 +512,12 @@ h1.hero-name { animation: up .5s .08s ease both; }
 </div></div>
 </div>
 </section>
-<!-- =============================================
 
-<!-- PROJECTS DETAIL -->
 <section id="projects">
 <div class="wrap">
 <div class="sec-head"><span class="sec-num">03</span><h2 class="sec-title">Selected Projects for Fieldguide</h2></div>
 <div class="proj-list">
-<!-- ═══════════════════════════════════════════
-         PROJECT 01 · YORILAB
-         ═══════════════════════════════════════════ -->
-<!-- /proj YORILAB -->
-<!-- =============================================
-       PART 4 이후 내용 여기에 붙여넣기
-       (Gwangju Chatbot + Face Swap deep-dives)
-       ============================================= -->
-<!-- ═══════════════════════════════════════════
-         PROJECT 02 · GWANGJU UNIVERSITY CHATBOT
-         ═══════════════════════════════════════════ -->
-<!-- /proj Gwangju -->
-<!-- ═══════════════════════════════════════════
-         PROJECT 03 · FACE SWAP INFRASTRUCTURE REDESIGN
-         ═══════════════════════════════════════════ -->
-<!-- /proj Face Swap -->
-<!-- =============================================
-       PART 5 이후 내용 여기에 붙여넣기
-       (X-ray + Nova Sonic + Meal Recommendation)
-       ============================================= -->
-<!-- ═══════════════════════════════════════════
-         PROJECT 04 · AI X-RAY HAZARDOUS ITEM DETECTION
-         ═══════════════════════════════════════════ -->
-<!-- /proj X-ray -->
-<!-- ═══════════════════════════════════════════
-         PROJECT 05 · NOVA SONIC ENGLISH STUDY
-         ═══════════════════════════════════════════ -->
-<!-- /proj Nova Sonic -->
-<!-- ═══════════════════════════════════════════
-         PROJECT 06 · MEAL RECOMMENDATION ENGINE
-         ═══════════════════════════════════════════ -->
-<!-- /proj Meal Recommendation -->
+
 <div class="proj">
 <div class="proj-left">
 <div class="proj-idx">Project 01</div>
@@ -571,12 +534,12 @@ h1.hero-name { animation: up .5s .08s ease both; }
 <strong>Business Impact</strong>
 <p>Improved response reliability for live academic-administration questions by narrowing scope, redesigning retrieval boundaries, and deploying the system in a real university Slack workspace.</p>
 </div>
-<!-- Pipeline -->
+
 <div style="font-family:var(--mono); font-size:11px; color:var(--ink2); background:var(--bg2); border:1px solid var(--rule); border-radius:4px; padding:10px 14px; margin:14px 0; line-height:2;">
 <span style="color:var(--ink3); font-size:9px; letter-spacing:.1em; text-transform:uppercase; display:block; margin-bottom:4px;">Pipeline</span>
           Lambda + Selenium → EventBridge → DynamoDB → Bedrock Knowledge Base → Bedrock Agent → Slack
         </div>
-<!-- STAR — "Early responsibility" -->
+
 <div class="star-card">
 <div class="star-card-head">
 <span>📋 STAR — "Describe a time you took on significant responsibility early."</span>
@@ -639,8 +602,8 @@ h1.hero-name { animation: up .5s .08s ease both; }
 </div>
 </div>
 </div>
-</div><!-- /star-card -->
-<!-- CAR — Main chatbot PM & architecture -->
+</div>
+
 <div class="car-card" style="margin-top:16px;">
 <div class="car-card-head">📋 CAR Snapshot — Main Chatbot PM &amp; Architecture</div>
 <div>
@@ -658,9 +621,9 @@ h1.hero-name { animation: up .5s .08s ease both; }
 </div>
 </div>
 </div>
-<!-- Contributions -->
+
 <div class="contribs" style="margin-top:20px;"><h5>Contributions</h5><div class="ci">Designed a 3-step auditable orchestration pipeline: retrieval → department reasoning → contact routing.</div><div class="ci">Encoded a system rule of “never guess; always escalate to a human” for institution-facing answers.</div><div class="ci">Ran 4 structured evaluation cycles, each tied to a distinct failure mode and architecture change rather than prompt-only tuning.</div><div class="ci">Reworked retrieval design by removing unreliable URL-based paths and using explicit department-contact mapping.</div><div class="ci">Used in a real university environment where answers function as official institutional communication.</div></div>
-<!-- Stat box -->
+
 <div class="stat-box">
 <div class="stat-cell"><span class="stat-n">4×</span><span class="stat-l">Preprocessing Iterations</span></div>
 <div class="stat-cell"><span class="stat-n">120m</span><span class="stat-l">Session Auto-Reset</span></div>
@@ -688,7 +651,7 @@ h1.hero-name { animation: up .5s .08s ease both; }
 <h3 class="proj-title">Real-time Voice Agent (AI-native build, infra-first decision)</h3>
 <p class="proj-sub">AWS Public Sector Day 2025 Seoul · Speaker · Vector &amp; Agent Lead</p>
 <div class="pg-connect"><strong>Fieldguide fit:</strong> Demonstrates AI-native development velocity while making infrastructure decisions before implementation to ensure system reliability.</div><div class="impact-note"><strong>Ownership</strong><p>Led the vector retrieval and agent orchestration design, collaborating within a 2-person team to turn a rapid prototype into a system we could explain and defend publicly.</p></div><div class="impact-note"><strong>Business Impact</strong><p>Compressed a full-stack multi-agent build into a single sprint while still making infra and retrieval choices explicit enough to present publicly to an enterprise and government audience.</p></div>
-<!-- CAR -->
+
 <div class="car-card" style="margin-top:16px;">
 <div class="car-card-head">📋 CAR — "Tell me about a project where you applied emerging technology."</div>
 <div>
@@ -706,7 +669,7 @@ h1.hero-name { animation: up .5s .08s ease both; }
 </div>
 </div>
 </div>
-<!-- Contributions -->
+
 <div class="contribs" style="margin-top:20px;"><h5>Contributions</h5><div class="ci">Built a full-stack multi-agent system with 4 parallel agents and fault-tolerant async orchestration for real-time voice learning.</div><div class="ci">Identified before implementation that Lambda timeout would not support Nova Sonic real-time streaming, and drove the migration to ECS Fargate.</div><div class="ci">Owned the vector retrieval pipeline: Titan embeddings → S3 Vectors → OpenSearch Serverless.</div><div class="ci">Used AWS Kiro to accelerate prototyping while preserving architecture clarity and production reasoning.</div><div class="ci">Presented architecture and technical decision rationale at AWS Public Sector Day 2025 Seoul.</div></div>
 <div class="stack">
 <span class="st hi">Amazon Nova Sonic</span>
@@ -732,12 +695,12 @@ h1.hero-name { animation: up .5s .08s ease both; }
 <strong>Business Impact</strong>
 <p>Reduced infrastructure cost by about 80% while improving concurrency handling under event traffic, replacing an always-on setup with a more practical on-demand architecture.</p>
 </div>
-<!-- Architecture note -->
+
 <div style="font-family:var(--mono); font-size:11px; color:var(--ink2); background:var(--bg2); border:1px solid var(--rule); border-radius:4px; padding:10px 14px; margin:14px 0; line-height:2;">
 <span style="color:var(--ink3); font-size:9px; letter-spacing:.1em; text-transform:uppercase; display:block; margin-bottom:4px;">Before → After</span>
           4× m5.xlarge EC2 (24/7, ~$617/mo) → ECS Fargate on-demand (variable, ~$0 idle) · FastAPI async + tempfile isolation
         </div>
-<!-- STAR -->
+
 <div class="star-card">
 <div class="star-card-head">
 <span>📋 STAR — "Give an example of improving a process using technology."</span>
@@ -806,10 +769,10 @@ h1.hero-name { animation: up .5s .08s ease both; }
 </div>
 </div>
 </div>
-</div><!-- /star-card -->
-<!-- Contributions -->
+</div>
+
 <div class="contribs" style="margin-top:20px;"><h5>Contributions</h5><div class="ci">Redesigned deployment across three stages — EC2 → SageMaker Serverless → ECS Fargate — based on concrete system constraints.</div><div class="ci">Fixed concurrency bottlenecks by restructuring FastAPI file handling and request isolation.</div><div class="ci">Improved latency by 3+ seconds through parallelization and runtime tuning.</div><div class="ci">Eliminated idle compute costs by moving from always-on instances to on-demand container execution.</div><div class="ci">Built the system so it could be maintained independently after handoff to the collaborating engineer.</div></div>
-<!-- Stat box -->
+
 <div class="stat-box">
 <div class="stat-cell"><span class="stat-n">~80%</span><span class="stat-l">Cost Reduction</span></div>
 <div class="stat-cell"><span class="stat-n">$0</span><span class="stat-l">Idle Cost</span></div>
@@ -842,12 +805,12 @@ h1.hero-name { animation: up .5s .08s ease both; }
 <strong>Validation</strong>
 <p>Built a retrieval and recommendation workflow on top of a large food dataset, then presented the system to practitioners in a final demo setting for external feedback.</p>
 </div>
-<!-- Pipeline -->
+
 <div style="font-family:var(--mono); font-size:11px; color:var(--ink2); background:var(--bg2); border:1px solid var(--rule); border-radius:4px; padding:10px 14px; margin:14px 0; line-height:2;">
 <span style="color:var(--ink3); font-size:9px; letter-spacing:.1em; text-transform:uppercase; display:block; margin-bottom:4px;">Recommendation Pipeline</span>
           100K+ Crawled Recipes → Collaborative Filtering → TF-IDF → BERT → Elasticsearch (nori_tokenizer) → LLM Recipe Generation (Harris Benedict calorie calc)
         </div>
-<!-- CAR -->
+
 <div class="car-card" style="margin-top:4px;">
 <div class="car-card-head">📋 CAR — "Describe a data engineering project you built from scratch."</div>
 <div>
@@ -865,9 +828,9 @@ h1.hero-name { animation: up .5s .08s ease both; }
 </div>
 </div>
 </div>
-<!-- Contributions -->
+
 <div class="contribs" style="margin-top:20px;"><h5>Contributions</h5><div class="ci">Built a 100K+ recipe corpus through crawling, cleaning, and structuring for downstream retrieval and recommendation.</div><div class="ci">Improved Korean retrieval quality with Elasticsearch and nori_tokenizer-based search optimization.</div><div class="ci">Developed a hybrid recommendation pipeline spanning collaborative filtering, TF-IDF, BERT, and retrieval search.</div><div class="ci">Presented the final system to practitioners during the Daewoong Foundation AI program showcase.</div><div class="ci">Later reused the dataset foundation in YORILAB to accelerate a hackathon pivot and delivery speed.</div></div>
-<!-- Stat box -->
+
 <div class="stat-box">
 <div class="stat-cell"><span class="stat-n">100K+</span><span class="stat-l">Recipes Crawled</span></div>
 <div class="stat-cell"><span class="stat-n">4-stage</span><span class="stat-l">Hybrid Pipeline</span></div>
@@ -898,12 +861,12 @@ h1.hero-name { animation: up .5s .08s ease both; }
 <strong>Business Impact</strong>
 <p>Enabled data-driven decision-making for product planning by turning fast-moving social content into a usable trend-analysis dashboard.</p>
 </div>
-<!-- Architecture pipeline -->
+
 <div style="font-family:var(--mono); font-size:11px; color:var(--ink2); background:var(--bg2); border:1px solid var(--rule); border-radius:4px; padding:10px 14px; margin:14px 0; line-height:2;">
 <span style="color:var(--ink3); font-size:9px; letter-spacing:.1em; text-transform:uppercase; display:block; margin-bottom:4px;">Pipeline</span>
           YouTube API → EventBridge → Lambda → S3 → Couchbase Vector DB → LangChain Agent → Streamlit UI → Slack Alert Bot
         </div>
-<!-- STAR card -->
+
 <div class="star-card">
 <div class="star-card-head">
 <span>📋 STAR — "Tell me about a time you led a team under pressure."</span>
@@ -965,10 +928,10 @@ h1.hero-name { animation: up .5s .08s ease both; }
 </div>
 </div>
 </div>
-</div><!-- /star-card -->
-<!-- Contributions -->
+</div>
+
 <div class="contribs" style="margin-top:20px;"><h5>Contributions</h5><div class="ci">Turned an unclear market-research problem into a discrete agent pipeline for food R&amp;D trend analysis.</div><div class="ci">Built the ingestion and retrieval pipeline: YouTube API → EventBridge → Lambda → S3 → Couchbase Vector DB.</div><div class="ci">Reused a previously built 200K+ recipe dataset to accelerate delivery after an on-site product pivot.</div><div class="ci">Led a full B2C → B2B pivot during the hackathon and aligned roles around the new direction.</div><div class="ci">Won Grand Prize after rebuilding the project framing and delivery plan under time pressure.</div></div>
-<!-- Stat box -->
+
 <div class="stat-box">
 <div class="stat-cell"><span class="stat-n">200K+</span><span class="stat-l">Recipe Records</span></div>
 <div class="stat-cell"><span class="stat-n">1st</span><span class="stat-l">Grand Prize</span></div>
@@ -1004,12 +967,12 @@ h1.hero-name { animation: up .5s .08s ease both; }
 <div class="pg-connect">
 <strong>Fieldguide Connection →</strong> Shows I can decompose a complex workflow into multiple model stages, automate evaluation triggers, and build feedback loops instead of treating prompting as the whole system.
         </div>
-<!-- Pipeline -->
+
 <div style="font-family:var(--mono); font-size:11px; color:var(--ink2); background:var(--bg2); border:1px solid var(--rule); border-radius:4px; padding:10px 14px; margin:14px 0; line-height:2;">
 <span style="color:var(--ink3); font-size:9px; letter-spacing:.1em; text-transform:uppercase; display:block; margin-bottom:4px;">3-Stage Pipeline + DataOps</span>
           YOLOv8 (detection) → CLIP (classification) → Claude 3.5 Sonnet (explanation) · SageMaker 5-step Pipeline · OpenSearch RAG + SNS alert · Auto-retraining loop
         </div>
-<!-- CAR -->
+
 <div class="car-card" style="margin-top:4px;">
 <div class="car-card-head">📋 CAR — "Describe a complex technical solution you designed end-to-end."</div>
 <div>
@@ -1023,13 +986,13 @@ h1.hero-name { animation: up .5s .08s ease both; }
 </div>
 <div class="car-row">
 <div class="car-label"><span class="c-badge">R</span></div>
-<div class="car-text">Won SW Convergence Hackathon Excellence Award and BDA Academic Conference Award. The auto-retraining loop eliminated manual intervention for model degradation — a key productivity multiplier for ongoing operations.</div>
+<div class="car-text">Won SW-Centered Univ. Excellence Exhibition (Univ Rep.) and BDA Academic Conference Award. The auto-retraining loop eliminated manual intervention for model degradation — a key productivity multiplier for ongoing operations.</div>
 </div>
 </div>
 </div>
-<!-- Contributions -->
+
 <div class="contribs" style="margin-top:20px;"><h5>Highlights</h5><div class="ci">Designed a 3-stage detection flow: YOLOv8 → CLIP → Claude 3.5 Sonnet for hazardous-item analysis.</div><div class="ci">Built a SageMaker-based workflow with automated retraining to maintain pipeline reliability.</div><div class="ci">Operated the system as a live demo booth for a university showcase.</div><div class="ci">Presented the technical design and results at the BDA academic conference.</div><div class="ci">Won an excellence award in SW convergence competition for the project.</div></div>
-<!-- Stat box -->
+
 <div class="stat-box">
 <div class="stat-cell"><span class="stat-n">3</span><span class="stat-l">AI Model Stages</span></div>
 <div class="stat-cell"><span class="stat-n">5-step</span><span class="stat-l">SageMaker Pipeline</span></div>
@@ -1045,61 +1008,82 @@ h1.hero-name { animation: up .5s .08s ease both; }
 <span class="st">Python</span>
 </div>
 </div>
-</div></div><!-- /proj-list -->
-</div><!-- /wrap -->
-</section><!-- /projects -->
-<!-- =============================================
-     PART 6 이후 내용 여기에 붙여넣기
-
-<!-- ═══════════════════════════════════════════
-     SECTION 04 · AWARDS & RECOGNITION
-     ═══════════════════════════════════════════ -->
-<section id="awards">
-<div class="wrap">
-<div class="sec-head"><span class="sec-num">04</span><h2 class="sec-title">Awards &amp; Recognition</h2></div>
-<div class="awards-grid">
-<div class="aw-card gold">
-<div class="aw-prize">🏆 Grand Prize</div>
-<div class="aw-org">AWS · GenAI Playground · 2024.11</div>
-<div class="aw-name">2024 GenAI Playground Hackathon</div>
-<div class="aw-desc">B2B food R&amp;D SNS trend analysis service. Full on-site pivot from B2C concept. Team lead (3 members). YouTube API → Couchbase vector pipeline → LangChain Agent.</div>
-</div>
-<div class="aw-card orange">
-<div class="aw-prize">🏅 Excellence Award</div>
-<div class="aw-org">SW Convergence Hackathon · 2024</div>
-<div class="aw-name">SW Convergence Hackathon Excellence Award</div>
-<div class="aw-desc">3-stage AI pipeline (YOLOv8 → CLIP → Claude 3.5) for X-ray hazard detection with SageMaker DataOps auto-retraining loop.</div>
-</div>
-<div class="aw-card green">
-<div class="aw-prize">🎓 Selected Scholar</div>
-<div class="aw-org">Daewoong Foundation AI Program · 2024</div>
-<div class="aw-name">Daewoong Foundation AI Program</div>
-<div class="aw-desc">Selected scholar project. Built a hybrid retrieval and recommendation pipeline on a 100K+ recipe corpus and presented the system in a final demo session reviewed by practitioners.</div>
-</div>
-<div class="aw-card blue">
-<div class="aw-prize">📢 Featured Speaker</div>
-<div class="aw-org">Amazon Web Services · 2025</div>
-<div class="aw-name">AWS Public Sector Day 2025 Seoul</div>
-<div class="aw-desc">Presented Amazon Nova Sonic S2S-powered real-time voice English study system. Selected as SharkHolmes Lead presenter.</div>
-</div>
-<div class="aw-card gold">
-<div class="aw-prize">🏅 BDA Academic Award</div>
-<div class="aw-org">BDA Academic Conference · 2024</div>
-<div class="aw-name">Big Data Analysis Academic Award</div>
-<div class="aw-desc">AI X-ray hazard detection pipeline — presented at BDA academic conference alongside SW Convergence Hackathon win.</div>
-</div>
-<div class="aw-card gold">
-<div class="aw-prize">🏅 SMCT Award</div>
-<div class="aw-org">Campus Town · 2023.09</div>
-<div class="aw-name">Campus Town Big Data-AI Hackathon</div>
-<div class="aw-desc">Single-person household BMR-based daily meal recommendation chatbot and analytics dashboard.</div>
-</div>
-</div>
+</div></div>
 </div>
 </section>
-<!-- ═══════════════════════════════════════════
-     SECTION 05 · EXPERIENCE & ACTIVITIES
-     ═══════════════════════════════════════════ -->
+
+<section id="awards">
+<div class="wrap">
+  <div class="sec-head"><span class="sec-num">04</span><h2 class="sec-title">Awards & Presentations</h2></div>
+  <div class="awards-grid">
+
+    <div class="aw-card gold">
+      <div class="aw-prize">🏆 Grand Prize</div>
+      <div class="aw-org">2024 GenAI Playground Hackathon</div>
+      <div class="aw-name">YORILAB — SNS Trend-Based New Menu Prediction AI</div>
+      <div class="aw-desc">Led a 3-person team to build an AI workflow that automated trend-based menu ideation and market signal generation.</div>
+    </div>
+
+    <div class="aw-card blue">
+      <div class="aw-prize">🎤 Speaker</div>
+      <div class="aw-org">AWS Public Sector Day 2025 Seoul</div>
+      <div class="aw-name">Nova Sonic — Real-Time Voice English Learning Agent</div>
+      <div class="aw-desc">Presented a full-stack multi-agent voice learning system and the architecture decisions behind real-time deployment.</div>
+    </div>
+
+    <div class="aw-card green">
+      <div class="aw-prize">🏅 University Representative</div>
+      <div class="aw-org">SW-Centered Univ. Excellence Exhibition</div>
+      <div class="aw-name">Airport X-RAY AI Detection Pipeline</div>
+      <div class="aw-desc">Selected as a university representative project and presented an AI-based hazardous item detection pipeline for public showcase.</div>
+    </div>
+
+    <div class="aw-card orange">
+      <div class="aw-prize">🥇 1st Place</div>
+      <div class="aw-org">AWS Public Sector Day 2024 GenAI Gameday</div>
+      <div class="aw-name">GenAI Gameday Winner</div>
+      <div class="aw-desc">Won 1st place in a hands-on GenAI competition focused on rapid problem solving and applied AWS AI services.</div>
+    </div>
+
+    <div class="aw-card blue">
+      <div class="aw-prize">🏁 Top 6%</div>
+      <div class="aw-org">AWS DeepRacer · Chuncheon</div>
+      <div class="aw-name">DeepRacer Chuncheon Top 6% (4th/65)</div>
+      <div class="aw-desc">Team Lead · Trained reinforcement learning models for an autonomous RC car racing challenge across online and offline environments, testing steering angle control, center-line following, and lap-time optimization to achieve a top 6% finish.</div>
+    </div>
+
+    <div class="aw-card orange">
+      <div class="aw-prize">🏅 Excellence Award</div>
+      <div class="aw-org">ABC Living Lab Hackathon</div>
+      <div class="aw-name">ABC Living Lab Hackathon Excellence</div>
+      <div class="aw-desc">Team Lead · Built a real-time emergency room availability and nearest-hospital lookup service using public ER APIs, with Elasticsearch-based geolocation search designed for shortest-distance retrieval by latitude and longitude.</div>
+    </div>
+
+    <div class="aw-card green">
+      <div class="aw-prize">🎤 Presentation</div>
+      <div class="aw-org">2024 BDA x AWS Festival · Big Data Analysis Academic Society</div>
+      <div class="aw-name">Airport X-RAY AI Detection System</div>
+      <div class="aw-desc">Presented the Airport X-RAY AI Detection system at the 2024 BDA x AWS Festival, showcasing a hazardous item detection pipeline that combined YOLOv8 and multimodal LLM analysis for security screening scenarios.</div>
+    </div>
+
+    <div class="aw-card gold">
+      <div class="aw-prize">🏅 AI Scholarship</div>
+      <div class="aw-org">Daewoong Foundation</div>
+      <div class="aw-name">Daewoong Foundation AI Scholarship Program</div>
+      <div class="aw-desc">Participated in a diet-focused meal recommendation and recipe generation project for an in-house nutritionist workflow, building a trend- and recipe-data-based dashboard. Owned data crawling (~200K records), Elasticsearch search engine design, and ChatGPT prompting.</div>
+    </div>
+
+    <div class="aw-card gold">
+      <div class="aw-prize">🏅 SMCT Award</div>
+      <div class="aw-org">Sookmyung Bigdata/AI</div>
+      <div class="aw-name">SMCT Recognition</div>
+      <div class="aw-desc">Built a Slack bot and dashboard for single-person meal recommendations using Ottogi recipe data.</div>
+    </div>
+
+  </div>
+</div>
+</section>
+
 <section id="experience">
 <div class="wrap">
 <div class="sec-head"><span class="sec-num">05</span><h2 class="sec-title">Experience &amp; Activities</h2></div>
@@ -1168,9 +1152,7 @@ h1.hero-name { animation: up .5s .08s ease both; }
 </div>
 </div>
 </section>
-<!-- ═══════════════════════════════════════════
-     SECTION 06 · CERTIFICATIONS & LANGUAGE
-     ═══════════════════════════════════════════ -->
+
 <section id="certs">
 <div class="wrap">
 <div class="sec-head"><span class="sec-num">06</span><h2 class="sec-title">Certifications &amp; Language</h2></div>
@@ -1203,9 +1185,7 @@ h1.hero-name { animation: up .5s .08s ease both; }
 </div>
 </div>
 </section>
-<!-- ═══════════════════════════════════════════
-     SECTION 07 · EDUCATION
-     ═══════════════════════════════════════════ -->
+
 <section id="edu" style="padding:60px 0;">
 <div class="wrap">
 <div class="sec-head"><span class="sec-num">07</span><h2 class="sec-title">Education</h2></div>
@@ -1219,9 +1199,7 @@ h1.hero-name { animation: up .5s .08s ease both; }
 </div>
 </div>
 </section>
-<!-- ═══════════════════════════════════════════
-     FOOTER
-     ═══════════════════════════════════════════ -->
+
 <footer>
 <div class="wrap">
 <div class="ft-inner">
@@ -1235,6 +1213,6 @@ h1.hero-name { animation: up .5s .08s ease both; }
 </div>
 </div>
 </footer>
-</div><!-- .page -->
+</div>
 </body>
 </html>
