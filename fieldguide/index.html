@@ -1,1 +1,1239 @@
+<!DOCTYPE html>
 
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Soomin Lee — Portfolio · Fieldguide AI Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;family=DM+Mono:wght@300;400;500&amp;family=DM+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg:    #FFFFFF;
+  --bg2:   #F7F9FC;
+  --ink:   #0B0D12;
+  --ink2:  #4A5568;
+  --ink3:  #94A3B8;
+  --rule:  #E5E7EB;
+  --blue:  #2F5BFF;
+  --red:   #C0340C;
+  --green: #1A6B38;
+  --tag:   #F1F5F9;
+  --serif: "Playfair Display", Georgia, serif;
+  --sans:  "DM Sans", sans-serif;
+  --mono:  "DM Mono", monospace;
+  /* STAR badge colors */
+  --s-bg: #EEEDFE; --s-ink: #3C3489;
+  --t-bg: #E1F5EE; --t-ink: #085041;
+  --a-bg: #FAEEDA; --a-ink: #633806;
+  --r-bg: #EAF3DE; --r-ink: #27500A;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ─────────────────────────── */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:99;
+  height: 52px; padding: 0 44px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(255,255,255,0.85); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+}
+.nav-name {
+  font-family: var(--mono); font-size: 12px; font-weight: 500;
+  color: var(--ink); letter-spacing: .05em; text-decoration: none;
+}
+.nav-links { display:flex; gap:28px; list-style:none; }
+.nav-links a {
+  font-size: 11px; font-weight: 500; color: var(--ink2);
+  text-decoration: none; letter-spacing: .1em; text-transform: uppercase;
+  transition: color .15s;
+}
+.nav-links a:hover { color: var(--ink); }
+a:hover { opacity: 0.7; }
+
+/* ── LAYOUT ──────────────────────── */
+.page { padding-top: 52px; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 44px; }
+
+/* ── HERO ────────────────────────── */
+#hero { padding: 96px 0 72px; border-bottom: 1px solid var(--rule); }
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 52px;
+  align-items: end;
+}
+.hero-tag {
+  font-family: var(--mono); font-size: 11px; color: var(--blue);
+  letter-spacing: .14em; text-transform: uppercase; margin-bottom: 20px;
+  display: flex; align-items: center; gap: 10px;
+}
+.hero-tag::before {
+  content: ''; display: block;
+  width: 28px; height: 1px; background: var(--blue);
+}
+h1.hero-name {
+  font-family: var(--serif);
+  font-size: clamp(54px, 7vw, 84px);
+  font-weight: 400; line-height: .95; letter-spacing: -.04em; color: var(--ink);
+}
+h1.hero-name em { font-style: italic; color: var(--blue); }
+.hero-role {
+  font-family: var(--serif); font-size: clamp(15px, 1.8vw, 20px);
+  font-style: italic; color: var(--ink2); margin: 10px 0 28px;
+}
+.hero-bio { font-size: 13.5px; color: var(--ink2); line-height: 1.9; max-width: 520px; }
+.hero-right { display: flex; flex-direction: column; gap: 10px; min-width: 240px; }
+.kpi-row {
+  display: flex; gap: 1px; background: var(--rule);
+  border: 1px solid var(--rule); border-radius: 3px; overflow: hidden;
+}
+.kpi { background: #FFFFFF; padding: 16px 14px; flex:1; text-align: center; }
+.kpi-n {
+  font-family: var(--serif); font-size: 30px; font-weight: 400;
+  color: var(--ink); display: block; line-height: 1;
+}
+.kpi-l {
+  font-family: var(--mono); font-size: 9px; color: var(--ink3);
+  display: block; margin-top: 5px; letter-spacing: .06em; text-transform: uppercase;
+}
+.badge-pill {
+  display: flex; align-items: center; gap: 9px;
+  padding: 8px 12px; background: #FFFFFF; border: 1px solid var(--rule); border-radius: 3px;
+  font-size: 12px; color: var(--ink); font-weight: 500;
+}
+.dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.dot-aws { background: #FF9900; }
+.dot-ai  { background: var(--blue); }
+.dot-en  { background: var(--green); }
+
+/* ── SECTIONS ────────────────────── */
+section { padding: 80px 0; border-bottom: 1px solid var(--rule); }
+.sec-head {
+  display: flex; align-items: baseline; gap: 16px;
+  margin-bottom: 48px; padding-bottom: 16px; border-bottom: 1px solid var(--rule);
+}
+.sec-num { font-family: var(--mono); font-size: 11px; color: var(--ink3); }
+.sec-title { font-family: var(--serif); font-size: 30px; font-weight: 400; letter-spacing: -.02em; }
+
+/* ── SKILLS ──────────────────────── */
+.skills-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.sk-group h4 {
+  font-family: var(--mono); font-size: 10px; font-weight: 500;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--blue);
+  margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--rule);
+}
+.sk-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.sk-tag {
+  font-family: var(--mono); font-size: 11px;
+  padding: 3px 9px; background: var(--tag); border-radius: 2px; color: var(--ink);
+}
+.sk-tag.hi { background: var(--ink); color: var(--bg); }
+.sk-tag.ac { background: var(--blue); color: #fff; }
+
+/* ── PROJECT INDEX ───────────────── */
+.proj-index { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+.pi-card {
+  background: #FFFFFF;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  border: 1px solid var(--rule); border-radius: 4px;
+  padding: 18px; position: relative; overflow: hidden;
+}
+.pi-accent { position:absolute; top:0; left:0; right:0; height:3px; }
+.pi-meta { font-family: var(--mono); font-size: 9px; color: var(--ink3); letter-spacing: .08em; margin-bottom: 6px; }
+.pi-name { font-family: var(--serif); font-size: 17px; font-weight: 400; margin-bottom: 4px; }
+.pi-desc { font-size: 11px; color: var(--ink2); line-height: 1.6; margin-bottom: 10px; }
+.pi-tags { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 12px; }
+.pi-tag {
+  font-family: var(--mono); font-size: 10px;
+  padding: 2px 7px; background: var(--tag); border-radius: 2px;
+}
+.pi-links { display: flex; gap: 8px; }
+.pi-link {
+  display: flex; align-items: center; gap: 4px;
+  font-family: var(--mono); font-size: 10px; text-decoration: none;
+  border: 1px solid var(--rule); padding: 3px 8px; border-radius: 2px; color: var(--ink2);
+}
+.pi-link.primary { border-color: var(--blue); color: var(--blue); }
+
+/* ── STAR / CAR CARD ─────────────── */
+.star-card {
+  background: #FFFFFF;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  border: 1px solid var(--rule); border-radius: 6px;
+  overflow: hidden; margin-top: 24px;
+}
+.star-card-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 16px;
+  background: var(--bg2); border-bottom: 1px solid var(--rule);
+  font-family: var(--mono); font-size: 10px; font-weight: 500;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--ink3);
+}
+.star-card-head span { display: flex; align-items: center; gap: 8px; }
+.star-body { padding: 0; }
+.star-row {
+  display: grid; grid-template-columns: 110px 1fr;
+  border-bottom: 1px solid var(--rule);
+}
+.star-row:last-child { border-bottom: none; }
+.star-label {
+  padding: 14px 16px; display: flex; flex-direction: column;
+  gap: 4px; border-right: 1px solid var(--rule);
+  background: var(--bg2);
+}
+.star-badge {
+  font-size: 11px; font-weight: 500; padding: 2px 10px;
+  border-radius: 999px; align-self: flex-start;
+}
+.s-badge { background: var(--s-bg); color: var(--s-ink); }
+.t-badge { background: var(--t-bg); color: var(--t-ink); }
+.a-badge { background: var(--a-bg); color: var(--a-ink); }
+.r-badge { background: var(--r-bg); color: var(--r-ink); }
+.star-pct { font-family: var(--mono); font-size: 10px; color: var(--ink3); }
+.star-pct-bar { height: 3px; background: var(--rule); border-radius: 99px; margin-top: 8px; width: 100%; }
+.star-pct-fill { height: 3px; border-radius: 99px; }
+.bar-s { background: #7F77DD; }
+.bar-t { background: #1D9E75; }
+.bar-a { background: #BA7517; }
+.bar-r { background: #639922; }
+.star-text { padding: 14px 18px; font-size: 13px; color: var(--ink); line-height: 1.85; }
+.star-text strong { color: var(--ink); }
+.star-text ul { margin: 8px 0 8px 16px; }
+.star-text li { margin-bottom: 4px; }
+.num-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.num-chip {
+  display: inline-block; background: var(--bg2);
+  border: 1px solid var(--rule); border-radius: 5px;
+  font-size: 11.5px; font-weight: 600; padding: 3px 10px; color: var(--ink);
+}
+
+/* CAR variant */
+.car-card {
+  background: #FFFFFF;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04); border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; margin-top: 24px; }
+.car-card-head {
+  padding: 10px 16px;
+  background: var(--bg2); border-bottom: 1px solid var(--rule);
+  font-family: var(--mono); font-size: 10px; font-weight: 500;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--ink3);
+}
+.car-row { display: grid; grid-template-columns: 110px 1fr; border-bottom: 1px solid var(--rule); }
+.car-row:last-child { border-bottom: none; }
+.car-label {
+  padding: 14px 16px; display: flex; flex-direction: column; gap: 4px;
+  border-right: 1px solid var(--rule); background: var(--bg2);
+}
+.c-badge { background: #E6F1FB; color: #0C447C; font-size: 11px; font-weight: 500; padding: 2px 10px; border-radius: 999px; align-self: flex-start; }
+.car-text { padding: 14px 18px; font-size: 13px; color: var(--ink); line-height: 1.85; }
+
+/* PEAK chips */
+.peak-row { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 12px; }
+.peak-chip { font-size: 10.5px; padding: 3px 10px; border-radius: 999px; }
+.pc-blue   { background: #E6F1FB; color: #0C447C; }
+.pc-coral  { background: #FAECE7; color: #712B13; }
+.pc-teal   { background: #E1F5EE; color: #085041; }
+.pc-purple { background: #EEEDFE; color: #3C3489; }
+.pc-green  { background: #EAF3DE; color: #27500A; }
+
+/* Business impact note */
+.impact-note {
+  margin: 14px 0; padding: 12px 14px; border: 1px solid var(--rule); border-radius: 6px;
+  background: #FCFBF8;
+}
+.impact-note strong {
+  display:block; margin-bottom:4px; font-family: var(--mono); font-size:10px;
+  letter-spacing:.08em; text-transform:uppercase; color: var(--blue);
+}
+.impact-note p { font-size: 12.5px; color: var(--ink2); line-height: 1.75; }
+
+/* ── PROJECTS DETAIL ─────────────── */
+.proj-list { display: flex; flex-direction: column; }
+.proj {
+  display: grid; grid-template-columns: 176px 1fr;
+  gap: 40px; padding: 52px 0; border-top: 1px solid var(--rule);
+}
+.proj:last-child { border-bottom: 1px solid var(--rule); }
+.proj-left { padding-top: 2px; }
+.proj-idx { font-family: var(--mono); font-size: 10px; color: var(--ink3); letter-spacing: .06em; margin-bottom: 10px; }
+.proj-period { font-family: var(--mono); font-size: 11px; color: var(--ink2); line-height: 1.7; margin-bottom: 8px; }
+.proj-type { font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink3); margin-bottom: 14px; }
+.award { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 2px; letter-spacing: .03em; }
+.aw-gold   { background: #FEF3C7; color: #92400E; }
+.aw-blue   { background: #EEF2FF; color: var(--blue); }
+.aw-green  { background: #DCFCE7; color: #166534; }
+.aw-orange { background: #FFF7ED; color: #C2410C; }
+
+.proj-title { font-family: var(--serif); font-size: 24px; font-weight: 400; letter-spacing: -.02em; line-height: 1.2; margin-bottom: 4px; }
+.proj-sub   { font-size: 12px; color: var(--blue); font-weight: 600; letter-spacing: .01em; margin-bottom: 16px; }
+.pg-connect {
+  font-size: 12px; color: var(--ink2);
+  background: rgba(22,64,200,.06);
+  border-left: 3px solid var(--blue);
+  padding: 8px 12px; border-radius: 0 6px 6px 0;
+  margin: 0 0 14px; line-height: 1.6;
+}
+.pg-connect strong { color: var(--blue); }
+.contribs h5 {
+  font-family: var(--mono); font-size: 9px; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--ink3); margin-bottom: 8px;
+}
+.ci { display: flex; align-items: baseline; gap: 8px; font-size: 13px; color: var(--ink); margin-bottom: 6px; line-height: 1.65; }
+.ci::before { content:"→"; font-family: var(--mono); font-size: 10px; color: var(--blue); flex-shrink: 0; }
+.stack { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 14px; }
+.st { font-family: var(--mono); font-size: 10.5px; padding: 3px 8px; border: 1px solid var(--rule); border-radius: 2px; color: var(--ink2); }
+.st.hi { border-color: var(--blue); color: var(--blue); }
+.stat-box { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin: 14px 0; padding: 14px; background: var(--bg2); border-radius: 3px; }
+.stat-cell { text-align: center; }
+.stat-n { font-family: var(--serif); font-size: 26px; font-weight: 400; color: var(--ink); display: block; line-height: 1; }
+.stat-l { font-family: var(--mono); font-size: 9px; color: var(--ink3); text-transform: uppercase; letter-spacing: .06em; display: block; margin-top: 4px; }
+
+/* ── AWARDS ──────────────────────── */
+.awards-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; }
+.aw-card {
+  background: #FFFFFF;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04); padding: 22px; border: 1px solid var(--rule); border-radius: 3px; position: relative; overflow: hidden; }
+.aw-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; }
+.aw-card.gold::before   { background: linear-gradient(90deg,#F59E0B,#FDE68A); }
+.aw-card.blue::before   { background: var(--blue); }
+.aw-card.green::before  { background: var(--green); }
+.aw-card.orange::before { background: var(--red); }
+.aw-prize { font-family: var(--serif); font-size: 17px; margin-bottom: 2px; }
+.aw-org   { font-family: var(--mono); font-size: 10px; color: var(--ink3); letter-spacing: .05em; text-transform: uppercase; margin-bottom: 8px; }
+.aw-name  { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+.aw-desc  { font-size: 12px; color: var(--ink2); line-height: 1.7; }
+
+/* ── EXPERIENCE ──────────────────── */
+.exp-item { display: grid; grid-template-columns: 176px 1fr; gap: 40px; padding: 36px 0; border-top: 1px solid var(--rule); }
+.exp-item:last-child { border-bottom: 1px solid var(--rule); }
+.exp-period { font-family: var(--mono); font-size: 11px; color: var(--ink2); padding-top: 2px; line-height: 1.8; }
+.exp-org    { font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--ink3); margin-bottom: 5px; }
+.exp-title  { font-family: var(--serif); font-size: 20px; font-weight: 400; letter-spacing: -.01em; color: var(--ink); margin-bottom: 10px; line-height: 1.2; }
+.exp-desc   { font-size: 13px; color: var(--ink2); line-height: 1.85; }
+
+/* ── CERTS ───────────────────────── */
+.cert-row { display: flex; align-items: center; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--rule); }
+.cert-row:first-child { border-top: 1px solid var(--rule); }
+.cert-icon { width:34px; height:34px; border-radius:3px; background:var(--ink); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-family:var(--mono); font-size:10px; font-weight:600; color:var(--bg); }
+.cert-name   { flex:1; font-size:13px; font-weight:600; color:var(--ink); }
+.cert-issuer { font-size:12px; color:var(--ink2); }
+.cert-date   { font-family:var(--mono); font-size:10px; color:var(--ink3); flex-shrink:0; }
+.cert-level  { font-size:11px; font-weight:700; padding:2px 9px; border-radius:2px; flex-shrink:0; }
+.lv-aws { background:#FEF3C7; color:#92400E; }
+.lv-eng { background:#DCFCE7; color:#166534; }
+
+/* ── FOOTER ──────────────────────── */
+footer { padding: 40px 0; }
+.ft-inner { display: flex; justify-content: space-between; align-items: center; }
+.ft-name { font-family: var(--serif); font-size: 18px; font-style: italic; }
+.ft-note { font-family: var(--mono); font-size: 10px; color: var(--ink3); }
+
+/* ── ANIMATIONS ──────────────────── */
+@keyframes up { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+.hero-tag    { animation: up .5s ease both; }
+h1.hero-name { animation: up .5s .08s ease both; }
+.hero-role   { animation: up .5s .16s ease both; }
+.hero-bio    { animation: up .5s .24s ease both; }
+.hero-right  { animation: up .5s .12s ease both; }
+
+@media print {
+  *,*::before,*::after { -webkit-print-color-adjust:exact!important; print-color-adjust:exact!important; }
+  nav { display:none!important; }
+  .page { padding-top:0!important; }
+  #hero { padding:48px 0 40px!important; }
+  section { padding:40px 0!important; }
+  .hero-tag,h1.hero-name,.hero-role,.hero-bio,.hero-right { animation:none!important; opacity:1!important; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+<!-- NAV -->
+<nav>
+<a class="nav-name" href="#">SOOMIN LEE</a>
+<ul class="nav-links">
+<li><a href="#skills">Skills</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#awards">Awards</a></li>
+<li><a href="#experience">Experience</a></li>
+<li><a href="#certs">Certs</a></li>
+</ul>
+</nav>
+<!-- HERO -->
+<section id="hero" style="border-bottom:1px solid var(--rule);">
+<div class="wrap">
+<div class="hero-inner">
+<div>
+<div class="hero-tag">AI Engineer · Agent Systems</div>
+<h1 class="hero-name">Soomin<br/><em>Lee</em></h1>
+<div class="hero-role">Designs AI systems for high-stakes environments</div>
+<p class="hero-bio">Builds agent workflows as discrete, testable systems with clear decision boundaries. Focused on reliability, evaluation loops, and human-in-the-loop escalation — where outputs must be trusted, not just generated.</p>
+<div style="margin-top:18px; display:flex; gap:14px; font-family:var(--mono); font-size:11px; color:var(--ink2); flex-wrap:wrap;">
+<a href="mailto:leedooming@gmail.com" style="color:var(--blue); text-decoration:none;">leedooming@gmail.com</a>
+<a href="https://github.com/leedoming" style="color:var(--ink2); text-decoration:none;" target="_blank">github.com/leedoming</a>
+<a href="https://linkedin.com/in/sumin-lee-smwu" style="color:var(--ink2); text-decoration:none;" target="_blank">LinkedIn</a>
+</div>
+</div>
+<div class="hero-right">
+<div class="kpi-row">
+<div class="kpi"><span class="kpi-n">4</span><span class="kpi-l">Retrieval Eval Cycles</span></div>
+<div class="kpi"><span class="kpi-n">3</span><span class="kpi-l">Step Auditable Pipeline</span></div>
+<div class="kpi"><span class="kpi-n">∞</span><span class="kpi-l">Human Escalation First</span></div>
+<div class="kpi"><span class="kpi-n">IA</span><span class="kpi-l">Structured Retrieval Design</span></div>
+</div>
+<div class="badge-pill"><span class="dot dot-ai"></span>Evaluation-driven AI systems</div>
+<div class="badge-pill"><span class="dot dot-aws"></span>AWS · Production Systems</div>
+<div class="badge-pill"><span class="dot dot-en"></span>Speaker · System Validation</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SKILLS -->
+<section id="skills">
+<div class="wrap">
+<div class="sec-head"><span class="sec-num">01</span><h2 class="sec-title">Technical Skills</h2></div>
+<div class="skills-grid">
+<div class="sk-group">
+<h4>AI / LLM Systems</h4>
+<div class="sk-tags">
+<span class="sk-tag ac">AWS Bedrock</span>
+<span class="sk-tag hi">Agent Orchestration</span>
+<span class="sk-tag hi">RAG</span>
+<span class="sk-tag">Anthropic Claude</span>
+<span class="sk-tag">LangChain</span>
+<span class="sk-tag">Prompt Design</span>
+<span class="sk-tag">Evaluation Loops</span>
+<span class="sk-tag">Human Escalation</span>
+</div>
+</div>
+<div class="sk-group">
+<h4>Retrieval / Infra</h4>
+<div class="sk-tags">
+<span class="sk-tag ac">OpenSearch Serverless</span>
+<span class="sk-tag hi">S3 Vectors</span>
+<span class="sk-tag hi">Aurora PostgreSQL</span>
+<span class="sk-tag hi">DynamoDB</span>
+<span class="sk-tag">ChromaDB</span>
+<span class="sk-tag">Couchbase Vector</span>
+<span class="sk-tag">Lambda · EventBridge</span>
+<span class="sk-tag">ECS Fargate · Docker</span>
+</div>
+</div>
+<div class="sk-group">
+<h4>Product Engineering</h4>
+<div class="sk-tags">
+<span class="sk-tag ac">Python</span>
+<span class="sk-tag hi">TypeScript</span>
+<span class="sk-tag hi">SQL</span>
+<span class="sk-tag">React + Vite</span>
+<span class="sk-tag">FastAPI</span>
+<span class="sk-tag">AWS Kiro</span>
+<span class="sk-tag">Terraform</span>
+<span class="sk-tag">Docker</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- PROJECT INDEX -->
+<section id="project-index" style="padding:60px 0;">
+<div class="wrap">
+<div class="sec-head" style="margin-bottom:32px;">
+<span class="sec-num">02</span>
+<h2 class="sec-title">Fieldguide Fit Snapshot</h2>
+</div>
+<div class="proj-index">
+<!-- 01 YORILAB -->
+<!-- 02 GWANGJU CHATBOT -->
+<!-- 03 FACE SWAP -->
+<!-- 04 NOVA SONIC -->
+<!-- 05 X-RAY -->
+<!-- 06 MEAL RECOMMENDATION -->
+<div class="pi-card">
+<div class="pi-accent" style="background:var(--blue);"></div>
+<div class="pi-meta">PROJECT 01 · 2025.02–05 · Production Internship</div>
+<div class="pi-name">University AI Agent</div>
+<div class="pi-desc">High-stakes Q&amp;A system with auditable orchestration · retrieval → reasoning → contact routing · designed for zero-guessing</div>
+<div class="pi-tags"><span class="pi-tag">Bedrock Agent</span><span class="pi-tag">Evaluation Loops</span><span class="pi-tag">Human Escalation</span></div>
+<div class="pi-links">
+<a class="pi-link primary" href="https://canva.link/1z30ngdjigku7lz" target="_blank">▶ Deck</a>
+<a class="pi-link" href="https://github.com/leedoming/yorilab-genai-playground-hackathon" target="_blank">GitHub</a>
+</div>
+</div><div class="pi-card">
+<div class="pi-accent" style="background:var(--green);"></div>
+<div class="pi-meta">PROJECT 02 · 2025 · AWS Public Sector Day Speaker</div>
+<div class="pi-name">Real-time Voice Agent</div>
+<div class="pi-desc">AI-native full-stack build with infra-first judgment · 4-agent async orchestration · vector retrieval for real-time voice UX</div>
+<div class="pi-tags"><span class="pi-tag">TypeScript</span><span class="pi-tag">S3 Vectors</span><span class="pi-tag">📢 AWS PSD</span></div>
+<div class="pi-links">
+<a class="pi-link" href="https://github.com/leedoming/nxt-lighty-chatbot" target="_blank">GitHub</a>
+</div>
+</div><div class="pi-card">
+<div class="pi-accent" style="background:var(--red);"></div>
+<div class="pi-meta">PROJECT 03 · 2025.02–05 · Production Optimization</div>
+<div class="pi-name">Face Swap Service</div>
+<div class="pi-desc">Production scaling under real traffic constraints · ECS Fargate migration · ~80% cost reduction</div>
+<div class="pi-tags"><span class="pi-tag">ECS Fargate</span><span class="pi-tag">Docker</span><span class="pi-tag">FastAPI</span></div>
+<div class="pi-links">
+<a class="pi-link" href="https://hub.docker.com/repository/docker/leedoming/faceswap-gallery" target="_blank">Docker Hub</a>
+</div>
+</div><div class="pi-card">
+<div class="pi-accent" style="background:var(--green);"></div>
+<div class="pi-meta">PROJECT 04 · 2023.12–2024.05 · Selected Scholar Program</div>
+<div class="pi-name">Healthcare AI Pipeline</div>
+<div class="pi-desc">Selected scholar project with 100K+ recipe corpus · Korean retrieval tuning · final presentation reviewed by practitioners</div>
+<div class="pi-tags"><span class="pi-tag">Elasticsearch</span><span class="pi-tag">BERT</span><span class="pi-tag">🎓 Selected Scholar</span></div>
+<div class="pi-links">
+<a class="pi-link primary" href="https://canva.link/mct69v0k0u9n3of" target="_blank">▶ Deck</a>
+</div>
+</div><div class="pi-card">
+<div class="pi-accent" style="background:var(--blue);"></div>
+<div class="pi-meta">PROJECT 05 · 2024.11 · Hackathon</div>
+<div class="pi-name">YORILAB</div>
+<div class="pi-desc">Turned ambiguous market research into discrete AI-agent steps · B2B trend intelligence for food R&amp;D</div>
+<div class="pi-tags"><span class="pi-tag">Couchbase Vector</span><span class="pi-tag">LangChain</span><span class="pi-tag">🏆 Grand Prize</span></div>
+<div class="pi-links">
+<a class="pi-link primary" href="https://canva.link/mne0robe4tzmpeg" target="_blank">▶ Deck</a>
+</div>
+</div><div class="pi-card">
+<div class="pi-accent" style="background:var(--red);"></div>
+<div class="pi-meta">PROJECT 06 · 2024.03–10 · MLOps</div>
+<div class="pi-name">AI X-ray Hazard Detection</div>
+<div class="pi-desc">3-stage AI pipeline: YOLOv8 → CLIP → Claude 3.5 Sonnet · SageMaker workflow · demoed and presented externally</div>
+<div class="pi-tags"><span class="pi-tag">YOLO</span><span class="pi-tag">CLIP</span><span class="pi-tag">SageMaker</span><span class="pi-tag">🏅 Award</span></div>
+<div class="pi-links">
+<a class="pi-link primary" href="https://canva.link/zrz5zza3z4mlv60" target="_blank">▶ Deck</a>
+</div>
+</div></div>
+</div>
+</section>
+<!-- =============================================
+
+<!-- PROJECTS DETAIL -->
+<section id="projects">
+<div class="wrap">
+<div class="sec-head"><span class="sec-num">03</span><h2 class="sec-title">Selected Projects for Fieldguide</h2></div>
+<div class="proj-list">
+<!-- ═══════════════════════════════════════════
+         PROJECT 01 · YORILAB
+         ═══════════════════════════════════════════ -->
+<!-- /proj YORILAB -->
+<!-- =============================================
+       PART 4 이후 내용 여기에 붙여넣기
+       (Gwangju Chatbot + Face Swap deep-dives)
+       ============================================= -->
+<!-- ═══════════════════════════════════════════
+         PROJECT 02 · GWANGJU UNIVERSITY CHATBOT
+         ═══════════════════════════════════════════ -->
+<!-- /proj Gwangju -->
+<!-- ═══════════════════════════════════════════
+         PROJECT 03 · FACE SWAP INFRASTRUCTURE REDESIGN
+         ═══════════════════════════════════════════ -->
+<!-- /proj Face Swap -->
+<!-- =============================================
+       PART 5 이후 내용 여기에 붙여넣기
+       (X-ray + Nova Sonic + Meal Recommendation)
+       ============================================= -->
+<!-- ═══════════════════════════════════════════
+         PROJECT 04 · AI X-RAY HAZARDOUS ITEM DETECTION
+         ═══════════════════════════════════════════ -->
+<!-- /proj X-ray -->
+<!-- ═══════════════════════════════════════════
+         PROJECT 05 · NOVA SONIC ENGLISH STUDY
+         ═══════════════════════════════════════════ -->
+<!-- /proj Nova Sonic -->
+<!-- ═══════════════════════════════════════════
+         PROJECT 06 · MEAL RECOMMENDATION ENGINE
+         ═══════════════════════════════════════════ -->
+<!-- /proj Meal Recommendation -->
+<div class="proj">
+<div class="proj-left">
+<div class="proj-idx">Project 01</div>
+<div class="proj-period">2025.02–05<br/>Internship</div>
+<div class="proj-type">Solo (PM + Dev)</div>
+<span class="award aw-green">PM · Day 14</span>
+</div>
+<div>
+<h3 class="proj-title">University AI Agent (High-stakes, zero-hallucination design)</h3>
+<p class="proj-sub">Production system · University-facing communication · PM &amp; Sole Developer</p>
+<div class="pg-connect"><strong>Fieldguide fit:</strong> Designed under a constraint where hallucination equals institutional misstatement — requiring strict trust boundaries, evaluation loops, and human escalation.</div>
+<div class="impact-note">
+<strong>Business Impact</strong>
+<p>Improved response reliability for live academic-administration questions by narrowing scope, redesigning retrieval boundaries, and deploying the system in a real university Slack workspace.</p>
+</div>
+<!-- Pipeline -->
+<div style="font-family:var(--mono); font-size:11px; color:var(--ink2); background:var(--bg2); border:1px solid var(--rule); border-radius:4px; padding:10px 14px; margin:14px 0; line-height:2;">
+<span style="color:var(--ink3); font-size:9px; letter-spacing:.1em; text-transform:uppercase; display:block; margin-bottom:4px;">Pipeline</span>
+          Lambda + Selenium → EventBridge → DynamoDB → Bedrock Knowledge Base → Bedrock Agent → Slack
+        </div>
+<!-- STAR — "Early responsibility" -->
+<div class="star-card">
+<div class="star-card-head">
+<span>📋 STAR — "Describe a time you took on significant responsibility early."</span>
+</div>
+<div class="star-body">
+<div class="star-row">
+<div class="star-label">
+<span class="star-badge s-badge">S</span>
+<span class="star-pct">~15%</span>
+<div class="star-pct-bar"><div class="star-pct-fill bar-s" style="width:15%"></div></div>
+</div>
+<div class="star-text">
+                On day 4 of my internship at NxtCloud, I volunteered to join an emergency effort to build 6 Slack bots for Gwangju University's workspace activation — with planning taking ~1 week and actual development time of just <strong>2 days</strong>. I independently owned 2 bots (Sinmungo complaint bot + TaxiBuddy ride-share bot) while simultaneously supporting peers who were stuck.
+              </div>
+</div>
+<div class="star-row">
+<div class="star-label">
+<span class="star-badge t-badge">T</span>
+<span class="star-pct">~15%</span>
+<div class="star-pct-bar"><div class="star-pct-fill bar-t" style="width:15%"></div></div>
+</div>
+<div class="star-text">
+                Beyond implementing functionality, I set a goal to design each bot's architecture in a way that could teach students to build bots themselves — no-code where appropriate, hybrid where needed. I also needed to unblock colleagues without doing their work for them.
+              </div>
+</div>
+<div class="star-row">
+<div class="star-label">
+<span class="star-badge a-badge">A ⭐</span>
+<span class="star-pct">~50%</span>
+<div class="star-pct-bar"><div class="star-pct-fill bar-a" style="width:50%"></div></div>
+</div>
+<div class="star-text">
+<strong>Sinmungo (complaint bot):</strong> Deliberately designed using Slack no-code Workflow to demonstrate that students themselves could build functional bots — not to save dev time, but to lower the barrier for students to experience bot creation firsthand.<br/><br/>
+<strong>TaxiBuddy:</strong> Identified that Kakao Maps API only runs in a web JS environment. Designed a hybrid: Slack Workflow → Web App (origin/destination input + map/cost/distance/time calculation) → result sent back to Slack. Data stored via Slack List + API in DynamoDB, auto-triggered daily at 9 AM via EventBridge.<br/><br/>
+<strong>Peer technical direction (without doing their work):</strong><br/>
+                — Colleague stuck on dynamic cafeteria crawling → proposed Selenium + Lambda + multimodal LLM to simultaneously extract image and text<br/>
+                — Senior reviewing OCR for timetable parsing → proposed multimodal LLM to handle extraction and preprocessing in one step; proposed S3 object link + ZIP structure for assignment submission bot
+                <div class="peak-row">
+<span class="peak-chip pc-purple">Lead with Courage — volunteered on day 4</span>
+<span class="peak-chip pc-teal">Execute with Excellence — 2 bots in 2 days</span>
+<span class="peak-chip pc-blue">Champion Productivity — no-code design for scalability</span>
+<span class="peak-chip pc-green">Bring Out Your Best — unblocked peers, not work-for-them</span>
+</div>
+</div>
+</div>
+<div class="star-row">
+<div class="star-label">
+<span class="star-badge r-badge">R</span>
+<span class="star-pct">~20%</span>
+<div class="star-pct-bar"><div class="star-pct-fill bar-r" style="width:20%"></div></div>
+</div>
+<div class="star-text">
+                Delivered 2 bots in 2 days; the entire team completed all 6 bots on schedule. Received recognition from senior management and the AWS client representative. <strong>Appointed as PM + sole developer of the main Gwangju University academic chatbot project on day 14 of my internship.</strong>
+<div class="num-chips">
+<span class="num-chip">2 bots in 2 days</span>
+<span class="num-chip">All 6 bots on time</span>
+<span class="num-chip">Senior + AWS client recognition</span>
+<span class="num-chip">PM appointed — Day 14</span>
+</div>
+</div>
+</div>
+</div>
+</div><!-- /star-card -->
+<!-- CAR — Main chatbot PM & architecture -->
+<div class="car-card" style="margin-top:16px;">
+<div class="car-card-head">📋 CAR Snapshot — Main Chatbot PM &amp; Architecture</div>
+<div>
+<div class="car-row">
+<div class="car-label"><span class="c-badge">C</span></div>
+<div class="car-text">Gwangju University needed a Slack-integrated chatbot to handle academic administration Q&amp;A at scale, replacing high call-center volume. As sole developer and PM, I needed to architect a reliable RAG system using Bedrock Agent — with zero hallucination tolerance given the official context.</div>
+</div>
+<div class="car-row">
+<div class="car-label"><span class="c-badge">A</span></div>
+<div class="car-text">Designed full serverless pipeline: Lambda + Selenium → EventBridge → DynamoDB → Bedrock Knowledge Base → Bedrock Agent → Slack. Applied 5-turn context window with 120-minute auto-reset for session management. Ran 4 rounds of iterative data preprocessing to improve retrieval quality. Scoped chatbot strictly to "academic administration only" based on my 2-year call center experience — a deliberate decision to minimize misinformation risk.</div>
+</div>
+<div class="car-row">
+<div class="car-label"><span class="c-badge">R</span></div>
+<div class="car-text">Deployed to Gwangju University's live Slack workspace post-internship. Hallucination rate reduced through 4 preprocessing iterations and strict scope definition. The "academic-only" constraint proved to be the most impactful design decision — not technical, but judgment-driven.</div>
+</div>
+</div>
+</div>
+<!-- Contributions -->
+<div class="contribs" style="margin-top:20px;"><h5>Contributions</h5><div class="ci">Designed a 3-step auditable orchestration pipeline: retrieval → department reasoning → contact routing.</div><div class="ci">Encoded a system rule of “never guess; always escalate to a human” for institution-facing answers.</div><div class="ci">Ran 4 structured evaluation cycles, each tied to a distinct failure mode and architecture change rather than prompt-only tuning.</div><div class="ci">Reworked retrieval design by removing unreliable URL-based paths and using explicit department-contact mapping.</div><div class="ci">Used in a real university environment where answers function as official institutional communication.</div></div>
+<!-- Stat box -->
+<div class="stat-box">
+<div class="stat-cell"><span class="stat-n">4×</span><span class="stat-l">Preprocessing Iterations</span></div>
+<div class="stat-cell"><span class="stat-n">120m</span><span class="stat-l">Session Auto-Reset</span></div>
+<div class="stat-cell"><span class="stat-n">Day 14</span><span class="stat-l">PM Appointed</span></div>
+</div>
+<div class="stack">
+<span class="st hi">AWS Bedrock Agent</span>
+<span class="st hi">RAG</span>
+<span class="st hi">DynamoDB</span>
+<span class="st">Lambda</span>
+<span class="st">EventBridge</span>
+<span class="st">Selenium</span>
+<span class="st">Slack API</span>
+<span class="st">Python</span>
+</div>
+</div>
+</div><div class="proj">
+<div class="proj-left">
+<div class="proj-idx">Project 02</div>
+<div class="proj-period">2025<br/>Conference Build</div>
+<div class="proj-type">2-person team · Vector &amp; Agent Lead</div>
+<span class="award aw-blue">📢 Speaker</span>
+</div>
+<div>
+<h3 class="proj-title">Real-time Voice Agent (AI-native build, infra-first decision)</h3>
+<p class="proj-sub">AWS Public Sector Day 2025 Seoul · Speaker · Vector &amp; Agent Lead</p>
+<div class="pg-connect"><strong>Fieldguide fit:</strong> Demonstrates AI-native development velocity while making infrastructure decisions before implementation to ensure system reliability.</div><div class="impact-note"><strong>Business Impact</strong><p>Compressed a full-stack multi-agent build into a single sprint while still making infra and retrieval choices explicit enough to present publicly to an enterprise and government audience.</p></div>
+<!-- CAR -->
+<div class="car-card" style="margin-top:16px;">
+<div class="car-card-head">📋 CAR — "Tell me about a project where you applied emerging technology."</div>
+<div>
+<div class="car-row">
+<div class="car-label"><span class="c-badge">C</span></div>
+<div class="car-text">English learners needed a conversational practice partner with natural, low-latency speech interaction — traditional text-based chatbots couldn't replicate the real-time spoken exchange required for effective language acquisition. The goal was to leverage newly released AWS technology to build a voice-native experience.</div>
+</div>
+<div class="car-row">
+<div class="car-label"><span class="c-badge">A</span></div>
+<div class="car-text">Built a real-time English study service using <strong>Amazon Nova Sonic</strong>, a speech-to-speech (S2S) model that processes audio input and generates audio output end-to-end — eliminating the latency of traditional STT → LLM → TTS chains. Designed conversation flow for English practice scenarios with context-aware AI responses.</div>
+</div>
+<div class="car-row">
+<div class="car-label"><span class="c-badge">R</span></div>
+<div class="car-text">Selected as lead presenter (SharkHolmes) at <strong>AWS Public Sector Day 2025 Seoul</strong> — one of AWS Korea's flagship public events. Demonstrated the service to industry professionals and AWS representatives, validating both the technical implementation and communication ability.</div>
+</div>
+</div>
+</div>
+<!-- Contributions -->
+<div class="contribs" style="margin-top:20px;"><h5>Contributions</h5><div class="ci">Built a full-stack multi-agent system with 4 parallel agents and fault-tolerant async orchestration for real-time voice learning.</div><div class="ci">Identified before implementation that Lambda timeout would not support Nova Sonic real-time streaming, and drove the migration to ECS Fargate.</div><div class="ci">Owned the vector retrieval pipeline: Titan embeddings → S3 Vectors → OpenSearch Serverless.</div><div class="ci">Used AWS Kiro to accelerate prototyping while preserving architecture clarity and production reasoning.</div><div class="ci">Presented architecture and technical decision rationale at AWS Public Sector Day 2025 Seoul.</div></div>
+<div class="stack">
+<span class="st hi">Amazon Nova Sonic</span>
+<span class="st hi">S2S Voice AI</span>
+<span class="st">AWS Bedrock</span>
+<span class="st">Python</span>
+</div>
+</div>
+</div><div class="proj">
+<div class="proj-left">
+<div class="proj-idx">Project 03</div>
+<div class="proj-period">2025.02–05<br/>Production Optimization</div>
+<div class="proj-type">Collab · AI/ML Lead</div>
+<span class="award aw-orange">~80% Cost Down</span>
+</div>
+<div>
+<h3 class="proj-title">Face Swap Infrastructure Redesign</h3>
+<p class="proj-sub">Real-world service · Production scaling &amp; infra redesign</p>
+<div class="pg-connect"><strong>Fieldguide fit:</strong> Focused on production reliability, cost efficiency, and system constraints rather than model experimentation.</div><div class="pg-connect">
+<strong>Fieldguide Connection →</strong> Identifying cost inefficiency in a production system and driving an end-to-end infrastructure redesign — including analysis, decision-making under failure, and knowledge transfer — directly reflects P&amp;G's emphasis on using technology to improve efficiency and decision-making.
+        </div>
+<div class="impact-note">
+<strong>Business Impact</strong>
+<p>Reduced infrastructure cost by about 80% while improving concurrency handling under event traffic, replacing an always-on setup with a more practical on-demand architecture.</p>
+</div>
+<!-- Architecture note -->
+<div style="font-family:var(--mono); font-size:11px; color:var(--ink2); background:var(--bg2); border:1px solid var(--rule); border-radius:4px; padding:10px 14px; margin:14px 0; line-height:2;">
+<span style="color:var(--ink3); font-size:9px; letter-spacing:.1em; text-transform:uppercase; display:block; margin-bottom:4px;">Before → After</span>
+          4× m5.xlarge EC2 (24/7, ~$617/mo) → ECS Fargate on-demand (variable, ~$0 idle) · FastAPI async + tempfile isolation
+        </div>
+<!-- STAR -->
+<div class="star-card">
+<div class="star-card-head">
+<span>📋 STAR — "Give an example of improving a process using technology."</span>
+</div>
+<div class="star-body">
+<div class="star-row">
+<div class="star-label">
+<span class="star-badge s-badge">S</span>
+<span class="star-pct">~15%</span>
+<div class="star-pct-bar"><div class="star-pct-fill bar-s" style="width:15%"></div></div>
+</div>
+<div class="star-text">
+                A Face Swap service targeting nationwide university festivals was running <strong>4× m5.xlarge EC2 instances 24/7</strong>, incurring a fixed cost of <strong>~$617/month</strong> regardless of actual demand. The legacy codebase was unmaintainable, and concurrent requests caused processing errors — making multi-user support impossible during high-traffic festival periods.
+              </div>
+</div>
+<div class="star-row">
+<div class="star-label">
+<span class="star-badge t-badge">T</span>
+<span class="star-pct">~15%</span>
+<div class="star-pct-bar"><div class="star-pct-fill bar-t" style="width:15%"></div></div>
+</div>
+<div class="star-text">
+                Two junior engineers (including me) needed to analyze root causes, refactor the legacy code, reduce costs, and solve concurrent request handling — simultaneously. I owned the infrastructure pipeline and Docker environment configuration.
+              </div>
+</div>
+<div class="star-row">
+<div class="star-label">
+<span class="star-badge a-badge">A ⭐</span>
+<span class="star-pct">~50%</span>
+<div class="star-pct-bar"><div class="star-pct-fill bar-a" style="width:50%"></div></div>
+</div>
+<div class="star-text">
+<strong>Code refactor:</strong> Rewrote the service in FastAPI with per-request <code>tempfile.NamedTemporaryFile</code> isolation to solve concurrent collisions. Tuned ONNX Runtime session options (<code>intra_op_num_threads</code>, <code>ORT_ENABLE_ALL</code>) to maximize CPU inference performance.<br/><br/>
+<strong>Infrastructure decision-making (including a failure):</strong>
+<ul>
+<li>Implemented and validated on EC2 → shared with senior → received suggestion to use fully managed service</li>
+<li>Attempted SageMaker Serverless first (ML-appropriate) → hit model size limits with InsightFace + GFPGAN multi-model parallel structure</li>
+<li>Analyzed the constraint → <strong>pivoted to ECS Fargate on-demand</strong> as the correct fit</li>
+</ul>
+<strong>Forward compatibility:</strong> Pre-configured <code>onnxruntime-gpu</code> switchover and Dockerized the image so GPU upgrade for production was one config change.<br/><br/>
+<strong>Knowledge transfer:</strong> Taught a team member Docker from scratch — image/container concepts, Dockerfile authoring, ECR push, Fargate deploy — until they could work independently.
+                <div class="peak-row">
+<span class="peak-chip pc-blue">Champion Productivity — 80% cost reduction, fixed→variable</span>
+<span class="peak-chip pc-coral">Innovate for Growth — SageMaker failure → ECS pivot</span>
+<span class="peak-chip pc-teal">Execute with Excellence — code-level optimization</span>
+<span class="peak-chip pc-purple">Lead with Courage — junior-led, accepted senior input</span>
+<span class="peak-chip pc-green">Bring Out Your Best — Docker training for teammate</span>
+</div>
+</div>
+</div>
+<div class="star-row">
+<div class="star-label">
+<span class="star-badge r-badge">R</span>
+<span class="star-pct">~20%</span>
+<div class="star-pct-bar"><div class="star-pct-fill bar-r" style="width:20%"></div></div>
+</div>
+<div class="star-text">
+                Converted infrastructure from <strong>~$617/month fixed</strong> to on-demand variable cost with <strong>$0 idle cost</strong>, achieving approximately <strong>80% cost reduction</strong> during actual event operation. Resolved concurrent request issue entirely. Completed with GPU-ready Docker image and full team handoff.
+                <div class="num-chips">
+<span class="num-chip">4 instances → 1 (−75%)</span>
+<span class="num-chip">$617/mo → $0 idle</span>
+<span class="num-chip">~80% cost reduction</span>
+<span class="num-chip">Concurrent requests solved</span>
+<span class="num-chip">GPU-ready handoff</span>
+</div>
+</div>
+</div>
+</div>
+</div><!-- /star-card -->
+<!-- Contributions -->
+<div class="contribs" style="margin-top:20px;"><h5>Contributions</h5><div class="ci">Redesigned deployment across three stages — EC2 → SageMaker Serverless → ECS Fargate — based on concrete system constraints.</div><div class="ci">Fixed concurrency bottlenecks by restructuring FastAPI file handling and request isolation.</div><div class="ci">Improved latency by 3+ seconds through parallelization and runtime tuning.</div><div class="ci">Eliminated idle compute costs by moving from always-on instances to on-demand container execution.</div><div class="ci">Built the system so it could be maintained independently after handoff to the collaborating engineer.</div></div>
+<!-- Stat box -->
+<div class="stat-box">
+<div class="stat-cell"><span class="stat-n">~80%</span><span class="stat-l">Cost Reduction</span></div>
+<div class="stat-cell"><span class="stat-n">$0</span><span class="stat-l">Idle Cost</span></div>
+<div class="stat-cell"><span class="stat-n">4→1</span><span class="stat-l">Instances</span></div>
+</div>
+<div class="stack">
+<span class="st hi">ECS Fargate</span>
+<span class="st hi">Docker</span>
+<span class="st hi">FastAPI</span>
+<span class="st">ONNX Runtime</span>
+<span class="st">ECR</span>
+<span class="st">InsightFace</span>
+<span class="st">GFPGAN</span>
+<span class="st">Python</span>
+<span class="st">AWS</span>
+</div>
+</div>
+</div><div class="proj">
+<div class="proj-left">
+<div class="proj-idx">Project 04</div>
+<div class="proj-period">2023.12–2024.05<br/>Scholar Program</div>
+<div class="proj-type">Selected Scholar · Team Project</div>
+<span class="award aw-green">🎓 Selected Scholar</span>
+</div>
+<div>
+<h3 class="proj-title">Healthcare AI Pipeline (Daewoong Foundation Program)</h3>
+<p class="proj-sub">Selected Scholar · Industry-reviewed final presentation · Retrieval &amp; recommendation pipeline</p>
+<div class="pg-connect"><strong>Fieldguide fit:</strong> Translated a real-world domain workflow into an AI pipeline and validated it through practitioner feedback in a final presentation to industry professionals.</div>
+<div class="impact-note">
+<strong>Validation</strong>
+<p>Built a retrieval and recommendation workflow on top of a large food dataset, then presented the system to practitioners in a final demo setting for external feedback.</p>
+</div>
+<!-- Pipeline -->
+<div style="font-family:var(--mono); font-size:11px; color:var(--ink2); background:var(--bg2); border:1px solid var(--rule); border-radius:4px; padding:10px 14px; margin:14px 0; line-height:2;">
+<span style="color:var(--ink3); font-size:9px; letter-spacing:.1em; text-transform:uppercase; display:block; margin-bottom:4px;">Recommendation Pipeline</span>
+          100K+ Crawled Recipes → Collaborative Filtering → TF-IDF → BERT → Elasticsearch (nori_tokenizer) → LLM Recipe Generation (Harris Benedict calorie calc)
+        </div>
+<!-- CAR -->
+<div class="car-card" style="margin-top:4px;">
+<div class="car-card-head">📋 CAR — "Describe a data engineering project you built from scratch."</div>
+<div>
+<div class="car-row">
+<div class="car-label"><span class="c-badge">C</span></div>
+<div class="car-text">Single-person households lacked accessible, personalized meal planning tools that accounted for both taste preferences and nutritional needs. The goal was to build a full-stack recommender that could surface relevant recipes and generate custom meal plans with caloric precision.</div>
+</div>
+<div class="car-row">
+<div class="car-label"><span class="c-badge">A</span></div>
+<div class="car-text">Crawled and cleaned a corpus of 100K+ Korean recipes. Built a hybrid recommender: <strong>Collaborative Filtering</strong> for user preference modeling → <strong>TF-IDF</strong> for content similarity → <strong>BERT embeddings</strong> for semantic search → <strong>Elasticsearch with nori_tokenizer</strong> for Korean morphological search. Implemented LLM-based recipe generation using Harris Benedict formula for personalized calorie calculation per meal.</div>
+</div>
+<div class="car-row">
+<div class="car-label"><span class="c-badge">R</span></div>
+<div class="car-text">Selected for the Daewoong Foundation AI Scholarship program and presented the system in a final demo session reviewed by practitioners. The 100K+ recipe dataset later became a reusable asset that was leveraged again in YORILAB (Project 01).</div>
+</div>
+</div>
+</div>
+<!-- Contributions -->
+<div class="contribs" style="margin-top:20px;"><h5>Contributions</h5><div class="ci">Built a 100K+ recipe corpus through crawling, cleaning, and structuring for downstream retrieval and recommendation.</div><div class="ci">Improved Korean retrieval quality with Elasticsearch and nori_tokenizer-based search optimization.</div><div class="ci">Developed a hybrid recommendation pipeline spanning collaborative filtering, TF-IDF, BERT, and retrieval search.</div><div class="ci">Presented the final system to practitioners during the Daewoong Foundation AI program showcase.</div><div class="ci">Later reused the dataset foundation in YORILAB to accelerate a hackathon pivot and delivery speed.</div></div>
+<!-- Stat box -->
+<div class="stat-box">
+<div class="stat-cell"><span class="stat-n">100K+</span><span class="stat-l">Recipes Crawled</span></div>
+<div class="stat-cell"><span class="stat-n">4-stage</span><span class="stat-l">Hybrid Pipeline</span></div>
+<div class="stat-cell"><span class="stat-n">Final</span><span class="stat-l">Practitioner Demo</span></div>
+</div>
+<div class="stack">
+<span class="st hi">Elasticsearch</span>
+<span class="st hi">BERT</span>
+<span class="st hi">Python</span>
+<span class="st">Collaborative Filtering</span>
+<span class="st">TF-IDF</span>
+<span class="st">nori_tokenizer</span>
+<span class="st">LLM</span>
+</div>
+</div>
+</div><div class="proj">
+<div class="proj-left">
+<div class="proj-idx">Project 05</div>
+<div class="proj-period">2024.11<br/>Hackathon</div>
+<div class="proj-type">Team · 3 members</div>
+<span class="award aw-gold">🏆 Grand Prize</span>
+</div>
+<div>
+<h3 class="proj-title">YORILAB</h3>
+<p class="proj-sub">SNS Trend-Based New Menu Prediction AI Service · 2024 GenAI Playground Hackathon · Team Lead</p>
+<div class="pg-connect"><strong>Fieldguide fit:</strong> Shows product judgment under pressure — turning an ambiguous problem into discrete agent steps and shipping within hackathon constraints.</div>
+<div class="impact-note">
+<strong>Business Impact</strong>
+<p>Enabled data-driven decision-making for product planning by turning fast-moving social content into a usable trend-analysis dashboard.</p>
+</div>
+<!-- Architecture pipeline -->
+<div style="font-family:var(--mono); font-size:11px; color:var(--ink2); background:var(--bg2); border:1px solid var(--rule); border-radius:4px; padding:10px 14px; margin:14px 0; line-height:2;">
+<span style="color:var(--ink3); font-size:9px; letter-spacing:.1em; text-transform:uppercase; display:block; margin-bottom:4px;">Pipeline</span>
+          YouTube API → EventBridge → Lambda → S3 → Couchbase Vector DB → LangChain Agent → Streamlit UI → Slack Alert Bot
+        </div>
+<!-- STAR card -->
+<div class="star-card">
+<div class="star-card-head">
+<span>📋 STAR — "Tell me about a time you led a team under pressure."</span>
+</div>
+<div class="star-body">
+<div class="star-row">
+<div class="star-label">
+<span class="star-badge s-badge">S</span>
+<span class="star-pct">~15%</span>
+<div class="star-pct-bar"><div class="star-pct-fill bar-s" style="width:15%"></div></div>
+</div>
+<div class="star-text">
+                As team lead (3 members) at a food-domain GenAI hackathon, we arrived with a pre-built plan centered on a consumer recipe generator. Within the first hour, a senior industry mentor gave sharp feedback: <strong>"The tech is over-engineered and the core value is unclear."</strong>
+</div>
+</div>
+<div class="star-row">
+<div class="star-label">
+<span class="star-badge t-badge">T</span>
+<span class="star-pct">~15%</span>
+<div class="star-pct-bar"><div class="star-pct-fill bar-t" style="width:15%"></div></div>
+</div>
+<div class="star-text">
+                As team lead, I needed to accept the feedback, pivot our entire concept on-site, and deliver a functional, polished product within the remaining hackathon hours. My technical responsibilities: data pipeline (ingestion + search engine) and front-end dashboard.
+              </div>
+</div>
+<div class="star-row">
+<div class="star-label">
+<span class="star-badge a-badge">A ⭐</span>
+<span class="star-pct">~50%</span>
+<div class="star-pct-bar"><div class="star-pct-fill bar-a" style="width:50%"></div></div>
+</div>
+<div class="star-text">
+<strong>① On-site pivot — courage to let go:</strong> I rallied the team around the mentor's feedback, which resonated because we privately felt the same doubts. We discarded our prepared work and ran a rapid brainstorm session. The pivot path: B2C recipe app → <strong>B2B food R&amp;D tool</strong> → SNS trend-based new menu market prediction, with AI Agent as the centerpiece.<br/><br/>
+<strong>② Role assignment:</strong> I handled the data pipeline and Streamlit dashboard; team member A owned image generation and infra; team member B built the LangChain chatbot.<br/><br/>
+<strong>③ Data pipeline I built:</strong> Leveraged 200K+ recipe records collected during prior scholarship research, then built a new Lambda crawler using YouTube API to ingest real-time food trends. Applied Couchbase Vector DB (first encountered at a hackathon session that morning) with Korean morphological analysis (cjk_bigram) for search quality.
+                <div class="peak-row">
+<span class="peak-chip pc-purple">Lead with Courage — scrapped prepared plan, drove pivot</span>
+<span class="peak-chip pc-coral">Innovate for Growth — redefined B2C→B2B R&amp;D target</span>
+<span class="peak-chip pc-blue">Champion Productivity — pre-built 200K dataset reused</span>
+<span class="peak-chip pc-teal">Execute with Excellence — full pipeline in one session</span>
+<span class="peak-chip pc-green">Bring Out Your Best — team coordination + role clarity</span>
+</div>
+</div>
+</div>
+<div class="star-row">
+<div class="star-label">
+<span class="star-badge r-badge">R</span>
+<span class="star-pct">~20%</span>
+<div class="star-pct-bar"><div class="star-pct-fill bar-r" style="width:20%"></div></div>
+</div>
+<div class="star-text">
+                Won <strong>Grand Prize (1st place)</strong> at the 2024 GenAI Playground Hackathon — after a full on-site pivot. The combination of team expertise and pre-built data assets allowed us to deliver a high-quality service despite starting from scratch mid-event.
+                <div class="num-chips">
+<span class="num-chip">🏆 Grand Prize, 1st Place</span>
+<span class="num-chip">Full pivot → polished product</span>
+<span class="num-chip">200K recipes + real-time pipeline</span>
+<span class="num-chip">New tech (Couchbase) applied same day</span>
+</div>
+</div>
+</div>
+</div>
+</div><!-- /star-card -->
+<!-- Contributions -->
+<div class="contribs" style="margin-top:20px;"><h5>Contributions</h5><div class="ci">Turned an unclear market-research problem into a discrete agent pipeline for food R&amp;D trend analysis.</div><div class="ci">Built the ingestion and retrieval pipeline: YouTube API → EventBridge → Lambda → S3 → Couchbase Vector DB.</div><div class="ci">Reused a previously built 200K+ recipe dataset to accelerate delivery after an on-site product pivot.</div><div class="ci">Led a full B2C → B2B pivot during the hackathon and aligned roles around the new direction.</div><div class="ci">Won Grand Prize after rebuilding the project framing and delivery plan under time pressure.</div></div>
+<!-- Stat box -->
+<div class="stat-box">
+<div class="stat-cell"><span class="stat-n">200K+</span><span class="stat-l">Recipe Records</span></div>
+<div class="stat-cell"><span class="stat-n">1st</span><span class="stat-l">Grand Prize</span></div>
+<div class="stat-cell"><span class="stat-n">1 day</span><span class="stat-l">Full Pivot &amp; Build</span></div>
+</div>
+<div class="stack">
+<span class="st hi">Python</span>
+<span class="st hi">YouTube API</span>
+<span class="st hi">AWS Lambda</span>
+<span class="st hi">EventBridge</span>
+<span class="st">S3</span>
+<span class="st">Couchbase Vector DB</span>
+<span class="st">LangChain</span>
+<span class="st">Amazon Bedrock</span>
+<span class="st">Streamlit</span>
+</div>
+</div>
+</div><div class="proj">
+<div class="proj-left">
+<div class="proj-idx">Project 06</div>
+<div class="proj-period">2024.03–10<br/>ML Pipeline</div>
+<div class="proj-type">Team Project</div>
+<span class="award aw-blue">🏅 Excellence Award</span>
+</div>
+<div>
+<h3 class="proj-title">AI X-ray Hazardous Item Detection</h3>
+<p class="proj-sub">3-stage AI pipeline · SageMaker ML Pipeline · Showcase &amp; academic presentation</p>
+<div class="pg-connect"><strong>Fieldguide fit:</strong> Demonstrates a structured multi-stage pipeline where explainability and workflow design mattered as much as raw model output.</div>
+<div class="impact-note">
+<strong>Business Impact</strong>
+<p>Validated the system through both a live demo booth and an academic presentation, showing it could be explained clearly to non-builders as well as technical reviewers.</p>
+</div>
+<div class="pg-connect">
+<strong>Fieldguide Connection →</strong> Shows I can decompose a complex workflow into multiple model stages, automate evaluation triggers, and build feedback loops instead of treating prompting as the whole system.
+        </div>
+<!-- Pipeline -->
+<div style="font-family:var(--mono); font-size:11px; color:var(--ink2); background:var(--bg2); border:1px solid var(--rule); border-radius:4px; padding:10px 14px; margin:14px 0; line-height:2;">
+<span style="color:var(--ink3); font-size:9px; letter-spacing:.1em; text-transform:uppercase; display:block; margin-bottom:4px;">3-Stage Pipeline + DataOps</span>
+          YOLOv8 (detection) → CLIP (classification) → Claude 3.5 Sonnet (explanation) · SageMaker 5-step Pipeline · OpenSearch RAG + SNS alert · Auto-retraining loop
+        </div>
+<!-- CAR -->
+<div class="car-card" style="margin-top:4px;">
+<div class="car-card-head">📋 CAR — "Describe a complex technical solution you designed end-to-end."</div>
+<div>
+<div class="car-row">
+<div class="car-label"><span class="c-badge">C</span></div>
+<div class="car-text">Security screening required detecting hazardous items in X-ray images — a task requiring multi-stage reasoning (localization → classification → explanation) that no single model could handle reliably. I needed to design an end-to-end DataOps pipeline with automated retraining on SageMaker.</div>
+</div>
+<div class="car-row">
+<div class="car-label"><span class="c-badge">A</span></div>
+<div class="car-text">Designed a 3-stage AI pipeline: <strong>YOLOv8</strong> for object detection → <strong>CLIP</strong> for multimodal similarity classification → <strong>Claude 3.5 Sonnet</strong> for contextual explanation. Built a 5-step SageMaker ML Pipeline for DataOps automation. Implemented a performance-triggered auto-retraining loop: when model accuracy dropped below threshold, it automatically triggered repackaging and re-registration. Integrated OpenSearch RAG for knowledge retrieval and SNS for real-time alerting.</div>
+</div>
+<div class="car-row">
+<div class="car-label"><span class="c-badge">R</span></div>
+<div class="car-text">Won SW Convergence Hackathon Excellence Award and BDA Academic Conference Award. The auto-retraining loop eliminated manual intervention for model degradation — a key productivity multiplier for ongoing operations.</div>
+</div>
+</div>
+</div>
+<!-- Contributions -->
+<div class="contribs" style="margin-top:20px;"><h5>Highlights</h5><div class="ci">Designed a 3-stage detection flow: YOLOv8 → CLIP → Claude 3.5 Sonnet for hazardous-item analysis.</div><div class="ci">Built a SageMaker-based workflow with automated retraining to maintain pipeline reliability.</div><div class="ci">Operated the system as a live demo booth for a university showcase.</div><div class="ci">Presented the technical design and results at the BDA academic conference.</div><div class="ci">Won an excellence award in SW convergence competition for the project.</div></div>
+<!-- Stat box -->
+<div class="stat-box">
+<div class="stat-cell"><span class="stat-n">3</span><span class="stat-l">AI Model Stages</span></div>
+<div class="stat-cell"><span class="stat-n">5-step</span><span class="stat-l">SageMaker Pipeline</span></div>
+<div class="stat-cell"><span class="stat-n">2</span><span class="stat-l">Public Presentations</span></div>
+</div>
+<div class="stack">
+<span class="st hi">YOLOv8</span>
+<span class="st hi">CLIP</span>
+<span class="st hi">SageMaker Pipeline</span>
+<span class="st">Claude 3.5 Sonnet</span>
+<span class="st">OpenSearch RAG</span>
+<span class="st">SNS</span>
+<span class="st">Python</span>
+</div>
+</div>
+</div></div><!-- /proj-list -->
+</div><!-- /wrap -->
+</section><!-- /projects -->
+<!-- =============================================
+     PART 6 이후 내용 여기에 붙여넣기
+
+<!-- ═══════════════════════════════════════════
+     SECTION 04 · AWARDS & RECOGNITION
+     ═══════════════════════════════════════════ -->
+<section id="awards">
+<div class="wrap">
+<div class="sec-head"><span class="sec-num">04</span><h2 class="sec-title">Awards &amp; Recognition</h2></div>
+<div class="awards-grid">
+<div class="aw-card gold">
+<div class="aw-prize">🏆 Grand Prize</div>
+<div class="aw-org">AWS · GenAI Playground · 2024.11</div>
+<div class="aw-name">2024 GenAI Playground Hackathon</div>
+<div class="aw-desc">B2B food R&amp;D SNS trend analysis service. Full on-site pivot from B2C concept. Team lead (3 members). YouTube API → Couchbase vector pipeline → LangChain Agent.</div>
+</div>
+<div class="aw-card orange">
+<div class="aw-prize">🏅 Excellence Award</div>
+<div class="aw-org">SW Convergence Hackathon · 2024</div>
+<div class="aw-name">SW Convergence Hackathon Excellence Award</div>
+<div class="aw-desc">3-stage AI pipeline (YOLOv8 → CLIP → Claude 3.5) for X-ray hazard detection with SageMaker DataOps auto-retraining loop.</div>
+</div>
+<div class="aw-card green">
+<div class="aw-prize">🎓 Selected Scholar</div>
+<div class="aw-org">Daewoong Foundation AI Program · 2024</div>
+<div class="aw-name">Daewoong Foundation AI Program</div>
+<div class="aw-desc">Selected scholar project. Built a hybrid retrieval and recommendation pipeline on a 100K+ recipe corpus and presented the system in a final demo session reviewed by practitioners.</div>
+</div>
+<div class="aw-card blue">
+<div class="aw-prize">📢 Featured Speaker</div>
+<div class="aw-org">Amazon Web Services · 2025</div>
+<div class="aw-name">AWS Public Sector Day 2025 Seoul</div>
+<div class="aw-desc">Presented Amazon Nova Sonic S2S-powered real-time voice English study system. Selected as SharkHolmes Lead presenter.</div>
+</div>
+<div class="aw-card gold">
+<div class="aw-prize">🏅 BDA Academic Award</div>
+<div class="aw-org">BDA Academic Conference · 2024</div>
+<div class="aw-name">Big Data Analysis Academic Award</div>
+<div class="aw-desc">AI X-ray hazard detection pipeline — presented at BDA academic conference alongside SW Convergence Hackathon win.</div>
+</div>
+<div class="aw-card gold">
+<div class="aw-prize">🏅 SMCT Award</div>
+<div class="aw-org">Campus Town · 2023.09</div>
+<div class="aw-name">Campus Town Big Data-AI Hackathon</div>
+<div class="aw-desc">Single-person household BMR-based daily meal recommendation chatbot and analytics dashboard.</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ═══════════════════════════════════════════
+     SECTION 05 · EXPERIENCE & ACTIVITIES
+     ═══════════════════════════════════════════ -->
+<section id="experience">
+<div class="wrap">
+<div class="sec-head"><span class="sec-num">05</span><h2 class="sec-title">Experience &amp; Activities</h2></div>
+<div class="exp-item">
+<div class="exp-period">Feb 2025 – May 2025<br/><strong style="color:var(--blue)">Intern</strong></div>
+<div>
+<div class="exp-org">NxtCloud (AWS Solution Architect Partner)</div>
+<div class="exp-title">Cloud Solution Architect Intern · Education Team</div>
+<div class="exp-desc">
+        · Appointed PM of Gwangju University AI chatbot project 2 weeks after joining — designed full serverless pipeline (Lambda + Selenium → EventBridge → DynamoDB → Bedrock Knowledge Base → Bedrock Agent → Slack)<br/>
+        · Built 2 Slack bots in 2 days as first responder; earned recognition from senior management and AWS client representative<br/>
+        · Redesigned Face Swap service: m5.xlarge ×4 24/7 (~$617/mo) → ECS Fargate on-demand (~80% cost reduction); resolved concurrent request issue via FastAPI async + tempfile isolation<br/>
+        · Provided technical direction to peers: proposed multimodal LLM over OCR for timetable parsing; S3 ZIP architecture for assignment submission bot
+      </div>
+<div class="stack" style="margin-top:10px;">
+<span class="st hi">AWS Bedrock</span>
+<span class="st hi">ECS Fargate</span>
+<span class="st">Docker</span>
+<span class="st">RAG</span>
+<span class="st">FastAPI</span>
+</div>
+</div>
+</div>
+<div class="exp-item">
+<div class="exp-period">Feb 2025 – May 2025<br/><strong style="color:var(--blue)">Part-time</strong></div>
+<div>
+<div class="exp-org">NxtCloud · External Education</div>
+<div class="exp-title">AI / Cloud Instructor</div>
+<div class="exp-desc">
+        · Planned and delivered AI/Cloud curriculum for 8+ institutions (Myongji, Ajou, GIST, IITP, etc.); average satisfaction 4.0+/5.0<br/>
+        · Designed hands-on labs: 3-tier cloud architecture, Node.js chatbot, Kinesis Data Streams, SageMaker pipeline<br/>
+        · Designed and delivered Slack bot curriculum on-site at Gwangju University
+      </div>
+</div>
+</div>
+<div class="exp-item">
+<div class="exp-period">Jul 2023 – Jul 2024<br/><strong style="color:var(--blue)">Club</strong></div>
+<div>
+<div class="exp-org">BOAZ Big Data Club</div>
+<div class="exp-title">Data Engineering Track · Operations (External Relations)</div>
+<div class="exp-desc">Studied and implemented data engineering stack: Kafka, Spark, Docker, Hadoop, Airflow, ELK Stack. Final project: Kafka-based League of Legends real-time champion recommendation service.</div>
+<div class="stack" style="margin-top:10px;">
+<span class="st hi">Kafka</span>
+<span class="st hi">Spark</span>
+<span class="st">Airflow</span>
+<span class="st">Hadoop</span>
+<span class="st">ELK Stack</span>
+</div>
+</div>
+</div>
+<div class="exp-item">
+<div class="exp-period">Mar 2022 – Jun 2023<br/><strong style="color:var(--blue)">Full-time</strong></div>
+<div>
+<div class="exp-org">InstaPay</div>
+<div class="exp-title">Service Planning Team · Intern → Full-time Conversion</div>
+<div class="exp-desc">Monitored newsletter performance with dashboards and ran A/B tests to improve engagement and content delivery. Managed content and SNS channels (newsletter, YouTube), and served as PM for an AI-generated children's e-book publishing service by coordinating business requirements, content production, and platform operations.</div>
+</div>
+</div>
+<div class="exp-item">
+<div class="exp-period">Mar 2024 – May 2024<br/><strong style="color:var(--blue)">Training</strong></div>
+<div>
+<div class="exp-org">AWS AI/MLOps Application Intensive Course</div>
+<div class="exp-title">Data / MLOps Trainee</div>
+<div class="exp-desc">SageMaker ML pipeline with automated training + update, Step Functions process automation, CLIP multimodal fine-tuning, OpenSearch RAG chatbot implementation.</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ═══════════════════════════════════════════
+     SECTION 06 · CERTIFICATIONS & LANGUAGE
+     ═══════════════════════════════════════════ -->
+<section id="certs">
+<div class="wrap">
+<div class="sec-head"><span class="sec-num">06</span><h2 class="sec-title">Certifications &amp; Language</h2></div>
+<div class="cert-row">
+<div class="cert-icon">SAA</div>
+<div style="flex:1">
+<div class="cert-name">AWS Certified Solutions Architect – Associate (SAA-C03)</div>
+<div class="cert-issuer">Amazon Web Services</div>
+</div>
+<span class="cert-level lv-aws">SAA-C03</span>
+<div class="cert-date">Feb 2025</div>
+</div>
+<div class="cert-row">
+<div class="cert-icon">AI</div>
+<div style="flex:1">
+<div class="cert-name">AWS Certified AI Practitioner</div>
+<div class="cert-issuer">Amazon Web Services</div>
+</div>
+<span class="cert-level lv-aws">AI Practitioner</span>
+<div class="cert-date">Mar 2025</div>
+</div>
+<div class="cert-row">
+<div class="cert-icon" style="background:var(--green);">EN</div>
+<div style="flex:1">
+<div class="cert-name">OPIc English — Intermediate High</div>
+<div class="cert-issuer">ACTFL · Business-level speaking, writing, and reading</div>
+</div>
+<span class="cert-level lv-eng">Intermediate High</span>
+<div class="cert-date">Feb 2026</div>
+</div>
+</div>
+</section>
+<!-- ═══════════════════════════════════════════
+     SECTION 07 · EDUCATION
+     ═══════════════════════════════════════════ -->
+<section id="edu" style="padding:60px 0;">
+<div class="wrap">
+<div class="sec-head"><span class="sec-num">07</span><h2 class="sec-title">Education</h2></div>
+<div class="exp-item" style="border-bottom:none;">
+<div class="exp-period">Mar 2021 – Aug 2026<br/><strong style="color:var(--blue)">Expected</strong></div>
+<div>
+<div class="exp-org">Sookmyung Women's University, Seoul</div>
+<div class="exp-title">B.S. in IT Engineering <span style="color:var(--ink3); font-weight:400;">· Double Major: Library &amp; Information Science</span></div>
+<div class="exp-desc">Primary: IT Engineering · Double Major: Library &amp; Information Science. Relevant coursework: Information Organization, Data Indexing &amp; Retrieval, Database Systems, AI/ML application in information systems.</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ═══════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════ -->
+<footer>
+<div class="wrap">
+<div class="ft-inner">
+<div class="ft-name">Soomin Lee</div>
+<div style="display:flex; gap:20px; align-items:center;">
+<a href="mailto:leedooming@gmail.com" style="font-family:var(--mono); font-size:11px; color:var(--blue); text-decoration:none;">leedooming@gmail.com</a>
+<a href="https://github.com/leedoming" style="font-family:var(--mono); font-size:11px; color:var(--ink2); text-decoration:none;" target="_blank">github.com/leedoming</a>
+<a href="https://linkedin.com/in/sumin-lee-smwu" style="font-family:var(--mono); font-size:11px; color:var(--ink2); text-decoration:none;" target="_blank">LinkedIn</a>
+</div>
+<div class="ft-note">B.S. IT Engineering · Double Major in Library &amp; Information Science · Expected Aug 2026</div>
+</div>
+</div>
+</footer>
+</div><!-- .page -->
+</body>
+</html>
