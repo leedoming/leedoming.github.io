@@ -1,1 +1,599 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>이수민 포트폴리오 · PTKOREA 데이터·AI 직무</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
 
+:root {
+  --bg:    #FFFFFF;
+  --bg2:   #F7F9FC;
+  --ink:   #0B0D12;
+  --ink2:  #4A5568;
+  --ink3:  #94A3B8;
+  --rule:  #E5E7EB;
+  --blue:  #2F5BFF;
+  --red:   #C0340C;
+  --green: #1A6B38;
+  --tag:   #F1F5F9;
+  --serif: "Playfair Display", Georgia, serif;
+  --sans:  "DM Sans", sans-serif;
+  --mono:  "DM Mono", monospace;
+  /* STAR badge colors */
+  --s-bg: #EEEDFE; --s-ink: #3C3489;
+  --t-bg: #E1F5EE; --t-ink: #085041;
+  --a-bg: #FAEEDA; --a-ink: #633806;
+  --r-bg: #EAF3DE; --r-ink: #27500A;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ─────────────────────────── */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:99;
+  height: 52px; padding: 0 44px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(255,255,255,0.85); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+}
+.nav-name {
+  font-family: var(--mono); font-size: 12px; font-weight: 500;
+  color: var(--ink); letter-spacing: .05em; text-decoration: none;
+}
+.nav-links { display:flex; gap:28px; list-style:none; }
+.nav-links a {
+  font-size: 11px; font-weight: 500; color: var(--ink2);
+  text-decoration: none; letter-spacing: .1em; text-transform: uppercase;
+  transition: color .15s;
+}
+.nav-links a:hover { color: var(--ink); }
+a:hover { opacity: 0.7; }
+
+/* ── LAYOUT ──────────────────────── */
+.page { padding-top: 52px; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 44px; }
+
+/* ── HERO ────────────────────────── */
+#hero { padding: 96px 0 72px; border-bottom: 1px solid var(--rule); }
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 52px;
+  align-items: end;
+}
+.hero-tag {
+  font-family: var(--mono); font-size: 11px; color: var(--blue);
+  letter-spacing: .14em; text-transform: uppercase; margin-bottom: 20px;
+  display: flex; align-items: center; gap: 10px;
+}
+.hero-tag::before {
+  content: ''; display: block;
+  width: 28px; height: 1px; background: var(--blue);
+}
+h1.hero-name {
+  font-family: var(--serif);
+  font-size: clamp(54px, 7vw, 84px);
+  font-weight: 400; line-height: .95; letter-spacing: -.04em; color: var(--ink);
+}
+h1.hero-name em { font-style: italic; color: var(--blue); }
+.hero-role {
+  font-family: var(--serif); font-size: clamp(15px, 1.8vw, 20px);
+  font-style: italic; color: var(--ink2); margin: 10px 0 28px;
+}
+.hero-bio { font-size: 13.5px; color: var(--ink2); line-height: 1.9; max-width: 520px; }
+.hero-right { display: flex; flex-direction: column; gap: 10px; min-width: 240px; }
+.kpi-row {
+  display: flex; gap: 1px; background: var(--rule);
+  border: 1px solid var(--rule); border-radius: 3px; overflow: hidden;
+}
+.kpi { background: #FFFFFF; padding: 16px 14px; flex:1; text-align: center; }
+.kpi-n {
+  font-family: var(--serif); font-size: 30px; font-weight: 400;
+  color: var(--ink); display: block; line-height: 1;
+}
+.kpi-l {
+  font-family: var(--mono); font-size: 9px; color: var(--ink3);
+  display: block; margin-top: 5px; letter-spacing: .06em; text-transform: uppercase;
+}
+.badge-pill {
+  display: flex; align-items: center; gap: 9px;
+  padding: 8px 12px; background: #FFFFFF; border: 1px solid var(--rule); border-radius: 3px;
+  font-size: 12px; color: var(--ink); font-weight: 500;
+}
+.dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.dot-aws { background: #FF9900; }
+.dot-ai  { background: var(--blue); }
+.dot-en  { background: var(--green); }
+
+/* ── SECTIONS ────────────────────── */
+section { padding: 80px 0; border-bottom: 1px solid var(--rule); }
+.sec-head {
+  display: flex; align-items: baseline; gap: 16px;
+  margin-bottom: 48px; padding-bottom: 16px; border-bottom: 1px solid var(--rule);
+}
+.sec-num { font-family: var(--mono); font-size: 11px; color: var(--ink3); }
+.sec-title { font-family: var(--serif); font-size: 30px; font-weight: 400; letter-spacing: -.02em; }
+
+/* ── SKILLS ──────────────────────── */
+.skills-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.sk-group h4 {
+  font-family: var(--mono); font-size: 10px; font-weight: 500;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--blue);
+  margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--rule);
+}
+.sk-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.sk-tag {
+  font-family: var(--mono); font-size: 11px;
+  padding: 3px 9px; background: var(--tag); border-radius: 2px; color: var(--ink);
+}
+.sk-tag.hi { background: var(--ink); color: var(--bg); }
+.sk-tag.ac { background: var(--blue); color: #fff; }
+
+/* ── PROJECT INDEX ───────────────── */
+.proj-index { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+.pi-card {
+  background: #FFFFFF;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  border: 1px solid var(--rule); border-radius: 4px;
+  padding: 18px; position: relative; overflow: hidden;
+}
+.pi-accent { position:absolute; top:0; left:0; right:0; height:3px; }
+.pi-meta { font-family: var(--mono); font-size: 9px; color: var(--ink3); letter-spacing: .08em; margin-bottom: 6px; }
+.pi-name { font-family: var(--serif); font-size: 17px; font-weight: 400; margin-bottom: 4px; }
+.pi-desc { font-size: 11px; color: var(--ink2); line-height: 1.6; margin-bottom: 10px; }
+.pi-tags { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 12px; }
+.pi-tag {
+  font-family: var(--mono); font-size: 10px;
+  padding: 2px 7px; background: var(--tag); border-radius: 2px;
+}
+.pi-links { display: flex; gap: 8px; }
+.pi-link {
+  display: flex; align-items: center; gap: 4px;
+  font-family: var(--mono); font-size: 10px; text-decoration: none;
+  border: 1px solid var(--rule); padding: 3px 8px; border-radius: 2px; color: var(--ink2);
+}
+.pi-link.primary { border-color: var(--blue); color: var(--blue); }
+
+/* ── STAR / CAR CARD ─────────────── */
+.star-card {
+  background: #FFFFFF;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  border: 1px solid var(--rule); border-radius: 6px;
+  overflow: hidden; margin-top: 24px;
+}
+.star-card-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 16px;
+  background: var(--bg2); border-bottom: 1px solid var(--rule);
+  font-family: var(--mono); font-size: 10px; font-weight: 500;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--ink3);
+}
+.star-card-head span { display: flex; align-items: center; gap: 8px; }
+.star-body { padding: 0; }
+.star-row {
+  display: grid; grid-template-columns: 110px 1fr;
+  border-bottom: 1px solid var(--rule);
+}
+.star-row:last-child { border-bottom: none; }
+.star-label {
+  padding: 14px 16px; display: flex; flex-direction: column;
+  gap: 4px; border-right: 1px solid var(--rule);
+  background: var(--bg2);
+}
+.star-badge {
+  font-size: 11px; font-weight: 500; padding: 2px 10px;
+  border-radius: 999px; align-self: flex-start;
+}
+.s-badge { background: var(--s-bg); color: var(--s-ink); }
+.t-badge { background: var(--t-bg); color: var(--t-ink); }
+.a-badge { background: var(--a-bg); color: var(--a-ink); }
+.r-badge { background: var(--r-bg); color: var(--r-ink); }
+.star-pct { font-family: var(--mono); font-size: 10px; color: var(--ink3); }
+.star-pct-bar { height: 3px; background: var(--rule); border-radius: 99px; margin-top: 8px; width: 100%; }
+.star-pct-fill { height: 3px; border-radius: 99px; }
+.bar-s { background: #7F77DD; }
+.bar-t { background: #1D9E75; }
+.bar-a { background: #BA7517; }
+.bar-r { background: #639922; }
+.star-text { padding: 14px 18px; font-size: 13px; color: var(--ink); line-height: 1.85; }
+.star-text strong { color: var(--ink); }
+.star-text ul { margin: 8px 0 8px 16px; }
+.star-text li { margin-bottom: 4px; }
+.num-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.num-chip {
+  display: inline-block; background: var(--bg2);
+  border: 1px solid var(--rule); border-radius: 5px;
+  font-size: 11.5px; font-weight: 600; padding: 3px 10px; color: var(--ink);
+}
+
+/* CAR variant */
+.car-card {
+  background: #FFFFFF;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04); border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; margin-top: 24px; }
+.car-card-head {
+  padding: 10px 16px;
+  background: var(--bg2); border-bottom: 1px solid var(--rule);
+  font-family: var(--mono); font-size: 10px; font-weight: 500;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--ink3);
+}
+.car-row { display: grid; grid-template-columns: 110px 1fr; border-bottom: 1px solid var(--rule); }
+.car-row:last-child { border-bottom: none; }
+.car-label {
+  padding: 14px 16px; display: flex; flex-direction: column; gap: 4px;
+  border-right: 1px solid var(--rule); background: var(--bg2);
+}
+.c-badge { background: #E6F1FB; color: #0C447C; font-size: 11px; font-weight: 500; padding: 2px 10px; border-radius: 999px; align-self: flex-start; }
+.car-text { padding: 14px 18px; font-size: 13px; color: var(--ink); line-height: 1.85; }
+
+/* PEAK chips */
+.peak-row { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 12px; }
+.peak-chip { font-size: 10.5px; padding: 3px 10px; border-radius: 999px; }
+.pc-blue   { background: #E6F1FB; color: #0C447C; }
+.pc-coral  { background: #FAECE7; color: #712B13; }
+.pc-teal   { background: #E1F5EE; color: #085041; }
+.pc-purple { background: #EEEDFE; color: #3C3489; }
+.pc-green  { background: #EAF3DE; color: #27500A; }
+
+/* Business impact note */
+.impact-note {
+  margin: 14px 0; padding: 12px 14px; border: 1px solid var(--rule); border-radius: 6px;
+  background: #FCFBF8;
+}
+.impact-note strong {
+  display:block; margin-bottom:4px; font-family: var(--mono); font-size:10px;
+  letter-spacing:.08em; text-transform:uppercase; color: var(--blue);
+}
+.impact-note p { font-size: 12.5px; color: var(--ink2); line-height: 1.75; }
+
+/* ── PROJECTS DETAIL ─────────────── */
+.proj-list { display: flex; flex-direction: column; }
+.proj {
+  display: grid; grid-template-columns: 176px 1fr;
+  gap: 40px; padding: 52px 0; border-top: 1px solid var(--rule);
+}
+.proj:last-child { border-bottom: 1px solid var(--rule); }
+.proj-left { padding-top: 2px; }
+.proj-idx { font-family: var(--mono); font-size: 10px; color: var(--ink3); letter-spacing: .06em; margin-bottom: 10px; }
+.proj-period { font-family: var(--mono); font-size: 11px; color: var(--ink2); line-height: 1.7; margin-bottom: 8px; }
+.proj-type { font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink3); margin-bottom: 14px; }
+.award { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 2px; letter-spacing: .03em; }
+.aw-gold   { background: #FEF3C7; color: #92400E; }
+.aw-blue   { background: #EEF2FF; color: var(--blue); }
+.aw-green  { background: #DCFCE7; color: #166534; }
+.aw-orange { background: #FFF7ED; color: #C2410C; }
+
+.proj-title { font-family: var(--serif); font-size: 24px; font-weight: 400; letter-spacing: -.02em; line-height: 1.2; margin-bottom: 4px; }
+.proj-sub   { font-size: 12px; color: var(--blue); font-weight: 600; letter-spacing: .01em; margin-bottom: 16px; }
+.pg-connect {
+  font-size: 12px; color: var(--ink2);
+  background: rgba(22,64,200,.06);
+  border-left: 3px solid var(--blue);
+  padding: 8px 12px; border-radius: 0 6px 6px 0;
+  margin: 0 0 14px; line-height: 1.6;
+}
+.pg-connect strong { color: var(--blue); }
+.contribs h5 {
+  font-family: var(--mono); font-size: 9px; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--ink3); margin-bottom: 8px;
+}
+.ci { display: flex; align-items: baseline; gap: 8px; font-size: 13px; color: var(--ink); margin-bottom: 6px; line-height: 1.65; }
+.ci::before { content:"→"; font-family: var(--mono); font-size: 10px; color: var(--blue); flex-shrink: 0; }
+.stack { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 14px; }
+.st { font-family: var(--mono); font-size: 10.5px; padding: 3px 8px; border: 1px solid var(--rule); border-radius: 2px; color: var(--ink2); }
+.st.hi { border-color: var(--blue); color: var(--blue); }
+.stat-box { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin: 14px 0; padding: 14px; background: var(--bg2); border-radius: 3px; }
+.stat-cell { text-align: center; }
+.stat-n { font-family: var(--serif); font-size: 26px; font-weight: 400; color: var(--ink); display: block; line-height: 1; }
+.stat-l { font-family: var(--mono); font-size: 9px; color: var(--ink3); text-transform: uppercase; letter-spacing: .06em; display: block; margin-top: 4px; }
+
+/* ── AWARDS ──────────────────────── */
+.awards-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; }
+.aw-card {
+  background: #FFFFFF;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04); padding: 22px; border: 1px solid var(--rule); border-radius: 3px; position: relative; overflow: hidden; }
+.aw-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; }
+.aw-card.gold::before   { background: linear-gradient(90deg,#F59E0B,#FDE68A); }
+.aw-card.blue::before   { background: var(--blue); }
+.aw-card.green::before  { background: var(--green); }
+.aw-card.orange::before { background: var(--red); }
+.aw-prize { font-family: var(--serif); font-size: 17px; margin-bottom: 2px; }
+.aw-org   { font-family: var(--mono); font-size: 10px; color: var(--ink3); letter-spacing: .05em; text-transform: uppercase; margin-bottom: 8px; }
+.aw-name  { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+.aw-desc  { font-size: 12px; color: var(--ink2); line-height: 1.7; }
+
+/* ── EXPERIENCE ──────────────────── */
+.exp-item { display: grid; grid-template-columns: 176px 1fr; gap: 40px; padding: 36px 0; border-top: 1px solid var(--rule); }
+.exp-item:last-child { border-bottom: 1px solid var(--rule); }
+.exp-period { font-family: var(--mono); font-size: 11px; color: var(--ink2); padding-top: 2px; line-height: 1.8; }
+.exp-org    { font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--ink3); margin-bottom: 5px; }
+.exp-title  { font-family: var(--serif); font-size: 20px; font-weight: 400; letter-spacing: -.01em; color: var(--ink); margin-bottom: 10px; line-height: 1.2; }
+.exp-desc   { font-size: 13px; color: var(--ink2); line-height: 1.85; }
+
+/* ── CERTS ───────────────────────── */
+.cert-row { display: flex; align-items: center; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--rule); }
+.cert-row:first-child { border-top: 1px solid var(--rule); }
+.cert-icon { width:34px; height:34px; border-radius:3px; background:var(--ink); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-family:var(--mono); font-size:10px; font-weight:600; color:var(--bg); }
+.cert-name   { flex:1; font-size:13px; font-weight:600; color:var(--ink); }
+.cert-issuer { font-size:12px; color:var(--ink2); }
+.cert-date   { font-family:var(--mono); font-size:10px; color:var(--ink3); flex-shrink:0; }
+.cert-level  { font-size:11px; font-weight:700; padding:2px 9px; border-radius:2px; flex-shrink:0; }
+.lv-aws { background:#FEF3C7; color:#92400E; }
+.lv-eng { background:#DCFCE7; color:#166534; }
+
+/* ── FOOTER ──────────────────────── */
+footer { padding: 40px 0; }
+.ft-inner { display: flex; justify-content: space-between; align-items: center; }
+.ft-name { font-family: var(--serif); font-size: 18px; font-style: italic; }
+.ft-note { font-family: var(--mono); font-size: 10px; color: var(--ink3); }
+
+/* ── ANIMATIONS ──────────────────── */
+@keyframes up { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+.hero-tag    { animation: up .5s ease both; }
+h1.hero-name { animation: up .5s .08s ease both; }
+.hero-role   { animation: up .5s .16s ease both; }
+.hero-bio    { animation: up .5s .24s ease both; }
+.hero-right  { animation: up .5s .12s ease both; }
+
+@media print {
+  *,*::before,*::after { -webkit-print-color-adjust:exact!important; print-color-adjust:exact!important; }
+  nav { display:none!important; }
+  .page { padding-top:0!important; }
+  #hero { padding:48px 0 40px!important; }
+  section { padding:40px 0!important; }
+  .hero-tag,h1.hero-name,.hero-role,.hero-bio,.hero-right { animation:none!important; opacity:1!important; }
+}
+
+</style>
+</head>
+<body>
+<div class="page">
+<nav>
+<a class="nav-name" href="#">SOOMIN LEE</a>
+<ul class="nav-links">
+<li><a href="#skills">역량</a></li>
+<li><a href="#project-index">핵심 사례</a></li>
+<li><a href="#projects">프로젝트</a></li>
+<li><a href="#experience">경험</a></li>
+<li><a href="#certs">자격</a></li>
+</ul>
+</nav>
+
+<section id="hero" style="border-bottom:1px solid var(--rule);">
+<div class="wrap">
+<div class="hero-inner">
+<div>
+<div class="hero-tag">DATA · AI WORKFLOW · BUSINESS ENABLEMENT</div>
+<h1 class="hero-name">Soomin<br/><em>Lee</em></h1>
+<div class="hero-role">AI 트렌드를 실제 업무 효율, 콘텐츠 제작, 의사결정 구조로 연결하는 엔지니어</div>
+<p class="hero-bio">신기술을 빠르게 검토하고, 그대로 적용하는 대신 서비스 환경에 맞게 구조를 재설계해왔습니다. 데이터 수집·정제·검색·자동화 파이프라인 구축 경험을 바탕으로, 반복 업무를 줄이고 사람이 더 중요한 판단에 집중할 수 있는 시스템을 만드는 데 강점이 있습니다.</p>
+<div style="margin-top:18px; display:flex; gap:14px; font-family:var(--mono); font-size:11px; color:var(--ink2); flex-wrap:wrap;">
+<a href="mailto:leedooming@gmail.com" style="color:var(--blue); text-decoration:none;">leedooming@gmail.com</a>
+<a href="https://github.com/leedoming" style="color:var(--ink2); text-decoration:none;" target="_blank">github.com/leedoming</a>
+<a href="https://linkedin.com/in/sumin-lee-smwu" style="color:var(--ink2); text-decoration:none;" target="_blank">LinkedIn</a>
+</div>
+</div>
+<div class="hero-right">
+<div class="kpi-row">
+<div class="kpi"><span class="kpi-n">100K+</span><span class="kpi-l">데이터 자산 구축</span></div>
+<div class="kpi"><span class="kpi-n">~80%</span><span class="kpi-l">운영 비용 절감</span></div>
+<div class="kpi"><span class="kpi-n">LT</span><span class="kpi-l">AWS PSD 2025 선정</span></div>
+<div class="kpi"><span class="kpi-n">1위</span><span class="kpi-l">GenAI 해커톤 대상</span></div>
+</div>
+<div class="badge-pill"><span class="dot dot-ai"></span>트렌드 적용: Nova Sonic · S3 Vectors · 멀티모달 생성 워크플로우</div>
+<div class="badge-pill"><span class="dot dot-aws"></span>업무 효율: 검색·자동화·비동기 파이프라인 설계</div>
+<div class="badge-pill"><span class="dot dot-en"></span>협업: PM·현업·개발 사이 요구사항 해석 및 전달</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="skills">
+<div class="wrap">
+<div class="sec-head"><span class="sec-num">01</span><h2 class="sec-title">직무 연관 역량</h2></div>
+<div class="skills-grid">
+<div class="sk-group">
+<h4>Data / Pipeline</h4>
+<div class="sk-tags">
+<span class="sk-tag ac">Python</span>
+<span class="sk-tag hi">SQL</span>
+<span class="sk-tag hi">크롤링</span>
+<span class="sk-tag">배치/스케줄링</span>
+<span class="sk-tag">EventBridge</span>
+<span class="sk-tag">Lambda</span>
+<span class="sk-tag">DynamoDB</span>
+<span class="sk-tag">S3</span>
+</div>
+</div>
+<div class="sk-group">
+<h4>Cloud / Back-End</h4>
+<div class="sk-tags">
+<span class="sk-tag ac">AWS</span>
+<span class="sk-tag hi">ECS Fargate</span>
+<span class="sk-tag hi">Docker</span>
+<span class="sk-tag">FastAPI</span>
+<span class="sk-tag">Terraform</span>
+<span class="sk-tag">API 연동</span>
+<span class="sk-tag">워크플로우 자동화</span>
+<span class="sk-tag">모니터링 관점 설계</span>
+</div>
+</div>
+<div class="sk-group">
+<h4>Search / AI 활용</h4>
+<div class="sk-tags">
+<span class="sk-tag ac">Elasticsearch</span>
+<span class="sk-tag hi">OpenSearch</span>
+<span class="sk-tag hi">RAG</span>
+<span class="sk-tag">Bedrock</span>
+<span class="sk-tag">LangChain</span>
+<span class="sk-tag">Vector DB</span>
+<span class="sk-tag">비정형 데이터 처리</span>
+<span class="sk-tag">서비스 적용형 AI</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="project-index" style="padding:60px 0;">
+<div class="wrap">
+<div class="sec-head" style="margin-bottom:32px;"><span class="sec-num">02</span><h2 class="sec-title">업무 효율 · 트렌드 적용 Snapshot</h2></div>
+<div class="proj-index">
+<div class="pi-card"><div class="pi-accent" style="background:var(--green);"></div><div class="pi-meta">PROJECT 01 · 방향 전환 · 실무 협업</div><div class="pi-name">헬스케어 식단 생성 Agent</div><div class="pi-desc">B2C 추천 아이디어를 현업 영양사 업무 효율 개선용 시스템으로 전환한 프로젝트</div><div class="pi-tags"><span class="pi-tag">생성형 AI</span><span class="pi-tag">요구사항 해석</span><span class="pi-tag">업무 자동화</span></div></div>
+<div class="pi-card"><div class="pi-accent" style="background:var(--blue);"></div><div class="pi-meta">PROJECT 02 · 트렌드 분석 · 의사결정 지원</div><div class="pi-name">YORILAB</div><div class="pi-desc">트렌드 리서치를 자동화하고, 가상 고객 반응으로 아이디어를 사전 검토하는 서비스</div><div class="pi-tags"><span class="pi-tag">YouTube API</span><span class="pi-tag">A2A 유사 구조</span><span class="pi-tag">🏆 대상</span></div></div>
+<div class="pi-card"><div class="pi-accent" style="background:var(--green);"></div><div class="pi-meta">PROJECT 03 · 현업 프로세스 반영 · 상담 자동화</div><div class="pi-name">대학 학사행정 챗봇 구축</div><div class="pi-desc">대표전화 응대 경험을 바탕으로, 답하지 못하면 담당 부서로 연결하는 상담 구조를 설계한 프로젝트</div><div class="pi-tags"><span class="pi-tag">RAG</span><span class="pi-tag">Slack</span><span class="pi-tag">연락처 라우팅</span></div></div>
+<div class="pi-card"><div class="pi-accent" style="background:var(--red);"></div><div class="pi-meta">PROJECT 04 · 신기술 적용 · 구조 재설계</div><div class="pi-name">Nova Sonic 영어 회화 서비스</div><div class="pi-desc">Agent 호출 구조의 한계를 비동기 파이프라인으로 전환해 실시간 사용자 경험을 살린 사례</div><div class="pi-tags"><span class="pi-tag">Nova Sonic</span><span class="pi-tag">S3 Vectors</span><span class="pi-tag">Lightning Talk</span></div></div>
+<div class="pi-card"><div class="pi-accent" style="background:var(--blue);"></div><div class="pi-meta">PROJECT 05 · 콘텐츠 자동화 · 멀티모달</div><div class="pi-name">캐릭터 기반 영상 생성 파이프라인</div><div class="pi-desc">캐릭터 일관성을 위해 3D 접근까지 검토한 뒤, 실제 제작 가능한 구조로 재설계한 프로젝트</div><div class="pi-tags"><span class="pi-tag">생성 흐름 총괄</span><span class="pi-tag">Scene Pipeline</span><span class="pi-tag">캐릭터 일관성</span></div></div>
+<div class="pi-card"><div class="pi-accent" style="background:var(--red);"></div><div class="pi-meta">PROJECT 06 · 운영 최적화</div><div class="pi-name">Face Swap 인프라 개선</div><div class="pi-desc">트래픽 증가 상황에서 병렬 처리 구조와 배포 환경을 재설계해 비용을 절감한 사례</div><div class="pi-tags"><span class="pi-tag">ECS Fargate</span><span class="pi-tag">Docker</span><span class="pi-tag">~80%</span></div></div>
+</div>
+</div>
+</section>
+
+<section id="projects">
+<div class="wrap">
+<div class="sec-head"><span class="sec-num">03</span><h2 class="sec-title">선별 프로젝트</h2></div>
+<div class="proj-list">
+
+<div class="proj">
+<div class="proj-left"><div class="proj-idx">Project 01</div><div class="proj-period">2023.12–2024.05<br/>대웅재단 장학생 프로그램</div><div class="proj-type">현업 협업 · 방향 전환</div><span class="award aw-green">🎓 장학생 선발</span></div>
+<div>
+<h3 class="proj-title">헬스케어 식단 생성 Agent</h3>
+<p class="proj-sub">데이터 부족 문제를 인지하고, 영양사 업무 효율 개선으로 방향을 전환한 사례</p>
+<div class="impact-note"><strong>직무 연결 포인트</strong><p>데이터와 평가 구조의 한계를 먼저 보고, 문제 정의 자체를 바꿔 실제 현업 업무 흐름에 맞는 시스템으로 전환한 경험입니다. PTKOREA가 중요하게 볼 ‘업무 효율 개선형 AI’ 관점과 맞닿아 있습니다.</p></div>
+<div class="star-card"><div class="star-card-head"><span>STAR 요약</span></div><div class="star-body">
+<div class="star-row"><div class="star-label"><span class="star-badge s-badge">S</span></div><div class="star-text">초기에는 일반 사용자를 위한 식단 생성 및 레시피 추천 서비스로 출발했습니다. 하지만 사용자 행동 데이터가 충분하지 않아 추천 품질을 검증할 지표가 불명확했고, 서비스 방향성도 흔들렸습니다.</div></div>
+<div class="star-row"><div class="star-label"><span class="star-badge t-badge">T</span></div><div class="star-text">데이터가 없는 상태에서는 추천 품질을 검증할 수 없다는 문제를 인지하고, <strong>영양사가 식단을 더 빠르게 탐색·조합·생성할 수 있는 구조</strong>로 문제를 재정의했습니다.</div></div>
+<div class="star-row"><div class="star-label"><span class="star-badge a-badge">A</span></div><div class="star-text">IT 현직자 PM이 영양사 팀과 요구사항을 조율하는 구조에서, 저는 데이터 수집·정제와 생성 로직 설계를 맡았습니다. 트렌드 식단과 기존 레시피 자산을 모아 검색 가능한 형태로 정리하고, 이를 바탕으로 생성형 AI 기반 식단 생성 흐름을 설계했습니다. 전달받은 요구사항을 단순 구현이 아니라 데이터 구조와 생성 로직 관점에서 다시 해석해 구체화했습니다.</div></div>
+<div class="star-row"><div class="star-label"><span class="star-badge r-badge">R</span></div><div class="star-text">결과적으로 B2C 추천 아이디어를 <strong>현업 영양사 업무 효율 개선용 식단 생성 시스템</strong>으로 전환했고, 반복적인 레시피 탐색과 조합 과정을 줄일 수 있는 구조를 만들었습니다. 이후 이 경험은 YORILAB에서 트렌드 분석과 가상 고객 반응 예측 구조로 확장되었습니다.</div></div>
+</div></div>
+<div class="contribs" style="margin-top:20px;"><h5>핵심 기여</h5><div class="ci">데이터·평가 한계를 근거로 서비스 방향 전환</div><div class="ci">현업 요구사항을 데이터/생성 로직 관점에서 재해석</div><div class="ci">트렌드·기존 레시피 자산을 활용한 식단 생성 흐름 설계</div></div>
+<div class="stat-box"><div class="stat-cell"><span class="stat-n">100K+</span><span class="stat-l">레시피 자산 기반</span></div><div class="stat-cell"><span class="stat-n">B2C → B2B</span><span class="stat-l">문제 재정의</span></div><div class="stat-cell"><span class="stat-n">협업형</span><span class="stat-l">PM·현업 조율</span></div></div>
+<div class="stack"><span class="st hi">Python</span><span class="st hi">Elasticsearch</span><span class="st">nori_tokenizer</span><span class="st">BERT</span><span class="st">LLM</span><span class="st">생성형 AI</span></div>
+</div></div>
+
+<div class="proj">
+<div class="proj-left"><div class="proj-idx">Project 02</div><div class="proj-period">2024.11<br/>해커톤</div><div class="proj-type">팀장 · 3인</div><span class="award aw-gold">🏆 대상</span></div>
+<div>
+<h3 class="proj-title">YORILAB</h3>
+<p class="proj-sub">트렌드 리서치 자동화와 가상 고객 반응 예측을 결합한 기획 검증 서비스</p>
+<div class="impact-note"><strong>직무 연결 포인트</strong><p>PTKOREA가 중요하게 보는 트렌드 감지와 기획 의사결정 지원에 가장 직접적으로 맞닿은 프로젝트입니다. 단순 B2C 서비스가 아니라, 실무자가 더 빠르게 아이디어를 검증하도록 돕는 구조에 초점을 맞췄습니다.</p></div>
+<div class="car-card" style="margin-top:16px;"><div class="car-card-head">CAR 요약</div><div>
+<div class="car-row"><div class="car-label"><span class="c-badge">C</span></div><div class="car-text">초기 아이디어는 소비자용 레시피 서비스였지만, 현업 멘토 피드백을 통해 핵심 가치가 불분명하다는 점이 드러났습니다. 시장과 고객 반응을 더 잘 읽는 방향으로 전환이 필요했습니다.</div></div>
+<div class="car-row"><div class="car-label"><span class="c-badge">A</span></div><div class="car-text">트렌드 리서치 과정을 자동화하고, <strong>가상 고객 반응을 기반으로 제품 아이디어를 사전 검토할 수 있는 구조</strong>로 확장했습니다. YouTube API 기반 수집 파이프라인을 구축하고, 기존 레시피 자산을 재활용해 다양한 고객군 반응을 예측하도록 설계했습니다.</div></div>
+<div class="car-row"><div class="car-label"><span class="c-badge">R</span></div><div class="car-text">트렌드 리서치, 요약, 아이디어 검증을 하나의 흐름으로 묶어 현장 완성도를 끌어올렸고, 해커톤 대상(1위)을 수상했습니다. <strong>트렌드 이해를 실제 서비스 구조로 번역한 사례</strong>로 볼 수 있습니다.</div></div>
+</div></div>
+<div class="contribs" style="margin-top:20px;"><h5>핵심 기여</h5><div class="ci">트렌드 리서치 → 요약 → 기획 검증 흐름 설계</div><div class="ci">가상 고객 역할 Agent를 활용한 반응 예측 구조 구현</div><div class="ci">기존 데이터 자산을 재활용해 짧은 시간 안에 완성도 확보</div><div class="ci">팀장으로서 역할 재배치와 현장 피벗 주도</div></div>
+<div class="stat-box"><div class="stat-cell"><span class="stat-n">200K+</span><span class="stat-l">기존 자산 활용</span></div><div class="stat-cell"><span class="stat-n">1위</span><span class="stat-l">해커톤 대상</span></div><div class="stat-cell"><span class="stat-n">AI Agents</span><span class="stat-l">반응 예측 구조</span></div></div>
+<div class="stack"><span class="st hi">YouTube API</span><span class="st hi">AWS Lambda</span><span class="st hi">EventBridge</span><span class="st">S3</span><span class="st">Couchbase Vector DB</span><span class="st">LangChain</span><span class="st">Streamlit</span></div>
+</div></div>
+
+<div class="proj">
+<div class="proj-left"><div class="proj-idx">Project 03</div><div class="proj-period">2025.02–05<br/>인턴십</div><div class="proj-type">단독 수행 (PM + 개발)</div><span class="award aw-green">PM · Day 14</span></div>
+<div>
+<h3 class="proj-title">대학 학사행정 챗봇 구축</h3>
+<p class="proj-sub">대표전화 응대 경험을 바탕으로, 정확한 답변과 담당 부서 연결을 함께 설계한 상담형 RAG 프로젝트</p>
+<div class="impact-note"><strong>직무 연결 포인트</strong><p>실제 대표전화 응대 프로세스를 AI 상담 구조에 옮겨, 반복 문의는 자동화하고 불확실한 질문은 담당 부서로 정확히 연결하도록 설계한 사례입니다. “모르면 답하지 않는다”는 원칙으로 서비스 신뢰도를 높였다는 점이 핵심입니다.</p></div>
+<div class="car-card" style="margin-top:16px;"><div class="car-card-head">CAR 요약</div><div>
+<div class="car-row"><div class="car-label"><span class="c-badge">C</span></div><div class="car-text">교내 디지털인프라팀 장학생으로 2년간 대표전화 응대를 맡으며, 같은 질문이 반복되고 결국 가장 정확한 답은 담당 책임자에게서 나온다는 점을 직접 경험했습니다. 이 경험을 바탕으로 학사행정 문의를 줄이고, 잘못된 안내를 최소화하는 Slack 기반 상담형 챗봇이 필요했습니다.</div></div>
+<div class="car-row"><div class="car-label"><span class="c-badge">A</span></div><div class="car-text">대표전화 응대 경험을 바탕으로, <strong>AI가 모든 질문에 답하기보다 정확한 정보 제공 또는 담당 부서 연결이 이루어지도록</strong> 설계했습니다. Lambda와 Selenium으로 데이터를 수집하고 RAG 구조를 구성했으며, 실제 대표전화 프로세스처럼 문의 성격에 따라 담당 부서와 매칭되도록 설계해 할루시네이션 위험을 줄였습니다.</div></div>
+<div class="car-row"><div class="car-label"><span class="c-badge">R</span></div><div class="car-text">실제 대학 Slack 워크스페이스에 배포되었고, 인턴 14일 차에 메인 챗봇 프로젝트 PM으로 지정되었습니다. 반복 문의를 자동화하면서도, 답을 모를 때는 적절한 부서로 연결하는 현실적인 상담 구조를 구현해 서비스 신뢰도를 높였습니다.</div></div>
+</div></div>
+<div class="stat-box"><div class="stat-cell"><span class="stat-n">4회</span><span class="stat-l">전처리 개선</span></div><div class="stat-cell"><span class="stat-n">실배포</span><span class="stat-l">Slack 운영</span></div><div class="stat-cell"><span class="stat-n">Day 14</span><span class="stat-l">PM 지정</span></div></div>
+<div class="stack"><span class="st hi">AWS Bedrock</span><span class="st hi">DynamoDB</span><span class="st hi">Lambda</span><span class="st">EventBridge</span><span class="st">Selenium</span><span class="st">Slack API</span></div>
+</div></div>
+
+<div class="proj">
+<div class="proj-left"><div class="proj-idx">Project 04</div><div class="proj-period">2025<br/>AWS Public Sector Day</div><div class="proj-type">신기술 실험 · 구조 재설계</div><span class="award aw-blue">🎤 Lightning Talk 선정</span></div>
+<div>
+<h3 class="proj-title">Nova Sonic 기반 실시간 영어 회화 서비스</h3>
+<p class="proj-sub">응답 지연 문제를 비동기 구조로 전환해 개선한 실시간 음성 AI 프로젝트</p>
+<div class="impact-note"><strong>직무 연결 포인트</strong><p>트렌드를 빠르게 따라가는 것보다, 실제 서비스 요구사항에 맞게 구조를 다시 설계하는 판단력이 중요하다는 점을 보여주는 사례입니다. PTKOREA의 AI 뉴스레터, 트렌드 관심도와도 자연스럽게 연결됩니다.</p></div>
+<div class="star-card"><div class="star-card-head"><span>STAR 요약</span></div><div class="star-body">
+<div class="star-row"><div class="star-label"><span class="star-badge s-badge">S</span></div><div class="star-text">Nova Sonic과 S3 Vectors가 막 공개된 시점이어서 공식 문서와 re:Invent 라이브 데모 정도만 참고할 수 있었습니다. 우리는 Nova가 여러 Agent를 orchestration 하며 영어 회화 기능들을 호출하도록 설계해 보려 했습니다.</div></div>
+<div class="star-row"><div class="star-label"><span class="star-badge t-badge">T</span></div><div class="star-text">목표는 실시간 음성 흐름을 끊지 않으면서도, 문법 교정·표현 교정·사고 확장 등 여러 도움 기능을 함께 제공하는 영어 회화 서비스를 만드는 것이었습니다.</div></div>
+<div class="star-row"><div class="star-label"><span class="star-badge a-badge">A</span></div><div class="star-text">실시간 음성 서비스에서 응답 지연이 사용자 경험을 저해한다고 판단하고, Agent 호출 구조를 유지하기보다 <strong>비동기 파이프라인으로 전환해 안정성과 응답 속도를 개선</strong>했습니다. Nova의 대화 내역을 DynamoDB에 실시간 로깅하고, Lambda가 이를 가져와 각 도움 기능에 비동기적으로 전달한 뒤 응답은 화면으로 분리 표시하도록 재설계했습니다.</div></div>
+<div class="star-row"><div class="star-label"><span class="star-badge r-badge">R</span></div><div class="star-text">실시간 음성 흐름을 유지하면서도 보조 피드백 기능을 함께 제공하는 구조를 만들었고, 이 사례는 AWS Public Sector Day 2025에서 <strong>Lightning Talk 발표 팀으로 선정</strong>되었습니다. 최신 기술을 그대로 적용하기보다 서비스 환경에 맞게 구조를 조정한 경험입니다.</div></div>
+</div></div>
+<div class="contribs" style="margin-top:20px;"><h5>핵심 기여</h5><div class="ci">Nova Sonic · S3 Vectors 등 신기술을 빠르게 검토하고 구현</div><div class="ci">Agent orchestration 한계를 발견하고 비동기 파이프라인으로 구조 전환</div><div class="ci">실시간 UX를 해치지 않는 화면 분리형 응답 구조 설계</div><div class="ci">외부 발표로 기술 적용 사례 검증</div></div>
+<div class="stat-box"><div class="stat-cell"><span class="stat-n">Nova Sonic</span><span class="stat-l">신기술 적용</span></div><div class="stat-cell"><span class="stat-n">비동기</span><span class="stat-l">구조 재설계</span></div><div class="stat-cell"><span class="stat-n">AWS PSD</span><span class="stat-l">Lightning Talk</span></div></div>
+<div class="stack"><span class="st hi">Nova Sonic</span><span class="st hi">S3 Vectors</span><span class="st hi">DynamoDB</span><span class="st hi">Lambda</span><span class="st">TypeScript</span><span class="st">Agent Workflow</span></div>
+
+</div></div>
+
+<div class="proj">
+<div class="proj-left"><div class="proj-idx">Project 05</div><div class="proj-period">2025<br/>졸업 프로젝트</div><div class="proj-type">멀티모달 파이프라인 · 콘텐츠 자동화</div><span class="award aw-blue">🎬 SceneMaker</span></div>
+<div>
+<h3 class="proj-title">캐릭터 기반 영상 생성 파이프라인</h3>
+<p class="proj-sub">캐릭터 일관성을 핵심 문제로 두고, 3D 검토 후 실제 적용 가능한 구조로 재설계한 콘텐츠 자동화 프로젝트</p>
+<div class="impact-note"><strong>직무 연결 포인트</strong><p>PTKOREA처럼 콘텐츠와 마케팅 활용성을 중시하는 환경에서 특히 연결되는 프로젝트입니다. 단순 생성 모델 적용이 아니라 <strong>브랜드 캐릭터 일관성, 빠른 제작, 다양한 장면 구성</strong>을 동시에 만족시키는 제작 자동화 구조를 고민했다는 점이 핵심입니다.</p></div>
+<div class="star-card"><div class="star-card-head"><span>STAR 요약</span></div><div class="star-body">
+<div class="star-row"><div class="star-label"><span class="star-badge s-badge">S</span></div><div class="star-text">기업이나 서비스가 이미 보유한 캐릭터를 활용해 영상을 만들려면, 보통 <strong>캐릭터 일관성</strong>과 제작 속도 사이에서 타협이 필요했습니다. 특히 짧은 홍보 영상도 장면 구성이 단조로우면 결과물이 쉽게 지루해질 수 있어, 일관성과 다양성을 함께 확보하는 구조가 중요했습니다.</div></div>
+<div class="star-row"><div class="star-label"><span class="star-badge t-badge">T</span></div><div class="star-text">캐릭터 일관성을 핵심 문제로 정의하고, 3D 기반 접근을 포함한 여러 방식을 검토한 뒤 <strong>실제 서비스 환경에서 적용 가능한 구조</strong>로 재설계하는 것이 목표였습니다. 동시에 매번 다른 캐릭터가 들어와도 추가 학습 없이 대응할 수 있도록 latency와 운영성도 함께 고려했습니다.</div></div>
+<div class="star-row"><div class="star-label"><span class="star-badge a-badge">A</span></div><div class="star-text">AWSKRUG의 ComfyUI 세미나를 계기로 3D 생성 흐름을 검토했지만, 실제 모델 제약을 확인한 뒤 캐릭터 일관성에 더 적합한 방식으로 방향을 조정했습니다. Claude 멀티모달(Bedrock)이 전체 흐름을 총괄하도록 두고, 사용자 요구사항을 시나리오로 구체화한 뒤 이미지·영상·음성 모델용 프롬프트를 분리 생성하게 했습니다. 또 <strong>쇼츠·릴스처럼 짧은 장면 전환 구조</strong>를 참고해 분할된 씬 단위의 짧은 영상을 생성 후 병합했고, GPU 자원 한계를 고려해 안정적으로 생성 가능한 방식으로 설계했습니다. 마지막으로 이미지 단계에서 캐릭터 기준 프레임을 만들고 각 씬의 첫 프레임을 고정해 변형을 최소화했습니다.</div></div>
+<div class="star-row"><div class="star-label"><span class="star-badge r-badge">R</span></div><div class="star-text">결과적으로 <strong>기존 캐릭터 자산을 활용한 영상 제작 자동화 구조</strong>를 구현했고, 쇼츠·릴스형 짧은 씬 기반 구성으로 더 역동적이고 지루하지 않은 결과물을 만들 수 있었습니다. 또한 3D를 포함한 여러 접근을 검토한 끝에, 실제 제작 환경에서는 <strong>캐릭터 기준 프레임과 씬 파이프라인 설계가 더 현실적인 해법</strong>임을 검증했고, GPU 자원 제약까지 고려한 안정적인 생성 구조를 마련했습니다.</div></div>
+</div></div>
+<div class="contribs" style="margin-top:20px;"><h5>핵심 기여</h5><div class="ci">3D 접근과 스타일 LoRA까지 검토하며 캐릭터 일관성 조건을 구조적으로 탐색</div><div class="ci">Claude 기반 오케스트레이션으로 시나리오·이미지·영상·음성 생성 흐름 연결</div><div class="ci">쇼츠·릴스형 장면 전환을 참고한 분할 씬 파이프라인으로 콘텐츠 다양성 강화</div><div class="ci">GPU 제약을 고려한 짧은 씬 병합 구조와 기준 프레임 고정 전략으로 latency와 일관성의 균형 검증</div></div>
+<div class="stat-box"><div class="stat-cell"><span class="stat-n">Scene-based</span><span class="stat-l">분할 영상 구성</span></div><div class="stat-cell"><span class="stat-n">Claude</span><span class="stat-l">생성 흐름 총괄</span></div><div class="stat-cell"><span class="stat-n">No Re-train</span><span class="stat-l">latency 중심 설계</span></div></div>
+<div class="stack"><span class="st hi">Claude (Bedrock)</span><span class="st hi">FLUX 1.0</span><span class="st hi">LTX Video</span><span class="st">Qwen-TTS</span><span class="st">FFmpeg</span><span class="st">Scene Composition</span></div>
+</div></div>
+
+<div class="proj">
+<div class="proj-left"><div class="proj-idx">Project 06</div><div class="proj-period">2025.02–05<br/>운영 개선</div><div class="proj-type">실서비스 인프라 최적화</div><span class="award aw-orange">비용 최적화</span></div>
+<div>
+<h3 class="proj-title">Face Swap 서비스 인프라 재설계</h3>
+<p class="proj-sub">동시 요청 처리와 비용 문제를 함께 해결한 운영형 프로젝트</p>
+<div class="impact-note"><strong>직무 연결 포인트</strong><p>사용량이 증가하는 상황에서 파이프라인과 실행 환경을 재설계해 처리 효율과 비용을 동시에 개선했습니다.</p></div>
+<div class="car-card" style="margin-top:16px;"><div class="car-card-head">CAR 요약</div><div><div class="car-row"><div class="car-label"><span class="c-badge">C</span></div><div class="car-text">기존 구조는 단일 요청 처리 위주라 이벤트성 트래픽 증가 상황에서 병목이 컸고, 인스턴스를 여러 대 상시 운영해 비용도 비효율적이었습니다.</div></div><div class="car-row"><div class="car-label"><span class="c-badge">A</span></div><div class="car-text">세션 ID 기반 병렬 처리 구조를 설계하고, Docker 컨테이너 기반으로 서비스를 정리한 뒤 ECS Fargate로 전환했습니다. 운영 중인 서비스를 고려해 코드 구조와 배포 방식도 함께 다듬었습니다.</div></div><div class="car-row"><div class="car-label"><span class="c-badge">R</span></div><div class="car-text">기존 4대 상시 인스턴스 운영 구조를 1대로 축소하는 방향으로 개선해 약 80% 수준의 비용 절감 효과를 만들었고, 동시에 확장성도 높였습니다.</div></div></div></div>
+<div class="stat-box"><div class="stat-cell"><span class="stat-n">~80%</span><span class="stat-l">비용 절감</span></div><div class="stat-cell"><span class="stat-n">4 → 1</span><span class="stat-l">인스턴스 축소</span></div><div class="stat-cell"><span class="stat-n">23s</span><span class="stat-l">기존 응답 병목</span></div></div>
+<div class="stack"><span class="st hi">ECS Fargate</span><span class="st hi">Docker</span><span class="st">FastAPI</span><span class="st">Python</span><span class="st">AWS</span></div>
+</div></div>
+
+</div></div></section>
+
+<section id="awards">
+<div class="wrap">
+<div class="sec-head"><span class="sec-num">04</span><h2 class="sec-title">수상 · 발표</h2></div>
+<div class="awards-grid">
+<div class="aw-card gold"><div class="aw-prize">🏆 대상</div><div class="aw-org">2024 GenAI Playground Hackathon</div><div class="aw-name">YORILAB</div><div class="aw-desc">트렌드 분석과 기획 검증 구조로 현장 피벗에 성공해 1위를 수상했습니다.</div></div>
+<div class="aw-card blue"><div class="aw-prize">🎤 Lightning Talk</div><div class="aw-org">AWS Public Sector Day 2025 Seoul</div><div class="aw-name">Nova Sonic · S3 Vectors 사례 발표</div><div class="aw-desc">신기술을 실제 서비스 구조로 구현한 사례로 발표 팀에 선정되었습니다.</div></div>
+<div class="aw-card blue"><div class="aw-prize">🏅 우수작품 선정</div><div class="aw-org">2024 AWS AI/MLOps Application (Advanced)</div><div class="aw-name">숙명여자대학교 SW중심대학사업단</div><div class="aw-desc">교내 우수작품으로 선정되어 SW중심대학 우수작품대회에 숙명여대 대표로 출전하고 부스를 운영했습니다. 해당 프로젝트(X-ray 위해물품 탐지)는 빅데이터분석학회 BDA에서도 발표했습니다.</div></div>
+<div class="aw-card green"><div class="aw-prize">🏅 AI 장학생</div><div class="aw-org">Daewoong Foundation</div><div class="aw-name">헬스케어 AI 장학 프로그램</div><div class="aw-desc">데이터 자산 구축과 생성형 AI 서비스 방향 전환을 경험한 프로젝트에 참여했습니다.</div></div>
+</div>
+</div>
+</section>
+
+<section id="experience">
+<div class="wrap">
+<div class="sec-head"><span class="sec-num">05</span><h2 class="sec-title">경험</h2></div>
+<div class="exp-item"><div class="exp-period">2025.02–05</div><div><div class="exp-org">NxtCloud</div><div class="exp-title">Cloud Solution Architect Intern · Education Team</div><div class="exp-desc">대학 Slack 챗봇 구축, 학사행정 챗봇 PM/개발, Face Swap 서비스 인프라 개선 등 실서비스형 AI·클라우드 업무를 수행했습니다.</div></div></div>
+<div class="exp-item"><div class="exp-period">2024–2025</div><div><div class="exp-org">AWS / External</div><div class="exp-title">AI · Cloud Instructor / Speaker</div><div class="exp-desc">신기술을 단순 소개하는 데 그치지 않고, 실제 서비스 구조와 의사결정 관점에서 설명하고 전달하는 경험을 쌓았습니다.</div></div></div>
+<div class="exp-item"><div class="exp-period">이전 경험</div><div><div class="exp-org">Service Planning</div><div class="exp-title">서비스 기획 인턴 → 전환 경험</div><div class="exp-desc">뉴스레터, SNS 콘텐츠, 어린이 AI 동화 전자책 PM 경험을 통해 비기술 조직과 협업하고 사용자 관점에서 서비스를 바라보는 시각을 길렀습니다.</div></div></div>
+</div>
+</section>
+
+<section id="certs">
+<div class="wrap">
+<div class="sec-head"><span class="sec-num">06</span><h2 class="sec-title">자격 · 언어 · 학력</h2></div>
+<div class="cert-row"><div class="cert-icon">AWS</div><div class="cert-name">AWS Certified Solutions Architect – Associate</div><div class="cert-issuer">Amazon Web Services</div><div class="cert-level lv-aws">Cloud</div></div>
+<div class="cert-row"><div class="cert-icon">AWS</div><div class="cert-name">AWS Certified AI Practitioner</div><div class="cert-issuer">Amazon Web Services</div><div class="cert-level lv-aws">AI</div></div>
+<div class="cert-row"><div class="cert-icon">EN</div><div class="cert-name">OPIc English — Intermediate High</div><div class="cert-issuer">English Proficiency</div><div class="cert-level lv-eng">IH</div></div>
+<div class="exp-item" style="padding-top:28px;"><div class="exp-period">학사</div><div><div class="exp-org">Education</div><div class="exp-title">IT공학 전공 · 문헌정보학 복수전공</div><div class="exp-desc">정보 구조화, 분류, 검색 관점과 기술 구현 역량을 함께 갖춘 배경을 바탕으로 데이터 구조와 검색 품질 개선에 강점을 가지고 있습니다.</div></div></div>
+</div>
+</section>
+
+<footer>
+<div class="wrap"><div class="ft-inner"><div class="ft-name">Soomin Lee</div><div class="ft-note">PTKOREA 맞춤형 포트폴리오 · Trend & Efficiency version</div></div></div>
+</footer>
+</div>
+</body>
+</html>
