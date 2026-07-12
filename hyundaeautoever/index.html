@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>이수민 · 현대오토에버 데이터기술 AI Engineer(AI MLOps) 포트폴리오</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;font-family:"Noto Sans KR", sans-serif;}
+body{font-family:"Noto Sans KR", sans-serif;background:#F4F6FA;color:#0E1626;font-size:14px;line-height:1.72;-webkit-font-smoothing:antialiased;}
+a{color:inherit;}
+
+:root{
+  --paper:#F4F6FA;
+  --panel:#FFFFFF;
+  --ink:#0E1626;
+  --ink2:#48546A;
+  --ink3:#8A95A8;
+  --line:#E1E6EF;
+  --line2:#EDF0F6;
+  --brand:#0A2A66;
+  --signal:#1B5FE0;
+  --signal-soft:#E6EEFD;
+  --ml:#0E9A8A;
+  --ml-soft:#DCF2EF;
+  --drift:#C77A15;
+  --drift-soft:#FBEFD8;
+  --ok:#17875A;
+  --ok-soft:#DEF1E8;
+  --console:#0B1424;
+  --console-2:#111D33;
+  --c-line:#223452;
+  --c-ink:#AEBED8;
+  --c-dim:#5D6E90;
+}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:99;height:54px;padding:0 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(244,246,250,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);}
+.brand{font-family:"JetBrains Mono", monospace;font-size:12px;font-weight:600;text-decoration:none;display:flex;align-items:center;gap:9px;letter-spacing:.02em;}
+.brand .blip{width:8px;height:8px;border-radius:50%;background:var(--signal);box-shadow:0 0 0 3px var(--signal-soft);}
+.nav-links{display:flex;gap:22px;list-style:none;}
+.nav-links a{font-family:"JetBrains Mono", monospace;font-size:11px;color:var(--ink2);text-decoration:none;}
+.nav-links a:hover{color:var(--signal);}
+
+.page{padding-top:54px;}
+.wrap{max-width:1080px;margin:0 auto;padding:0 40px;}
+.block{padding:74px 0;border-bottom:1px solid var(--line);}
+
+.eyebrow{font-family:"JetBrains Mono", monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--signal);display:flex;align-items:center;gap:10px;line-height:1.5;}
+.eyebrow::before{content:"";width:24px;height:1px;background:var(--signal);flex-shrink:0;}
+
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:38px;padding-bottom:15px;border-bottom:1px solid var(--line);}
+.sec-num{font-family:"JetBrains Mono", monospace;font-size:11px;color:var(--ink3);}
+.sec-title{font-size:25px;font-weight:800;letter-spacing:-.02em;}
+.sec-note{margin-left:auto;font-size:12px;color:var(--ink3);max-width:340px;text-align:right;line-height:1.6;word-break:break-word;}
+
+/* HERO */
+#hero{padding:66px 0 58px;border-bottom:1px solid var(--line);}
+.hero-grid{display:grid;grid-template-columns:1fr 430px;gap:46px;align-items:center;}
+.hero-name{font-size:clamp(46px,6.2vw,72px);font-weight:700;line-height:1;letter-spacing:-.03em;margin:16px 0 6px;}
+.hero-name .kr{font-weight:800;font-size:.34em;display:block;letter-spacing:-.01em;color:var(--ink2);margin-top:12px;}
+.hero-role{font-size:clamp(14.5px,1.7vw,17px);font-weight:700;color:var(--brand);letter-spacing:-.01em;margin-bottom:20px;line-height:1.5;}
+.hero-bio{max-width:540px;font-size:13.5px;color:var(--ink2);line-height:1.95;}
+.hero-bio b{color:var(--ink);font-weight:700;}
+.hero-links{margin-top:20px;display:flex;gap:8px;flex-wrap:wrap;}
+.hero-links a{font-family:"JetBrains Mono", monospace;font-size:11px;text-decoration:none;color:var(--ink2);border:1px solid var(--line);border-radius:6px;padding:5px 11px;}
+.hero-links a.lead{border-color:var(--signal);color:var(--signal);background:var(--signal-soft);}
+.hero-links a:hover{border-color:var(--signal);color:var(--signal);}
+
+/* SIGNATURE */
+.loopcard{background:var(--console);border:1px solid #06101F;border-radius:14px;overflow:hidden;box-shadow:0 16px 40px -20px rgba(10,20,40,.55);}
+.loop-top{display:flex;align-items:center;gap:7px;padding:11px 14px;background:var(--console-2);border-bottom:1px solid #06101F;}
+.loop-top .d{width:9px;height:9px;border-radius:50%;}
+.loop-top .d1{background:#E0625B;}.loop-top .d2{background:#E0A23A;}.loop-top .d3{background:#3FA66B;}
+.loop-top .ct{margin-left:8px;font-family:"JetBrains Mono", monospace;font-size:10px;color:var(--c-dim);letter-spacing:.03em;}
+.loop-svg{display:block;width:100%;height:auto;padding:6px 6px 0;}
+.ring-track{fill:none;stroke:var(--c-line);stroke-width:2;}
+.ring-pulse{fill:none;stroke:var(--signal);stroke-width:3;stroke-linecap:round;stroke-dasharray:46 607;animation:travel 6s linear infinite;}
+@keyframes travel{to{stroke-dashoffset:-653;}}
+.nd{stroke:var(--console);stroke-width:3;}
+.nd.teal{fill:var(--ml);}.nd.sig{fill:var(--signal);}.nd.ok{fill:var(--ok);}.nd.amb{fill:var(--drift);}
+.watch{fill:none;stroke:var(--drift);stroke-width:2;opacity:.7;animation:watch 2.4s ease-in-out infinite;transform-origin:center;transform-box:fill-box;}
+@keyframes watch{0%,100%{opacity:.15;r:9px;}50%{opacity:.8;r:15px;}}
+.nlabel{font-family:"JetBrains Mono", monospace;font-size:10px;fill:var(--c-ink);}
+.nlabel.dim{fill:var(--c-dim);}
+.ctr-k{font-family:"JetBrains Mono", monospace;font-size:9px;fill:var(--c-dim);letter-spacing:.12em;}
+.ctr-b{font-family:"Noto Sans KR", sans-serif;font-size:19px;font-weight:600;fill:#EAF1FF;letter-spacing:.02em;}
+.ctr-s{font-family:"JetBrains Mono", monospace;font-size:9.5px;fill:#7FB5FF;}
+.ctr-a{font-family:"JetBrains Mono", monospace;font-size:9px;fill:var(--drift);}
+.loop-log{padding:2px 14px 12px;display:flex;flex-direction:column;gap:2px;border-top:1px solid var(--c-line);margin-top:2px;}
+.lgln{font-family:"JetBrains Mono", monospace;font-size:10px;line-height:1.55;color:var(--c-ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.lgln .t{color:var(--c-dim);}
+.lgln .ok{color:#52C39C;}.lgln .sg{color:#7FB5FF;}.lgln .al{color:#F0B454;font-weight:600;}
+
+.kpi-strip{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:14px;}
+.kpi{border:1px solid var(--line);border-radius:9px;background:var(--panel);padding:11px 12px;}
+.kpi-n{font-size:18px;font-weight:600;line-height:1.05;letter-spacing:-.01em;}
+.kpi-l{display:block;margin-top:5px;font-family:"JetBrains Mono", monospace;font-size:9px;letter-spacing:.02em;color:var(--ink3);}
+
+/* JD MAP */
+.map-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.map-card{border:1px solid var(--line);border-radius:11px;background:var(--panel);padding:16px;position:relative;}
+.map-card::before{content:"";position:absolute;left:16px;top:0;width:26px;height:3px;border-radius:0 0 3px 3px;background:var(--signal);}
+.map-card.teal::before{background:var(--ml);}
+.map-card.ok::before{background:var(--ok);}
+.map-card.amb::before{background:var(--drift);}
+.map-jd{font-family:"JetBrains Mono", monospace;font-size:10px;letter-spacing:.03em;color:var(--ink3);margin:11px 0 7px;}
+.map-task{font-size:14.5px;font-weight:700;letter-spacing:-.01em;margin-bottom:8px;line-height:1.32;}
+.map-proof{font-size:12.5px;color:var(--ink2);line-height:1.72;}
+.map-proof b{color:var(--ink);font-weight:700;}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+.sk h4{font-family:"JetBrains Mono", monospace;font-size:10px;letter-spacing:.04em;text-transform:uppercase;color:var(--signal);margin-bottom:11px;padding-bottom:8px;border-bottom:1px solid var(--line);}
+.sk-tags{display:flex;flex-wrap:wrap;gap:5px;}
+.tag{font-family:"JetBrains Mono", monospace;font-size:11px;padding:4px 8px;border-radius:5px;background:var(--line2);color:var(--ink);}
+.tag.hi{background:var(--ink);color:#fff;}
+.tag.ac{background:var(--signal);color:#fff;}
+.tag.ml{background:var(--ml);color:#fff;}
+.learn-note{margin-top:20px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--ink2);background:var(--drift-soft);border:1px solid #EBD9B4;border-radius:9px;padding:11px 14px;}
+.learn-note b{color:var(--drift);font-family:"JetBrains Mono", monospace;font-size:10px;letter-spacing:.04em;text-transform:uppercase;}
+.learn-note .tag{background:#fff;border:1px solid #EBD9B4;color:var(--drift);}
+
+/* PROJECTS */
+.phase{display:flex;align-items:center;gap:14px;padding:20px 0 6px;}
+.phase-tag{font-family:"JetBrains Mono", monospace;font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:#fff;background:var(--signal);padding:4px 10px;border-radius:999px;white-space:nowrap;}
+.phase.c2 .phase-tag{background:var(--ok);}
+.phase.c3 .phase-tag{background:var(--ml);}
+.phase-txt{font-size:12px;color:var(--ink2);}
+.phase-line{flex:1;height:1px;background:var(--line);}
+
+.proj{display:grid;grid-template-columns:178px 1fr;gap:38px;padding:40px 0;border-top:1px solid var(--line);}
+.pidx{font-family:"JetBrains Mono", monospace;font-size:10px;color:var(--signal);letter-spacing:.04em;margin-bottom:10px;font-weight:600;}
+.pctx{font-family:"JetBrains Mono", monospace;font-size:11px;color:var(--ink2);line-height:1.7;margin-bottom:8px;}
+.ptype{font-size:10px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink3);font-weight:600;margin-bottom:13px;}
+.chip{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;padding:3px 9px;border-radius:6px;}
+.chip.gold{background:var(--drift-soft);color:var(--drift);}
+.chip.sig{background:var(--signal-soft);color:var(--signal);}
+.chip.ml{background:var(--ml-soft);color:var(--ml);}
+
+.ptitle{font-size:21px;font-weight:800;letter-spacing:-.02em;line-height:1.22;margin-bottom:5px;}
+.psub{font-size:12.5px;color:var(--signal);font-weight:600;margin-bottom:15px;line-height:1.5;}
+.jd{background:var(--signal-soft);border-left:3px solid var(--signal);border-radius:0 7px 7px 0;padding:9px 13px;font-size:12px;color:var(--ink2);line-height:1.68;margin-bottom:15px;}
+.jd b{color:var(--signal);}
+
+.flow{border:1px solid var(--line);border-radius:9px;background:var(--panel);padding:13px 14px;margin:14px 0;}
+.flow-label{font-family:"JetBrains Mono", monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);margin-bottom:9px;}
+.flow-row{display:flex;flex-wrap:wrap;align-items:center;gap:7px;}
+.node{font-family:"JetBrains Mono", monospace;font-size:11px;padding:4px 9px;border-radius:6px;border:1px solid var(--line);background:var(--paper);color:var(--ink2);white-space:nowrap;}
+.node.sig{border-color:var(--signal);color:var(--signal);background:var(--signal-soft);}
+.node.ml{border-color:var(--ml);color:var(--ml);background:var(--ml-soft);font-weight:600;}
+.node.ok{border-color:var(--ok);color:var(--ok);background:var(--ok-soft);}
+.node.amb{border-color:var(--drift);color:var(--drift);background:var(--drift-soft);}
+.arrow{font-family:"JetBrains Mono", monospace;color:var(--ink3);font-size:11px;}
+.arrow.rt{color:var(--drift);font-weight:600;}
+
+.contribs h5{font-family:"JetBrains Mono", monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);margin:16px 0 8px;}
+.ci{display:flex;gap:8px;align-items:baseline;font-size:13px;line-height:1.65;margin-bottom:6px;}
+.ci::before{content:"›";font-family:"JetBrains Mono", monospace;font-size:13px;color:var(--signal);flex-shrink:0;}
+.ci b{font-weight:700;}
+
+.stat-box{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0;padding:14px;background:var(--paper);border:1px solid var(--line);border-radius:9px;}
+.stat-cell{text-align:center;}
+.stat-n{font-size:20px;font-weight:600;line-height:1;letter-spacing:-.01em;display:block;}
+.stat-l{font-family:"JetBrains Mono", monospace;font-size:9px;color:var(--ink3);letter-spacing:.02em;display:block;margin-top:5px;}
+.stack{display:flex;flex-wrap:wrap;gap:5px;margin-top:14px;}
+.st{font-family:"JetBrains Mono", monospace;font-size:10.5px;padding:3px 8px;border:1px solid var(--line);border-radius:5px;color:var(--ink2);}
+.st.hi{border-color:var(--signal);color:var(--signal);}
+.st.ml{border-color:var(--ml);color:var(--ml);}
+
+/* OPS BAND */
+.ops-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.ops{border:1px solid var(--line);border-radius:11px;background:var(--panel);padding:20px;position:relative;overflow:hidden;}
+.ops::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--drift);}
+.ops-k{font-family:"JetBrains Mono", monospace;font-size:10px;letter-spacing:.04em;text-transform:uppercase;color:var(--drift);margin-bottom:9px;}
+.ops-t{font-size:15px;font-weight:800;letter-spacing:-.01em;margin-bottom:9px;line-height:1.3;}
+.ops-d{font-size:12.5px;color:var(--ink2);line-height:1.78;}
+.ops-d b{color:var(--ink);font-weight:700;}
+
+/* AWARDS */
+.aw-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:13px;}
+.aw{position:relative;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:19px;overflow:hidden;}
+.aw::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--signal);}
+.aw.gold::before{background:linear-gradient(90deg,var(--drift),#E8C067);}
+.aw.ml::before{background:var(--ml);}
+.aw-prize{font-size:16px;font-weight:800;margin-bottom:3px;}
+.aw-org{font-family:"JetBrains Mono", monospace;font-size:10px;letter-spacing:.03em;text-transform:uppercase;color:var(--ink3);margin-bottom:8px;}
+.aw-name{font-size:13px;font-weight:700;margin-bottom:6px;}
+.aw-desc{font-size:12px;color:var(--ink2);line-height:1.7;}
+
+/* EXP / CERTS */
+.exp{display:grid;grid-template-columns:170px 1fr;gap:38px;padding:28px 0;border-top:1px solid var(--line);}
+.exp:last-child{border-bottom:1px solid var(--line);}
+.exp-period{font-family:"JetBrains Mono", monospace;font-size:11px;color:var(--ink2);line-height:1.7;}
+.exp-org{font-family:"JetBrains Mono", monospace;font-size:10px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink3);font-weight:600;margin-bottom:5px;}
+.exp-title{font-size:17px;font-weight:800;letter-spacing:-.01em;margin-bottom:9px;line-height:1.25;}
+.exp-desc{font-size:13px;color:var(--ink2);line-height:1.8;}
+
+.cert{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--line);}
+.cert:first-of-type{border-top:1px solid var(--line);}
+.cert-ic{width:36px;height:36px;border-radius:8px;background:var(--brand);color:#fff;display:flex;align-items:center;justify-content:center;font-family:"JetBrains Mono", monospace;font-size:10px;flex-shrink:0;}
+.cert-name{flex:1;font-size:13px;font-weight:700;}
+.cert-iss{font-size:12px;color:var(--ink2);}
+.cert-lv{font-family:"JetBrains Mono", monospace;font-size:10px;font-weight:600;padding:2px 9px;border-radius:6px;background:var(--signal-soft);color:var(--signal);}
+.cert-lv.eng{background:var(--ml-soft);color:var(--ml);}
+
+footer{padding:40px 0;}
+.ft-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+.ft-name{font-size:18px;font-weight:600;}
+.ft-note{font-family:"JetBrains Mono", monospace;font-size:10px;color:var(--ink3);}
+
+@keyframes up{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+.hero-grid>div{animation:up .5s ease both;}
+.hero-grid>div:nth-child(2){animation-delay:.1s;}
+
+@media (max-width:920px){
+  .hero-grid,.proj,.exp{grid-template-columns:1fr;gap:26px;}
+  .map-grid,.skills-grid,.aw-grid,.ops-grid{grid-template-columns:1fr 1fr;}
+  .nav-links{display:none;}
+  nav,.wrap{padding-left:22px;padding-right:22px;}
+  .sec-note{display:none;}
+  .hero-grid>div:nth-child(2){max-width:430px;}
+}
+@media (max-width:560px){.map-grid,.skills-grid,.aw-grid,.kpi-strip,.ops-grid{grid-template-columns:1fr;}}
+@media (prefers-reduced-motion:reduce){.hero-grid>div{animation:none;}.ring-pulse,.watch{animation:none;}}
+@media print{
+  nav{display:none;}.page{padding-top:0;}.block,#hero{padding:30px 0;}
+  .ring-pulse,.watch{animation:none;}.loopcard{box-shadow:none;}
+  @page{margin:10mm;size:A4;}
+  *,*::before,*::after{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<nav>
+  <a class="brand" href="#hero"><span class="blip"></span>SOOMIN LEE · AI MLOPS</a>
+  <ul class="nav-links">
+    <li><a href="#map">JD 매핑</a></li>
+    <li><a href="#skills">역량</a></li>
+    <li><a href="#projects">프로젝트</a></li>
+    <li><a href="#ops">운영·장애</a></li>
+    <li><a href="#awards">수상</a></li>
+    <li><a href="#certs">자격·학력</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">현대오토에버 · 데이터기술 · AI Engineer 신입 · AI MLOps</div>
+        <h1 class="hero-name">Soomin Lee<span class="kr">이수민</span></h1>
+        <p class="hero-role">모델을 만드는 것으로 끝내지 않고,<br>학습·배포·모니터링이 끊김 없이 도는 MLOps 파이프라인으로 운영까지 잇는 엔지니어</p>
+        <p class="hero-bio">
+          데이터 수집·ETL에서 시작해 <b>모델 학습·배포 자동화</b>, 그리고 운영 데이터가 다시
+          재학습으로 이어지는 <b>폐루프 MLOps 파이프라인</b>까지 — AWS 위에서 실제로 도는 구조를
+          직접 설계·운영했습니다. Docker·ECS 컨테이너 마이그레이션과 데이터 파이프라인이 강점이고,
+          <b>Hadoop 빅데이터·CI/CD(ArgoCD·GitLab Runner)</b>는 실습·학습으로 빠르게 채워가고 있습니다.
+        </p>
+        <div class="hero-links">
+          <a class="lead" href="mailto:leedooming@gmail.com">leedooming@gmail.com</a>
+          <a href="https://github.com/leedoming" target="_blank" rel="noopener">github.com/leedoming</a>
+          <a href="https://linkedin.com/in/sumin-lee-smwu" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="loopcard">
+          <div class="loop-top">
+            <span class="d d1"></span><span class="d d2"></span><span class="d d3"></span>
+            <span class="ct">group-mlops-platform · live</span>
+          </div>
+          <svg class="loop-svg" viewBox="0 0 340 300" role="img" aria-label="MLOps 라이프사이클 루프: 데이터레이크 → 피처 스토어 → 학습 → 검증 → 배포 → 감시 → 재학습">
+            <circle class="ring-track" cx="170" cy="150" r="104"/>
+            <circle class="ring-pulse" cx="170" cy="150" r="104"/>
+            <circle class="watch" cx="79.9" cy="98" r="9"/>
+            <circle class="nd teal" cx="170"  cy="46"  r="8"/>
+            <circle class="nd teal" cx="260.1" cy="98"  r="8"/>
+            <circle class="nd sig"  cx="260.1" cy="202" r="8"/>
+            <circle class="nd sig"  cx="170"  cy="254" r="8"/>
+            <circle class="nd ok"   cx="79.9" cy="202" r="8"/>
+            <circle class="nd amb"  cx="79.9" cy="98"  r="8"/>
+            <text class="nlabel" x="170"  y="30"  text-anchor="middle">데이터레이크</text>
+            <text class="nlabel" x="288"  y="86"  text-anchor="start">피처 스토어</text>
+            <text class="nlabel" x="288"  y="214" text-anchor="start">학습</text>
+            <text class="nlabel" x="170"  y="282" text-anchor="middle">검증</text>
+            <text class="nlabel" x="52"   y="214" text-anchor="end">배포</text>
+            <text class="nlabel" x="52"   y="86"  text-anchor="end">감시</text>
+            <text class="ctr-k" x="170" y="128" text-anchor="middle">GROUP · MLOPS</text>
+            <text class="ctr-b" x="170" y="152" text-anchor="middle">재학습 LOOP</text>
+            <text class="ctr-s" x="170" y="170" text-anchor="middle">● running · model v7</text>
+            <text class="ctr-a" x="170" y="186" text-anchor="middle">감시 → 재학습 자동 트리거</text>
+          </svg>
+          <div class="loop-log">
+            <div class="lgln"><span class="t">08:20:11</span> ingest lake=xray/raw <span class="ok">ok</span> +1,284</div>
+            <div class="lgln"><span class="t">08:20:12</span> <span class="sg">train</span> job=yolo-xray step=fit epoch=42</div>
+            <div class="lgln"><span class="t">08:20:13</span> validate mAP@50=0.94 <span class="ok">pass</span></div>
+            <div class="lgln"><span class="t">08:20:13</span> deploy model=v7 endpoint=<span class="ok">live</span></div>
+            <div class="lgln"><span class="al">08:20:14 monitor drift=0.08 → retrain queued</span></div>
+          </div>
+        </div>
+        <div class="kpi-strip">
+          <div class="kpi"><span class="kpi-n">재학습 Loop</span><span class="kpi-l">SageMaker Pipeline · Step Functions</span></div>
+          <div class="kpi"><span class="kpi-n">10만+</span><span class="kpi-l">데이터 수집·ETL 구축</span></div>
+          <div class="kpi"><span class="kpi-n">ECS · Serverless</span><span class="kpi-l">컨테이너·인프라 전환</span></div>
+          <div class="kpi"><span class="kpi-n">AWS ×2</span><span class="kpi-l">SAA · AI Practitioner</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JD MAP -->
+<section id="map" class="block">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">01</span><h2 class="sec-title">담당 업무·필수 역량 ↔ 검증된 경험</h2>
+      <span class="sec-note">공고의 담당 업무와 역량 조건을 실제 프로젝트로 매핑했습니다.</span>
+    </div>
+    <div class="map-grid">
+      <div class="map-card sig">
+        <div class="map-jd">담당 업무</div>
+        <div class="map-task">MLOps 파이프라인 · 학습/배포 자동화</div>
+        <div class="map-proof"><b>SageMaker Pipeline·Step Functions</b>로 학습·검증·배포·재학습이 자동으로 도는 구조를 설계·운영.</div>
+      </div>
+      <div class="map-card sig">
+        <div class="map-jd">담당 업무</div>
+        <div class="map-task">그룹사 AI MLOps 플랫폼 운영</div>
+        <div class="map-proof">운영 데이터가 다시 재학습으로 이어지는 <b>폐루프 파이프라인</b>을 구현, 교내 SW 대표작 선정.</div>
+      </div>
+      <div class="map-card ml">
+        <div class="map-jd">담당 업무</div>
+        <div class="map-task">데이터 파이프라인 설계/개발/운영</div>
+        <div class="map-proof">크롤링·OCR·청킹·<b>벡터DB 적재</b>까지 잇는 지식베이스 파이프라인을 PM으로 설계.</div>
+      </div>
+      <div class="map-card ok">
+        <div class="map-jd">담당 업무 · 필수</div>
+        <div class="map-task">ECS 기반 파이프라인 · 컨테이너</div>
+        <div class="map-proof"><b>Docker 컨테이너화 + ECS Fargate</b> 마이그레이션으로 요청 기반 자동 확장 구조 운영.</div>
+      </div>
+      <div class="map-card teal">
+        <div class="map-jd">필수 역량</div>
+        <div class="map-task">Hadoop 빅데이터 · SQL/Python</div>
+        <div class="map-proof">BOAZ 데이터 엔지니어링에서 <b>Hadoop 생태계·Kafka</b> 스트리밍 파이프라인 실습, Python 활용 고급.</div>
+      </div>
+      <div class="map-card amb">
+        <div class="map-jd">담당 업무 · 우대</div>
+        <div class="map-task">플랫폼 모니터링 및 장애 대응</div>
+        <div class="map-proof">이상 신호를 끝까지 추적해 <b>장애를 사전 차단</b>한 인프라 운영 경험 + EDA 이상치 탐지.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="block">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">02</span><h2 class="sec-title">직무 연관 역량</h2>
+      <span class="sec-note">MLOps 자동화 · 데이터 파이프라인 · Cloud/Infra · AI/ML 중심</span>
+    </div>
+    <div class="skills-grid">
+      <div class="sk">
+        <h4>MLOps / 자동화</h4>
+        <div class="sk-tags">
+          <span class="tag ac">SageMaker Pipeline</span>
+          <span class="tag hi">Step Functions</span>
+          <span class="tag hi">자동 재학습</span>
+          <span class="tag">모델 배포</span>
+          <span class="tag">Bedrock Agent</span>
+          <span class="tag">CI/CD</span>
+        </div>
+      </div>
+      <div class="sk">
+        <h4>Data Pipeline / 빅데이터</h4>
+        <div class="sk-tags">
+          <span class="tag ml">Python</span>
+          <span class="tag hi">SQL</span>
+          <span class="tag hi">크롤링·수집</span>
+          <span class="tag">ETL·전처리</span>
+          <span class="tag">Elasticsearch</span>
+          <span class="tag">Kafka</span>
+          <span class="tag">OCR·청킹</span>
+        </div>
+      </div>
+      <div class="sk">
+        <h4>Cloud / Infra</h4>
+        <div class="sk-tags">
+          <span class="tag ac">AWS</span>
+          <span class="tag hi">Docker</span>
+          <span class="tag hi">Kubernetes</span>
+          <span class="tag">ECS Fargate</span>
+          <span class="tag">Lambda·S3</span>
+          <span class="tag">DynamoDB</span>
+          <span class="tag">Linux</span>
+        </div>
+      </div>
+      <div class="sk">
+        <h4>AI / ML</h4>
+        <div class="sk-tags">
+          <span class="tag ac">RAG·벡터DB</span>
+          <span class="tag hi">YOLO</span>
+          <span class="tag">CLIP 임베딩</span>
+          <span class="tag">EDA·품질검증</span>
+          <span class="tag">LLM 활용</span>
+          <span class="tag">생성형 AI</span>
+        </div>
+      </div>
+    </div>
+    <div class="learn-note">
+      <b>JD 스택 온보딩 중</b>
+      <span>공고 필수·우대 스택 중 다음을 집중 학습하고 있습니다 —</span>
+      <span class="tag">Hadoop 심화</span>
+      <span class="tag">ArgoCD</span>
+      <span class="tag">GitLab Runner</span>
+      <span class="tag">Azure / GCP</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="block">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">03</span><h2 class="sec-title">선별 프로젝트 · 6</h2>
+      <span class="sec-note">AI MLOps 직무 적합성 순으로 재구성했습니다.</span>
+    </div>
+
+    <!-- PHASE 1 -->
+    <div class="phase">
+      <span class="phase-tag">Phase 1 · MLOps 파이프라인 & 모델 운영 자동화</span>
+      <span class="phase-txt">학습·배포·재학습이 폐루프로 도는 운영형 AI 파이프라인</span>
+      <span class="phase-line"></span>
+    </div>
+
+    <!-- P1 -->
+    <div class="proj">
+      <div>
+        <div class="pidx">Project 01 · Main</div>
+        <div class="pctx">2024.03–2024.05<br>AWS AI/MLOps 심화과정</div>
+        <div class="ptype">MLOps · 재학습 자동화</div>
+        <span class="chip gold">🏆 교내 SW 대표작</span>
+      </div>
+      <div>
+        <h3 class="ptitle">공항 X-ray 위해물품 탐지 MLOps 자동화</h3>
+        <p class="psub">운영 데이터가 다시 모델 개선으로 이어지는 폐루프 MLOps 파이프라인을 설계·구축</p>
+        <div class="jd"><b>JD Match:</b> 'MLOps 파이프라인 설계/운영(모델 학습·배포 자동화)' 담당 업무와 우대 조건 '코드부터 모델 배포까지 자동화·통합 운영'에 직접 대응합니다.</div>
+        <div class="flow">
+          <div class="flow-label">MLOps Lifecycle</div>
+          <div class="flow-row">
+            <span class="node ml">신규 데이터 선별</span><span class="arrow">→</span>
+            <span class="node sig">SageMaker 재학습</span><span class="arrow">→</span>
+            <span class="node sig">검증</span><span class="arrow">→</span>
+            <span class="node ok">배포</span><span class="arrow">→</span>
+            <span class="node amb">감시</span><span class="arrow rt">⟲ 재학습</span>
+          </div>
+        </div>
+        <div class="contribs">
+          <h5>핵심 기여</h5>
+          <div class="ci"><b>Step Functions</b>로 추론 결과 저장·신규 위해물품 선별·후속 처리를 오케스트레이션</div>
+          <div class="ci"><b>SageMaker Pipeline</b>으로 재학습·검증·배포가 반복되는 구조를 구성 (한 번 배포로 끝나지 않는 파이프라인)</div>
+          <div class="ci">미학습 물체 대응을 위해 <b>CLIP 제로샷 유사도 검색</b>을 보완 구조로 제안·설계</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-cell"><span class="stat-n">Loop</span><span class="stat-l">재학습 자동화</span></div>
+          <div class="stat-cell"><span class="stat-n">대표작</span><span class="stat-l">교내 SW 선정</span></div>
+          <div class="stat-cell"><span class="stat-n">2단계</span><span class="stat-l">탐지+제로샷 보완</span></div>
+        </div>
+        <div class="stack">
+          <span class="st hi">SageMaker Pipeline</span><span class="st hi">Step Functions</span><span class="st">YOLO</span>
+          <span class="st ml">CLIP</span><span class="st">S3</span><span class="st">AWS</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- P2 -->
+    <div class="proj">
+      <div>
+        <div class="pidx">Project 02</div>
+        <div class="pctx">2025.03–2025.05<br>넥스트클라우드 · PM</div>
+        <div class="ptype">데이터 파이프라인 · RAG</div>
+        <span class="chip sig">기여도 80%</span>
+      </div>
+      <div>
+        <h3 class="ptitle">광주대학교 학사행정 RAG 챗봇 PoC</h3>
+        <p class="psub">학사 문서를 자동 수집·적재하는 지식베이스 파이프라인을 PM으로 설계</p>
+        <div class="jd"><b>JD Match:</b> '데이터 파이프라인 설계/개발/운영' 담당 업무에 대응하며, 불확실 상황에서의 <b>운영형 응답 설계</b>를 함께 보여줍니다.</div>
+        <div class="flow">
+          <div class="flow-label">Knowledge Base Pipeline</div>
+          <div class="flow-row">
+            <span class="node ml">웹 크롤링·수집</span><span class="arrow">→</span>
+            <span class="node">S3 · OCR</span><span class="arrow">→</span>
+            <span class="node">청킹</span><span class="arrow">→</span>
+            <span class="node sig">벡터DB 적재</span><span class="arrow">→</span>
+            <span class="node ok">Bedrock Agent</span>
+          </div>
+        </div>
+        <div class="contribs">
+          <h5>핵심 기여</h5>
+          <div class="ci"><b>PM</b>으로 학사 공지·행정 문서를 자동 수집·적재하는 파이프라인 전체를 설계</div>
+          <div class="ci">크롤링·텍스트 추출을 결합해 <b>지식베이스를 자동 구축</b></div>
+          <div class="ci">근거가 불확실하면 임의 응답 대신 <b>담당 부서를 안내</b>하도록 설계해 응답 신뢰도 확보</div>
+        </div>
+        <div class="stack">
+          <span class="st hi">Bedrock Agent</span><span class="st ml">Vector DB</span><span class="st">OCR</span>
+          <span class="st">S3</span><span class="st">크롤링</span><span class="st">AWS</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHASE 2 -->
+    <div class="phase c2">
+      <span class="phase-tag">Phase 2 · 컨테이너 · 서버리스 인프라 운영</span>
+      <span class="phase-txt">트래픽·비용에 맞춰 자동 확장되는 인프라로 재설계</span>
+      <span class="phase-line"></span>
+    </div>
+
+    <!-- P3 -->
+    <div class="proj">
+      <div>
+        <div class="pidx">Project 03</div>
+        <div class="pctx">2025.03–2025.04<br>넥스트클라우드</div>
+        <div class="ptype">컨테이너 · ECS</div>
+        <span class="chip ml">기여도 60%</span>
+      </div>
+      <div>
+        <h3 class="ptitle">Face Swap AI 서비스 인프라 최적화 및 배포</h3>
+        <p class="psub">EC2 단일 처리 구조를 Docker 컨테이너화 + ECS Fargate로 전환</p>
+        <div class="jd"><b>JD Match:</b> 'ECS 기반 데이터셋 파이프라인 관리' 담당 업무와 필수 역량 'Docker·Kubernetes CI/CD'에 대응합니다.</div>
+        <div class="flow">
+          <div class="flow-label">Infra Migration</div>
+          <div class="flow-row">
+            <span class="node">EC2 단일 처리</span><span class="arrow">→</span>
+            <span class="node sig">Docker 컨테이너화</span><span class="arrow">→</span>
+            <span class="node ok">ECS Fargate</span><span class="arrow">→</span>
+            <span class="node amb">요청 기반 자동 확장</span>
+          </div>
+        </div>
+        <div class="contribs">
+          <h5>핵심 기여</h5>
+          <div class="ci">단일 요청 처리 구조의 <b>트래픽 대응 한계를 분석</b></div>
+          <div class="ci"><b>Docker 컨테이너화 + ECS Fargate</b> 아키텍처로 전환</div>
+          <div class="ci">세션 단위 병렬 처리로 응답 속도를 개선하고 <b>자동 확장·비용 효율</b> 확보</div>
+        </div>
+        <div class="stack">
+          <span class="st hi">Docker</span><span class="st hi">ECS Fargate</span><span class="st">병렬 처리</span>
+          <span class="st">AWS</span><span class="st">Python</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- P4 -->
+    <div class="proj">
+      <div>
+        <div class="pidx">Project 04</div>
+        <div class="pctx">2025.04–2025.05<br>넥스트클라우드</div>
+        <div class="ptype">서버리스 · 비용 최적화</div>
+        <span class="chip sig">기여도 50%</span>
+      </div>
+      <div>
+        <h3 class="ptitle">BlackKnight AI 뉴스 자동화 서버리스 전환</h3>
+        <p class="psub">상시 가동 EC2 구조를 Lambda·DynamoDB·S3 서버리스 3-tier로 마이그레이션</p>
+        <div class="jd"><b>JD Match:</b> 우대 조건 '클라우드 환경 AI/ML 서비스 배포·통합 운영'과 인프라 비용·안정성 개선 관점에 대응합니다.</div>
+        <div class="flow">
+          <div class="flow-label">Serverless 3-tier</div>
+          <div class="flow-row">
+            <span class="node">상시 EC2</span><span class="arrow">→</span>
+            <span class="node sig">Lambda</span><span class="arrow">→</span>
+            <span class="node ml">DynamoDB</span><span class="arrow">→</span>
+            <span class="node ok">S3</span>
+          </div>
+        </div>
+        <div class="contribs">
+          <h5>핵심 기여</h5>
+          <div class="ci">유휴 시간 비용 발생 문제를 확인하고 <b>서버리스 3-tier</b>로 재설계</div>
+          <div class="ci">요청 기반으로 리소스가 동작하도록 전환해 <b>운영 비용 절감</b></div>
+          <div class="ci">트래픽 변화에 유연하게 대응하는 구조로 서비스 리뉴얼</div>
+        </div>
+        <div class="stack">
+          <span class="st hi">Lambda</span><span class="st ml">DynamoDB</span><span class="st">S3</span>
+          <span class="st">서버리스</span><span class="st">AWS</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHASE 3 -->
+    <div class="phase c3">
+      <span class="phase-tag">Phase 3 · 데이터 파이프라인 & 검색·품질</span>
+      <span class="phase-txt">대규모 수집·정제·인덱싱과 데이터 품질 관점</span>
+      <span class="phase-line"></span>
+    </div>
+
+    <!-- P5 -->
+    <div class="proj">
+      <div>
+        <div class="pidx">Project 05</div>
+        <div class="pctx">2023.12–2024.05<br>대웅재단 AI 장학생 1기</div>
+        <div class="ptype">ETL · 검색엔진</div>
+        <span class="chip ml">🎓 AI 장학생</span>
+      </div>
+      <div>
+        <h3 class="ptitle">다이어트 식단 생성·추천 AI 서비스</h3>
+        <p class="psub">10만+ 레시피 데이터를 수집·전처리하고 Elasticsearch 검색엔진을 구축</p>
+        <div class="jd"><b>JD Match:</b> 필수 역량 '데이터 파이프라인 구성을 위한 DW/DM 이해'와 SQL·Python 기반 파이프라인 구축에 대응합니다.</div>
+        <div class="flow">
+          <div class="flow-label">ETL & Search</div>
+          <div class="flow-row">
+            <span class="node ml">10만+ 레시피 수집</span><span class="arrow">→</span>
+            <span class="node">전처리·정제</span><span class="arrow">→</span>
+            <span class="node sig">Elasticsearch 인덱싱</span><span class="arrow">→</span>
+            <span class="node ok">검색·추천</span>
+          </div>
+        </div>
+        <div class="contribs">
+          <h5>핵심 기여</h5>
+          <div class="ci">데이터 담당으로 <b>10만 건 이상 레시피</b> 수집·전처리</div>
+          <div class="ci"><b>Elasticsearch 검색엔진</b> 구축으로 데이터 파이프라인과 검색 정확도 확보</div>
+        </div>
+        <div class="stack">
+          <span class="st hi">Elasticsearch</span><span class="st">ETL</span><span class="st">Python</span>
+          <span class="st">데이터 정제</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- P6 -->
+    <div class="proj">
+      <div>
+        <div class="pidx">Project 06</div>
+        <div class="pctx">2024.09–2024.11<br>잇다 MVP 서포터즈</div>
+        <div class="ptype">전처리 파이프라인 · 벡터 검색</div>
+        <span class="chip sig">기여도 50%</span>
+      </div>
+      <div>
+        <h3 class="ptitle">잇다 MVP 패션 이미지 검색 AI 시스템</h3>
+        <p class="psub">EDA로 데이터 이상치를 발견하고 객체 크롭 전처리로 검색 품질을 개선</p>
+        <div class="jd"><b>JD Match:</b> 우대 조건 '데이터 파이프라인 구축·개발 경험'과 데이터 품질을 다루는 운영 전 단계 관점을 보여줍니다.</div>
+        <div class="flow">
+          <div class="flow-label">Preprocess & Vector Search</div>
+          <div class="flow-row">
+            <span class="node ml">이미지 크롤링</span><span class="arrow">→</span>
+            <span class="node amb">YOLO 크롭</span><span class="arrow">→</span>
+            <span class="node sig">CLIP 임베딩</span><span class="arrow">→</span>
+            <span class="node ok">유사도 검색</span>
+          </div>
+        </div>
+        <div class="contribs">
+          <h5>핵심 기여</h5>
+          <div class="ci"><b>EDA</b>로 배경 노이즈가 검색 품질을 저해함을 확인</div>
+          <div class="ci"><b>YOLO 객체 탐지</b>로 의류 영역만 크롭하는 전처리 파이프라인 설계</div>
+          <div class="ci">CLIP 임베딩과 결합해 <b>검색 유사도 80~90%</b>까지 개선</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-cell"><span class="stat-n">80~90%</span><span class="stat-l">검색 유사도</span></div>
+          <div class="stat-cell"><span class="stat-n">EDA</span><span class="stat-l">이상치 발견</span></div>
+          <div class="stat-cell"><span class="stat-n">크롭</span><span class="stat-l">전처리 자동화</span></div>
+        </div>
+        <div class="stack">
+          <span class="st hi">YOLO</span><span class="st ml">CLIP</span><span class="st">EDA</span>
+          <span class="st">벡터 검색</span><span class="st">Python</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- OPS BAND -->
+<section id="ops" class="block">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">04</span><h2 class="sec-title">운영·장애 대응 관점</h2>
+      <span class="sec-note">'플랫폼 모니터링 및 장애 대응' · '신속한 장애 탐지·예방'</span>
+    </div>
+    <div class="ops-grid">
+      <div class="ops">
+        <div class="ops-k">Incident · 사전 예방</div>
+        <div class="ops-t">작은 이상 신호를 끝까지 추적해 장애를 사전에 차단</div>
+        <div class="ops-d">
+          교내 디지털인프라팀 헬프데스크에서 전화 잡음 민원이 들어왔지만 시스템상 이상은 없던 상황.
+          <b>현장 점검이 필요하다고 판단·보고</b>했고, 함께 확인한 결과 단자함 내부 누수로 회선이 부식되고 있음을 발견했습니다.
+          장애 발생 이후 대응만이 아니라, <b>이상 신호를 끝까지 추적해 더 큰 장애로 이어지기 전에 막는 구조</b>의 중요성을 배웠습니다.
+        </div>
+      </div>
+      <div class="ops">
+        <div class="ops-k">Data Quality · 이상치 탐지</div>
+        <div class="ops-t">모델 성능 뒤에 숨은 데이터 이상치를 EDA로 포착</div>
+        <div class="ops-d">
+          이미지 검색 서비스 초기에 모델 성능만 봤을 때는 문제가 드러나지 않았지만,
+          <b>EDA에서 배경·촬영 각도·객체 크기 차이로 인한 이상치</b>를 발견했습니다.
+          객체 크롭 전처리로 데이터 일관성을 확보해 정확도를 개선했고, AI 서비스 품질이
+          <b>운영 전 단계의 데이터 이상 신호를 발견·보정하는 구조</b>에 좌우된다는 점을 확인했습니다.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section id="awards" class="block">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">05</span><h2 class="sec-title">수상</h2></div>
+    <div class="aw-grid">
+      <div class="aw gold">
+        <div class="aw-prize">🏆 대상 (1위)</div>
+        <div class="aw-org">2024 숙명 AWS GenAI Playground 해커톤</div>
+        <div class="aw-name">SNS 트렌드 기반 신메뉴 반응 예측 B2B 서비스</div>
+        <div class="aw-desc">Bedrock Agent 기반 베타테스터 검증 구조와 챗봇을 구현해 대상을 수상했습니다.</div>
+      </div>
+      <div class="aw">
+        <div class="aw-prize">🥇 우승</div>
+        <div class="aw-org">AWS Public Sector GameDay · GenAI Unicorn Party</div>
+        <div class="aw-name">GenAI 실무 시나리오 트러블슈팅</div>
+        <div class="aw-desc">AWS GenAI 서비스 활용 실무 시나리오 트러블슈팅 경진대회에서 우승했습니다.</div>
+      </div>
+      <div class="aw ml">
+        <div class="aw-prize">🥈 최우수상</div>
+        <div class="aw-org">숙명 × 연세 ABC Living Lab 해커톤</div>
+        <div class="aw-name">실시간 응급실 병상 조회 통합 웹앱</div>
+        <div class="aw-desc">Elasticsearch 최단거리 기반 실시간 병상 정보 조회 앱을 개발했습니다.</div>
+      </div>
+      <div class="aw">
+        <div class="aw-prize">🏅 우수상 (4위)</div>
+        <div class="aw-org">2024 춘천 AWS DeepRacer 챔피언십</div>
+        <div class="aw-name">강화학습 보상함수 최적화</div>
+        <div class="aw-desc">보상함수 최적화를 통해 자율주행 모델 성능을 개선했습니다.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="block">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">06</span><h2 class="sec-title">경험</h2></div>
+    <div class="exp">
+      <div class="exp-period">2025.02–05</div>
+      <div>
+        <div class="exp-org">넥스트클라우드 · AWS 파트너사</div>
+        <div class="exp-title">Solution Architect 인턴 · 교육팀</div>
+        <div class="exp-desc">클라우드/AI 교육 기획·운영과 고객사 AI PoC 구현·운영을 담당했습니다. 데이터 파이프라인 자동화, 검색·응답 서비스 PM·개발, 인프라 재설계를 요구사항 해석부터 배포·운영 인수인계까지 주도적으로 수행했습니다.</div>
+      </div>
+    </div>
+    <div class="exp">
+      <div class="exp-period">2024–현재</div>
+      <div>
+        <div class="exp-org">AWS · 교육 / 해커톤 / 커뮤니티</div>
+        <div class="exp-title">AWS 기반 데이터·MLOps 프로젝트 다수</div>
+        <div class="exp-desc">AWS AI/MLOps 심화과정, 빅데이터 인재양성 과정, 해커톤·GameDay를 통해 학습·배포 자동화와 수집 파이프라인을 반복 구현하고 외부에서 검증받았습니다.</div>
+      </div>
+    </div>
+    <div class="exp">
+      <div class="exp-period">2023.07–2024.07</div>
+      <div>
+        <div class="exp-org">BOAZ · Big Data / Engineering</div>
+        <div class="exp-title">데이터 엔지니어링 부문</div>
+        <div class="exp-desc">Hadoop 기반 빅데이터 생태계를 학습하고 Kafka 스트리밍 파이프라인 구축을 실습하며, 데이터가 수집·처리·저장·활용으로 이어지는 흐름을 익혔습니다.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTS -->
+<section id="certs" class="block">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">07</span><h2 class="sec-title">자격 · 어학 · 학력</h2></div>
+    <div class="cert">
+      <div class="cert-ic">AWS</div>
+      <div class="cert-name">AWS Certified Solutions Architect – Associate</div>
+      <div class="cert-iss">Amazon Web Services · SAA-C03</div>
+      <div class="cert-lv">Cloud</div>
+    </div>
+    <div class="cert">
+      <div class="cert-ic">AWS</div>
+      <div class="cert-name">AWS Certified AI Practitioner</div>
+      <div class="cert-iss">Amazon Web Services · AIF-C01</div>
+      <div class="cert-lv">AI</div>
+    </div>
+    <div class="cert">
+      <div class="cert-ic">EN</div>
+      <div class="cert-name">OPIc English — Intermediate High</div>
+      <div class="cert-iss">영어 회화 등급</div>
+      <div class="cert-lv eng">IH</div>
+    </div>
+    <div class="exp" style="padding-top:26px;">
+      <div class="exp-period">학사 · 2026.08 졸업예정</div>
+      <div>
+        <div class="exp-org">숙명여자대학교</div>
+        <div class="exp-title">IT공학전공 · 문헌정보학 복수전공</div>
+        <div class="exp-desc">자료구조·객체지향 등 CS 기초와 함께 정보 구조화·분류·검색 관점을 갖춘 배경으로, ETL·검색 인덱싱·데이터 품질 관리에 강점을 가지고 있습니다. (학점 3.54 / 총 140학점)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="ft-inner">
+      <div class="ft-name">Soomin Lee · 이수민</div>
+      <div class="ft-note">현대오토에버 · 데이터기술 · AI Engineer(AI MLOps) 포트폴리오 · 2026</div>
+    </div>
+  </div>
+</footer>
+
+</div>
+</body>
+</html>
