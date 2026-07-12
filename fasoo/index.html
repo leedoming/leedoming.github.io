@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>이수민 · 파수에이아이 AI 컨설턴트 포트폴리오</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Gothic+A1:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F6F8FB;
+  --panel:#FFFFFF;
+  --ink:#0B1224;
+  --ink2:#47536C;
+  --ink3:#8892A6;
+  --line:#E4E9F1;
+  --line2:#EDF1F7;
+  --navy:#12275C;        /* brand deep */
+  --navy-soft:#E8ECF6;
+  --blue:#2A5BE7;        /* capability accent */
+  --blue-soft:#E9EFFE;
+  --trust:#0E7C66;       /* verified / governance */
+  --trust-soft:#DCF1EB;
+  --flag:#B9531B;        /* risk / compliance */
+  --flag-soft:#FAEBDD;
+  --disp:"Space Grotesk","Gothic A1",sans-serif;
+  --sans:"Gothic A1","Space Grotesk",sans-serif;
+  --mono:"Space Mono",ui-monospace,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--sans);
+  background:var(--paper);
+  color:var(--ink);
+  font-size:14px;line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;}
+
+/* ---------- NAV ---------- */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:99;height:54px;padding:0 42px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(246,248,251,.86);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.brand{font-family:var(--mono);font-size:12px;font-weight:700;text-decoration:none;
+  display:flex;align-items:center;gap:9px;letter-spacing:.02em;}
+.brand .blip{width:9px;height:9px;border-radius:2px;background:var(--navy);
+  box-shadow:0 0 0 3px var(--navy-soft);}
+.nav-links{display:flex;gap:22px;list-style:none;}
+.nav-links a{font-family:var(--mono);font-size:11px;color:var(--ink2);
+  text-decoration:none;letter-spacing:.02em;}
+.nav-links a:hover{color:var(--blue);}
+
+/* ---------- LAYOUT ---------- */
+.page{padding-top:54px;}
+.wrap{max-width:1080px;margin:0 auto;padding:0 42px;}
+section{padding:78px 0;border-bottom:1px solid var(--line);}
+
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--blue);display:flex;align-items:center;gap:11px;}
+.eyebrow::before{content:"";display:block;width:26px;height:1px;background:var(--blue);}
+
+.sec-head{display:flex;gap:14px;align-items:baseline;
+  padding-bottom:15px;margin-bottom:38px;border-bottom:1px solid var(--line);}
+.sec-num{font-family:var(--mono);font-size:11px;color:var(--ink3);letter-spacing:.05em;}
+.sec-title{font-family:var(--disp);font-size:27px;font-weight:600;letter-spacing:-.01em;}
+.sec-sub{margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--ink3);
+  letter-spacing:.08em;text-transform:uppercase;align-self:center;}
+
+/* ---------- HERO ---------- */
+#hero{padding:74px 0 66px;border-bottom:1px solid var(--line);}
+.hero-inner{display:grid;grid-template-columns:1fr 348px;gap:52px;align-items:end;}
+.hero-tag{font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--navy);margin-bottom:20px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.hero-tag .cls{background:var(--navy);color:#fff;padding:2px 8px;border-radius:3px;
+  letter-spacing:.1em;font-weight:700;}
+.hero-name{font-family:var(--disp);font-size:clamp(50px,7vw,78px);line-height:.98;
+  letter-spacing:-.03em;font-weight:600;margin-bottom:14px;}
+.hero-name .ko{font-family:var(--sans);font-weight:800;}
+.hero-thesis{font-size:clamp(16px,2vw,21px);font-weight:600;line-height:1.5;
+  letter-spacing:-.01em;margin-bottom:20px;max-width:560px;}
+.hero-thesis .u{color:var(--blue);border-bottom:2px solid var(--blue-soft);padding-bottom:1px;}
+.hero-bio{max-width:552px;font-size:13.5px;line-height:1.95;color:var(--ink2);}
+.hero-links{margin-top:20px;display:flex;gap:8px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;}
+.hero-links a{color:var(--ink2);text-decoration:none;border:1px solid var(--line);
+  padding:5px 10px;border-radius:4px;background:#fff;}
+.hero-links a:first-child{color:var(--blue);border-color:var(--blue-soft);}
+.hero-links a:hover{border-color:var(--blue);color:var(--blue);}
+
+/* dossier ledger */
+.dossier{border:1px solid var(--line);border-radius:8px;background:var(--panel);overflow:hidden;}
+.dossier-top{background:var(--navy);color:#fff;padding:12px 15px;
+  display:flex;justify-content:space-between;align-items:center;}
+.dossier-top .dt{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;}
+.dossier-top .dn{font-family:var(--mono);font-size:10px;color:#9fb3e8;}
+.dossier-body{padding:6px 15px 10px;}
+.drow{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid var(--line2);}
+.drow:last-child{border-bottom:none;}
+.drow .dk{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--ink3);width:56px;flex-shrink:0;padding-top:2px;}
+.drow .dv{font-size:12.5px;font-weight:500;line-height:1.5;color:var(--ink);}
+.stat-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);border-top:none;}
+.ss{background:#fff;padding:12px 10px;text-align:center;}
+.ss .n{font-family:var(--disp);font-size:22px;font-weight:600;line-height:1;}
+.ss .l{display:block;margin-top:5px;font-family:var(--mono);font-size:8.5px;
+  letter-spacing:.05em;text-transform:uppercase;color:var(--ink3);}
+.ss.t .n{color:var(--trust);} .ss.b .n{color:var(--blue);}
+
+/* ---------- FIT ---------- */
+.fit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.fit-card{border:1px solid var(--line);border-radius:8px;background:var(--panel);
+  padding:22px 20px;position:relative;overflow:hidden;}
+.fit-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--blue);}
+.fit-card:nth-child(2)::before{background:var(--trust);}
+.fit-card:nth-child(3)::before{background:var(--flag);}
+.fit-idx{font-family:var(--mono);font-size:10px;color:var(--ink3);margin-bottom:9px;}
+.fit-card h3{font-family:var(--disp);font-size:17px;font-weight:600;margin-bottom:9px;letter-spacing:-.01em;}
+.fit-card p{font-size:12.5px;color:var(--ink2);line-height:1.82;}
+.fit-card .jd{margin-top:12px;font-family:var(--mono);font-size:10px;color:var(--blue);
+  letter-spacing:.02em;padding-top:10px;border-top:1px solid var(--line2);}
+.fit-card:nth-child(2) .jd{color:var(--trust);}
+.fit-card:nth-child(3) .jd{color:var(--flag);}
+
+/* ---------- SKILLS ---------- */
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.sk-group h4{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--navy);margin-bottom:13px;padding-bottom:9px;border-bottom:1px solid var(--line);}
+.sk-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.sk-tag{font-family:var(--mono);font-size:11px;padding:4px 9px;border-radius:4px;
+  background:var(--line2);color:var(--ink);}
+.sk-tag.hi{background:var(--navy);color:#fff;}
+.sk-tag.ac{background:var(--blue);color:#fff;}
+.sk-note{margin-top:12px;font-size:11.5px;color:var(--ink3);line-height:1.7;}
+
+/* ---------- JD MAPPING ---------- */
+.map-list{display:flex;flex-direction:column;border:1px solid var(--line);
+  border-radius:8px;overflow:hidden;background:var(--panel);}
+.map-row{display:grid;grid-template-columns:30px 1fr 1.15fr;gap:18px;
+  padding:18px 20px;border-bottom:1px solid var(--line2);align-items:start;}
+.map-row:last-child{border-bottom:none;}
+.map-row:hover{background:#FBFCFE;}
+.map-n{font-family:var(--mono);font-size:12px;color:#fff;background:var(--navy);
+  width:24px;height:24px;border-radius:5px;display:flex;align-items:center;justify-content:center;}
+.map-jd{font-size:13px;font-weight:600;line-height:1.55;}
+.map-jd span{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink3);margin-bottom:5px;font-weight:400;}
+.map-ev{font-size:12.5px;color:var(--ink2);line-height:1.75;}
+.map-ev b{color:var(--ink);font-weight:600;}
+.map-ev::before{content:"→ ";font-family:var(--mono);color:var(--trust);font-weight:700;}
+
+/* ---------- PROJECTS ---------- */
+.proj-list{display:flex;flex-direction:column;}
+.proj{display:grid;grid-template-columns:176px 1fr;gap:38px;
+  padding:50px 0;border-top:1px solid var(--line);}
+.proj:last-child{border-bottom:1px solid var(--line);}
+.proj-idx{font-family:var(--mono);font-size:10px;color:var(--ink3);margin-bottom:10px;letter-spacing:.05em;}
+.proj-period{font-family:var(--mono);font-size:11px;color:var(--ink2);line-height:1.7;margin-bottom:9px;}
+.proj-type{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);
+  margin-bottom:13px;font-weight:700;}
+.tag{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:999px;
+  font-size:11px;font-weight:700;font-family:var(--sans);}
+.tag-navy{background:var(--navy-soft);color:var(--navy);}
+.tag-gold{background:#FCF1D4;color:#8A6400;}
+.tag-blue{background:var(--blue-soft);color:var(--blue);}
+.tag-trust{background:var(--trust-soft);color:var(--trust);}
+.tag-flag{background:var(--flag-soft);color:var(--flag);}
+
+.proj-title{font-family:var(--disp);font-size:24px;line-height:1.22;letter-spacing:-.015em;
+  font-weight:600;margin-bottom:5px;}
+.proj-sub{font-size:12px;color:var(--blue);font-weight:600;margin-bottom:14px;line-height:1.5;}
+.jd-box{background:var(--blue-soft);border-left:3px solid var(--blue);padding:10px 13px;
+  border-radius:0 6px 6px 0;color:var(--ink2);font-size:12px;line-height:1.72;margin-bottom:14px;}
+.jd-box strong{color:var(--blue);}
+.risk-box{display:flex;gap:11px;background:var(--flag-soft);border:1px solid #F0D9C4;
+  border-radius:7px;padding:11px 13px;margin:12px 0;}
+.risk-box .rk{font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--flag);flex-shrink:0;width:74px;padding-top:2px;font-weight:700;}
+.risk-box p{font-size:12px;color:var(--ink2);line-height:1.72;}
+.risk-box p b{color:var(--ink);}
+.pipe{margin:14px 0;padding:11px 14px;border:1px solid var(--line);border-radius:6px;
+  background:var(--panel);font-family:var(--mono);font-size:11px;line-height:1.9;color:var(--ink2);}
+.pipe span{display:block;margin-bottom:4px;color:var(--ink3);font-size:9px;
+  letter-spacing:.1em;text-transform:uppercase;}
+.contribs h5{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink3);margin-bottom:9px;}
+.ci{display:flex;gap:8px;align-items:baseline;font-size:12.8px;line-height:1.72;
+  color:var(--ink);margin-bottom:7px;}
+.ci::before{content:"→";font-family:var(--mono);font-size:10px;color:var(--blue);flex-shrink:0;}
+.stat-box{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:15px 0;
+  padding:14px;background:var(--paper);border:1px solid var(--line);border-radius:6px;}
+.stat-cell{text-align:center;}
+.stat-n{display:block;font-family:var(--disp);font-size:23px;font-weight:600;line-height:1;}
+.stat-l{display:block;margin-top:5px;font-family:var(--mono);font-size:8.5px;color:var(--ink3);
+  letter-spacing:.05em;text-transform:uppercase;}
+.stack{display:flex;flex-wrap:wrap;gap:5px;margin-top:14px;}
+.st{font-family:var(--mono);font-size:10.5px;padding:3px 8px;border:1px solid var(--line);
+  border-radius:4px;color:var(--ink2);}
+.st.hi{color:var(--blue);border-color:var(--blue);}
+
+/* ---------- AWARDS ---------- */
+.awards-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.aw-card{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:7px;
+  background:var(--panel);padding:20px;}
+.aw-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--blue);}
+.aw-card.gold::before{background:linear-gradient(90deg,#E0A419,#F6D477);}
+.aw-card.trust::before{background:var(--trust);}
+.aw-card.navy::before{background:var(--navy);}
+.aw-prize{font-size:13px;font-weight:800;margin-bottom:6px;}
+.aw-org{font-family:var(--mono);font-size:10px;color:var(--ink3);letter-spacing:.03em;margin-bottom:8px;}
+.aw-name{font-family:var(--disp);font-size:15px;font-weight:600;margin-bottom:7px;line-height:1.3;}
+.aw-desc{font-size:12px;color:var(--ink2);line-height:1.7;}
+
+/* ---------- EXPERIENCE / EDU ---------- */
+.exp-item{display:grid;grid-template-columns:130px 1fr;gap:26px;padding:20px 0;
+  border-bottom:1px solid var(--line2);}
+.exp-item:last-child{border-bottom:none;}
+.exp-period{font-family:var(--mono);font-size:11px;color:var(--ink3);padding-top:2px;}
+.exp-org{font-family:var(--disp);font-size:16px;font-weight:600;margin-bottom:2px;}
+.exp-title{font-size:12px;color:var(--blue);font-weight:600;margin-bottom:7px;}
+.exp-desc{font-size:12.5px;color:var(--ink2);line-height:1.78;}
+
+/* ---------- CERTS ---------- */
+.cert-row{display:flex;align-items:center;gap:14px;padding:13px 0;border-bottom:1px solid var(--line2);}
+.cert-row:first-child{border-top:1px solid var(--line2);}
+.cert-icon{width:36px;height:36px;border-radius:6px;background:var(--navy);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:10px;
+  flex-shrink:0;font-weight:700;}
+.cert-name{flex:1;font-size:13px;font-weight:600;}
+.cert-issuer{font-size:12px;color:var(--ink2);}
+.cert-date{font-family:var(--mono);font-size:10px;color:var(--ink3);}
+.cert-level{padding:2px 9px;border-radius:999px;font-size:11px;font-weight:700;}
+.lv-aws{background:#FCF1D4;color:#8A6400;} .lv-eng{background:var(--trust-soft);color:var(--trust);}
+
+/* ---------- FOOTER ---------- */
+footer{padding:40px 0;border-bottom:none;}
+.ft-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;}
+.ft-name{font-family:var(--disp);font-size:19px;font-weight:600;}
+.ft-note{font-family:var(--mono);font-size:10px;color:var(--ink3);letter-spacing:.03em;}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease;}
+.rv.on{opacity:1;transform:none;}
+
+@media (max-width:960px){
+  .hero-inner,.proj,.exp-item{grid-template-columns:1fr;gap:26px;}
+  .fit-grid,.skills-grid,.awards-grid{grid-template-columns:1fr;}
+  .map-row{grid-template-columns:24px 1fr;gap:12px;}
+  .map-ev{grid-column:1 / -1;padding-left:36px;}
+  nav,.wrap{padding-left:20px;padding-right:20px;}
+  .nav-links{display:none;}
+}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none;}}
+@media print{
+  nav{display:none;} .page{padding-top:0;} section{padding:40px 0;}
+  .rv{opacity:1;transform:none;}
+  @page{margin:10mm;size:A4;}
+  *,*::before,*::after{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <nav>
+    <a class="brand" href="#"><span class="blip"></span>SOOMIN LEE · AI CONSULTANT</a>
+    <ul class="nav-links">
+      <li><a href="#fit">Fit</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#mapping">JD Map</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#awards">Awards</a></li>
+      <li><a href="#exp">Experience</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="wrap">
+      <div class="hero-inner">
+        <div>
+          <div class="hero-tag">
+            <span class="cls">AI ADOPTION ADVISORY</span> 파수에이아이 · AI 컨설턴트 지원
+          </div>
+          <h1 class="hero-name"><span class="ko">이수민</span></h1>
+          <p class="hero-thesis">기업이 AI를 <span class="u">안전하게 도입</span>하도록<br>설계하는 AI 컨설턴트</p>
+          <p class="hero-bio">
+            생성형 AI를 실제 고객 서비스로 구현하고, 공공·교육 현장에서 요구사항을 직접 읽어온 사람입니다.
+            RAG 아키텍처를 설계하되 <b>모델 성능보다 신뢰 가능한 구조를 먼저</b> 세웠고, 잘못된 답변이 곧 사고가 되는
+            도메인에서는 응답 범위를 제어하고 사람에게 넘기는 통제 장치를 설계했습니다.
+            민감 데이터를 보호하면서 기업용 LLM을 도입해야 하는 파수의 컨설팅 현장에서,
+            기술과 비즈니스·보안을 잇는 역할을 할 수 있습니다.
+          </p>
+          <div class="hero-links">
+            <a href="mailto:leedooming@gmail.com">leedooming@gmail.com</a>
+            <a href="https://github.com/leedoming" target="_blank">github.com/leedoming</a>
+            <a href="https://linkedin.com/in/sumin-lee-smwu" target="_blank">LinkedIn</a>
+          </div>
+        </div>
+        <div class="dossier">
+          <div class="dossier-top">
+            <span class="dt">Candidate Brief</span>
+            <span class="dn">REF · FASOO-AIC</span>
+          </div>
+          <div class="dossier-body">
+            <div class="drow"><span class="dk">후보</span><span class="dv">이수민 / Soomin Lee</span></div>
+            <div class="drow"><span class="dk">지원</span><span class="dv">AI 컨설턴트 (신입·주니어)</span></div>
+            <div class="drow"><span class="dk">강점</span><span class="dv">RAG 설계 · 고객 PoC 컨설팅 · 신뢰 중심 AI</span></div>
+            <div class="drow"><span class="dk">현장</span><span class="dv">공공·교육 8개 기관 AI·클라우드 구축·교육</span></div>
+            <div class="drow"><span class="dk">전공</span><span class="dv">숙명여대 · AI/데이터 · 대웅재단 AI 장학생</span></div>
+            <div class="drow"><span class="dk">자격</span><span class="dv">AWS SAA · AI Practitioner · OPIc IH</span></div>
+          </div>
+          <div class="stat-strip">
+            <div class="ss b"><span class="n">6+</span><span class="l">RAG·GenAI 구현</span></div>
+            <div class="ss t"><span class="n">1위</span><span class="l">GenAI 해커톤 대상</span></div>
+            <div class="ss"><span class="n">8</span><span class="l">고객 기관 현장</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FIT -->
+  <section id="fit">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">01</span><h2 class="sec-title">파수에이아이 AI 컨설턴트 직무 적합 포인트</h2></div>
+      <div class="fit-grid">
+        <div class="fit-card rv">
+          <div class="fit-idx">FIT · 01</div>
+          <h3>고객 대면 AI 도입 컨설팅</h3>
+          <p>인턴 기간 고객사 AI PoC를 직접 기획·구현하고 운영 인수인계까지 수행했습니다.
+             8개 공공·교육 기관 현장에서 요구사항을 해석하고, 기술을 고객 언어로 전달하는 일을 반복했습니다.</p>
+          <div class="jd">담당업무 · LLM/데이터 관리 솔루션 도입 컨설팅과 구축 기술지원</div>
+        </div>
+        <div class="fit-card rv">
+          <div class="fit-idx">FIT · 02</div>
+          <h3>도메인 데이터 분석 · RAG 설계</h3>
+          <p>학사행정 RAG 챗봇, 실시간 음성 벡터 검색, 100K+ 자산 한국어 검색엔진까지
+             도메인 데이터를 구조화하고 검색·생성 파이프라인으로 연결한 경험이 있습니다.</p>
+          <div class="jd">담당업무 · 고객사 도메인 데이터 분석 및 RAG 아키텍처 구성</div>
+        </div>
+        <div class="fit-card rv">
+          <div class="fit-idx">FIT · 03</div>
+          <h3>신뢰·보안 중심 AI 설계</h3>
+          <p>잘못된 답변이 공식 오류가 되는 영역에서, 임의 생성 대신 담당 부서로 라우팅하고
+             응답 범위를 제어했습니다. 도입 가이드라인과 리스크 통제를 먼저 생각하는 관점을 갖췄습니다.</p>
+          <div class="jd">담당업무 · 활용 가이드라인·보안 정책 수립 및 리스크 진단</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">02</span><h2 class="sec-title">직무 연관 역량</h2>
+        <span class="sec-sub">GenAI · Infra · Consulting</span></div>
+      <div class="skills-grid">
+        <div class="sk-group rv">
+          <h4>생성형 AI / LLM</h4>
+          <div class="sk-tags">
+            <span class="sk-tag ac">RAG</span>
+            <span class="sk-tag hi">Prompt Engineering</span>
+            <span class="sk-tag hi">Bedrock Agent</span>
+            <span class="sk-tag">Multi-Agent 오케스트레이션</span>
+            <span class="sk-tag">Vector Search</span>
+            <span class="sk-tag">Embeddings</span>
+            <span class="sk-tag">LLM 평가·테스트</span>
+          </div>
+          <p class="sk-note">Bedrock Agent 기반 RAG·멀티 에이전트 오케스트레이션 경험 →
+             LangChain·LangGraph·LlamaIndex와 동일한 설계 개념으로 전환 가능.</p>
+        </div>
+        <div class="sk-group rv">
+          <h4>IT 인프라 / Cloud</h4>
+          <div class="sk-tags">
+            <span class="sk-tag ac">AWS</span>
+            <span class="sk-tag hi">Docker</span>
+            <span class="sk-tag hi">ECS Fargate</span>
+            <span class="sk-tag">Terraform</span>
+            <span class="sk-tag">Lambda</span>
+            <span class="sk-tag">OS · Network 기본</span>
+            <span class="sk-tag">Serverless</span>
+          </div>
+          <p class="sk-note">온프레미스·클라우드 인프라 구조와 배포·비용 최적화를 이해하고,
+             고객 환경에 맞춰 구축 기술지원을 수행할 수 있습니다.</p>
+        </div>
+        <div class="sk-group rv">
+          <h4>데이터 · 컨설팅</h4>
+          <div class="sk-tags">
+            <span class="sk-tag ac">Python</span>
+            <span class="sk-tag">SQL</span>
+            <span class="sk-tag">Java · C (기초)</span>
+            <span class="sk-tag hi">Elasticsearch</span>
+            <span class="sk-tag">도메인 데이터 분석</span>
+            <span class="sk-tag">기술 문서화</span>
+            <span class="sk-tag">고객 발표·전달</span>
+          </div>
+          <p class="sk-note">Python 주력, Java·C 기초. 기술 개념을 비즈니스 언어로 구조화해
+             문서·발표로 전달하는 커뮤니케이션에 강점이 있습니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JD MAPPING -->
+  <section id="mapping">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">03</span><h2 class="sec-title">담당업무 대응 근거</h2>
+        <span class="sec-sub">JD → Evidence</span></div>
+      <div class="map-list">
+        <div class="map-row rv">
+          <div class="map-n">1</div>
+          <div class="map-jd"><span>담당업무</span>기업용 LLM(ELLM)·AI 데이터 관리 솔루션 도입 컨설팅과 구축 기술지원</div>
+          <div class="map-ev"><b>NxtCloud 인턴으로 고객사 AI PoC를 기획·구현</b>하고 운영 구조까지 인수인계. 8개 기관 현장 구축·교육으로 도입~전달 전 과정을 경험.</div>
+        </div>
+        <div class="map-row rv">
+          <div class="map-n">2</div>
+          <div class="map-jd"><span>담당업무</span>고객사 도메인 데이터 분석 및 RAG 아키텍처 구성 지원</div>
+          <div class="map-ev">학사행정 지식베이스 자동 구축, <b>retrieval→reasoning→routing RAG 오케스트레이션</b> 설계, 100K+ 자산 한국어 검색엔진 구축 경험.</div>
+        </div>
+        <div class="map-row rv">
+          <div class="map-n">3</div>
+          <div class="map-jd"><span>담당업무</span>업무 효율화를 위한 프롬프트 엔지니어링 및 테스트 수행</div>
+          <div class="map-ev">Bedrock Agent·LLM 서비스의 <b>프롬프트를 설계하고 4회 이상 품질 반복 검증</b>. 베타테스터 검증 구조를 만들어 응답 품질을 측정.</div>
+        </div>
+        <div class="map-row rv">
+          <div class="map-n">4</div>
+          <div class="map-jd"><span>담당업무</span>AI 솔루션 도입을 위한 활용 가이드라인 및 보안 정책 수립</div>
+          <div class="map-ev">잘못된 검색 시 <b>임의 답변 대신 담당 부서 라우팅</b>·응답 범위 제어로 오류 위험을 통제. 신뢰 가능한 사용 범위를 구조로 명문화.</div>
+        </div>
+        <div class="map-row rv">
+          <div class="map-n">5</div>
+          <div class="map-jd"><span>담당업무</span>기업 AI 도입 시 보안·법적 리스크 진단 및 글로벌 기술/규제 트렌드 리서치</div>
+          <div class="map-ev">사례 없는 신기술(Nova Sonic)을 <b>공식 문서로 직접 검증해 구현·발표</b>. 최신 GenAI 생태계를 지속 추적하며 도입 리스크 관점에서 평가.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">04</span><h2 class="sec-title">Selected Projects</h2>
+        <span class="sec-sub">Fasoo AI · Consulting Fit</span></div>
+      <div class="proj-list">
+
+        <!-- P1 -->
+        <div class="proj rv">
+          <div>
+            <div class="proj-idx">Project 01 · Flagship</div>
+            <div class="proj-period">2025.02–05<br>NxtCloud Internship</div>
+            <div class="proj-type">고객 PoC 컨설팅 · RAG · 리스크 통제</div>
+            <span class="tag tag-navy">🏢 고객사 PoC</span>
+          </div>
+          <div>
+            <h3 class="proj-title">광주대학교 학사행정 RAG 챗봇 PoC</h3>
+            <p class="proj-sub">데이터 수집부터 Agent 응답·서비스 연동까지 구현한 도메인 RAG 시스템 · PM</p>
+            <div class="jd-box"><strong>JD Match:</strong> 고객 도메인 데이터를 분석해 RAG 아키텍처를 구성하고, 도입 가이드라인·응답 통제까지 설계한 사례. 파수 AI 컨설턴트의 핵심 업무(도입 컨설팅·RAG·보안 정책)를 한 프로젝트에 압축.</div>
+            <div class="risk-box">
+              <span class="rk">Risk Control</span>
+              <p>학사 행정 정보는 <b>잘못 답하면 곧 공식 안내 오류</b>가 되는 영역. 생성 성능보다 신뢰 가능한 구조를 우선해, 검색 실패 시 임의 답변 대신 담당 부서로 라우팅하고 응답 범위를 제어.</p>
+            </div>
+            <div class="pipe"><span>Pipeline</span>Lambda + Selenium 크롤링 → EventBridge 스케줄링 → DynamoDB / 지식베이스 적재 → Bedrock Agent(retrieval→reasoning→routing) → 부서 라우팅 → 서비스 응답</div>
+            <div class="contribs">
+              <h5>핵심 기여</h5>
+              <div class="ci">투입 14일 차에 메인 담당자로 발탁되어 설계부터 구현까지 주도</div>
+              <div class="ci">웹 크롤러 스케줄링·LLM 텍스트 추출로 지식베이스 자동 구축</div>
+              <div class="ci">retrieval → reasoning → contact routing 3단계 오케스트레이션 설계</div>
+              <div class="ci">할루시네이션 통제 라우팅으로 행정 오류 위험을 구조적으로 축소</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-cell"><span class="stat-n" style="color:var(--navy)">Day 14</span><span class="stat-l">PM 발탁</span></div>
+              <div class="stat-cell"><span class="stat-n" style="color:var(--blue)">3-step</span><span class="stat-l">RAG 오케스트레이션</span></div>
+              <div class="stat-cell"><span class="stat-n" style="color:var(--trust)">Routing</span><span class="stat-l">할루시네이션 통제</span></div>
+            </div>
+            <div class="stack">
+              <span class="st hi">Bedrock Agent</span><span class="st hi">RAG</span><span class="st hi">DynamoDB</span>
+              <span class="st">Lambda</span><span class="st">EventBridge</span><span class="st">Selenium</span><span class="st">Python</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- P2 -->
+        <div class="proj rv">
+          <div>
+            <div class="proj-idx">Project 02</div>
+            <div class="proj-period">2024.11<br>GenAI Playground</div>
+            <div class="proj-type">B2B 문제 재정의 · AI Agent · 대상</div>
+            <span class="tag tag-gold">🏆 대상 (1위)</span>
+          </div>
+          <div>
+            <h3 class="proj-title">YORILAB · 신메뉴 시장 반응 예측 AI</h3>
+            <p class="proj-sub">SNS 트렌드 기반 신메뉴 반응 예측 B2B 서비스 · 팀 리드</p>
+            <div class="jd-box"><strong>JD Match:</strong> 비즈니스 문제를 분석해 논리적 대안을 도출하고, 기업(B2B) 도메인에 맞는 AI Agent 솔루션을 설계한 사례. 문제 정의와 기술 선택의 적합성을 인정받아 대상 수상.</div>
+            <div class="risk-box">
+              <span class="rk">Validation</span>
+              <p>Agent 응답을 그대로 신뢰하지 않고 <b>베타테스터 검증 구조</b>를 붙여, 실제 시장 반응과 예측을 비교·측정하는 품질 통제 루프를 설계.</p>
+            </div>
+            <div class="pipe"><span>Pipeline</span>SNS 트렌드 수집 → 도메인 문제 B2B 재정의 → Bedrock Agent 반응 예측 → 베타테스터 검증 → 챗봇 응답</div>
+            <div class="contribs">
+              <h5>핵심 기여</h5>
+              <div class="ci">팀 리드로 문제를 B2C에서 B2B 도메인으로 재정의</div>
+              <div class="ci">Bedrock Agent 기반 예측·응답 구조 설계</div>
+              <div class="ci">베타테스터 검증 구조로 예측 품질을 정량 확인</div>
+              <div class="ci">문제 정의·기술 선택 적합성을 인정받아 대상(1위) 수상</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-cell"><span class="stat-n" style="color:#8A6400">1위</span><span class="stat-l">대상</span></div>
+              <div class="stat-cell"><span class="stat-n" style="color:var(--blue)">B2C→B2B</span><span class="stat-l">문제 재정의</span></div>
+              <div class="stat-cell"><span class="stat-n" style="color:var(--trust)">검증 루프</span><span class="stat-l">품질 통제</span></div>
+            </div>
+            <div class="stack">
+              <span class="st hi">Bedrock Agent</span><span class="st hi">생성형 AI</span><span class="st">Prompt Engineering</span>
+              <span class="st">Python</span><span class="st">AWS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- P3 -->
+        <div class="proj rv">
+          <div>
+            <div class="proj-idx">Project 03</div>
+            <div class="proj-period">2025<br>AWS Public Sector Day</div>
+            <div class="proj-type">신기술 레퍼런스 검증 · 발표</div>
+            <span class="tag tag-navy">🎤 발표 선정</span>
+          </div>
+          <div>
+            <h3 class="proj-title">Nova Sonic 실시간 음성 GenAI · 벡터 검색</h3>
+            <p class="proj-sub">실시간 오디오 스트리밍 + 벡터 검색 구조 · 공공부문 행사 발표</p>
+            <div class="jd-box"><strong>JD Match:</strong> 사례가 거의 없는 최신 GenAI 기술을 공식 문서로 직접 검증해 구현하고, 도입 리스크·트렌드 관점에서 정리해 발표한 사례. 글로벌 기술 트렌드 리서치·전달 역량을 보여줌.</div>
+            <div class="pipe"><span>Pipeline</span>음성 입력 → Nova Sonic 실시간 스트리밍 → Titan Embeddings → S3 Vectors → OpenSearch 벡터 검색 → 4개 병렬 Bedrock Agent 비동기 조율 → 응답</div>
+            <div class="contribs">
+              <h5>핵심 기여</h5>
+              <div class="ci">참고 사례 없는 신기술을 공식 문서 검증으로 직접 구현</div>
+              <div class="ci">Titan Embeddings → S3 Vectors → OpenSearch 벡터 파이프라인 구성</div>
+              <div class="ci">4개 Agent를 fault-tolerant하게 비동기 조율하는 구조 설계</div>
+              <div class="ci">2024 GameDay 우승 후 2025 발표자로 선정, 레퍼런스 공유</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-cell"><span class="stat-n" style="color:var(--blue)">4×</span><span class="stat-l">병렬 Agent</span></div>
+              <div class="stat-cell"><span class="stat-n" style="color:var(--navy)">Speaker</span><span class="stat-l">공공부문 발표</span></div>
+              <div class="stat-cell"><span class="stat-n" style="color:var(--trust)">Realtime</span><span class="stat-l">음성 GenAI</span></div>
+            </div>
+            <div class="stack">
+              <span class="st hi">Nova Sonic</span><span class="st hi">S3 Vectors</span><span class="st hi">OpenSearch</span>
+              <span class="st">Bedrock Agent</span><span class="st">Titan Embeddings</span><span class="st">Python</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- P4 -->
+        <div class="proj rv">
+          <div>
+            <div class="proj-idx">Project 04</div>
+            <div class="proj-period">2023.12–2024.05<br>AI 장학 프로그램</div>
+            <div class="proj-type">도메인 데이터 분석 · 검색엔진</div>
+            <span class="tag tag-trust">🎓 AI 장학생</span>
+          </div>
+          <div>
+            <h3 class="proj-title">헬스케어 식단 검색·생성 파이프라인</h3>
+            <p class="proj-sub">100K+ 자산 한국어 검색엔진 구축 · 도메인 요구에 맞춘 B2B 전환</p>
+            <div class="jd-box"><strong>JD Match:</strong> 고객 도메인 데이터를 대규모로 정제·자산화하고, 검색+생성형 AI를 결합한 워크플로우로 설계한 사례. 도메인 데이터 분석과 문제 재정의 역량을 보여줌.</div>
+            <div class="risk-box">
+              <span class="rk">Redefinition</span>
+              <p>평점 데이터 부족으로 추천 평가가 어렵다는 점을 확인한 뒤 <b>문제를 다시 정의</b>, 현업 영양사 업무 효율을 높이는 식단 생성 흐름으로 방향 전환.</p>
+            </div>
+            <div class="pipe"><span>Pipeline</span>레시피 크롤링·전처리 → Elasticsearch nori 한국어 검색엔진 → 트렌드·자산 구조화 → LLM 기반 식단 생성</div>
+            <div class="contribs">
+              <h5>핵심 기여</h5>
+              <div class="ci">약 100K+ 데이터를 수집·정제해 검색 가능한 자산으로 구축</div>
+              <div class="ci">Elasticsearch + nori_tokenizer 한국어 검색엔진 설계</div>
+              <div class="ci">추천 고집 대신 도메인 요구에 맞는 생성형 AI로 방향 전환</div>
+              <div class="ci">최종 발표에서 실무 관점 피드백을 반영해 구조 구체화</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-cell"><span class="stat-n" style="color:var(--blue)">100K+</span><span class="stat-l">검색 자산</span></div>
+              <div class="stat-cell"><span class="stat-n" style="color:var(--navy)">B2C→B2B</span><span class="stat-l">문제 재정의</span></div>
+              <div class="stat-cell"><span class="stat-n" style="color:var(--trust)">Search+GenAI</span><span class="stat-l">워크플로우</span></div>
+            </div>
+            <div class="stack">
+              <span class="st hi">Elasticsearch</span><span class="st hi">nori_tokenizer</span><span class="st">Python</span>
+              <span class="st">LLM</span><span class="st">생성형 AI</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- P5 -->
+        <div class="proj rv">
+          <div>
+            <div class="proj-idx">Project 05</div>
+            <div class="proj-period">2024.03–05<br>AWS AI/MLOps</div>
+            <div class="proj-type">보안 도메인 AI · 신뢰 운영</div>
+            <span class="tag tag-flag">🛡️ 보안 도메인</span>
+          </div>
+          <div>
+            <h3 class="proj-title">AI X-ray 위해물품 탐지 파이프라인</h3>
+            <p class="proj-sub">YOLOv8 → CLIP → LLM 3단계 분석 + 자동 재학습 · 무중단 인프라</p>
+            <div class="jd-box"><strong>JD Match:</strong> 장애가 곧 보안 공백으로 이어지는 시스템을 안정적 운영·자동 재학습 구조로 설계한 사례. 보안 도메인에서 AI를 신뢰 가능하게 운영하는 관점을 보여줌.</div>
+            <div class="risk-box">
+              <span class="rk">Reliability</span>
+              <p>단순 모델 구현을 넘어, 한 가용영역이 내려가도 탐지 서비스가 유지되는 <b>무중단 구조</b>와 정확도 하락 시 자동 재학습이 이어지는 운영 흐름을 함께 설계.</p>
+            </div>
+            <div class="pipe"><span>Pipeline</span>이미지 입력 → YOLOv8 탐지 → CLIP 재판별 → LLM 분석 → 5-step SageMaker Pipeline → 정확도 하락 시 자동 재학습 → RAG / 알림</div>
+            <div class="contribs">
+              <h5>핵심 기여</h5>
+              <div class="ci">Multi-AZ 이중화·Auto Scaling으로 한 AZ 장애에도 유지되는 구조 설계</div>
+              <div class="ci">인프라를 Terraform으로 코드화해 설정 차이 장애 가능성 제거</div>
+              <div class="ci">5-step SageMaker Pipeline + 임계치 하락 시 자동 재학습 루프</div>
+              <div class="ci">교내 우수작품 선정·학회 발표까지 수행</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-cell"><span class="stat-n" style="color:var(--navy)">Multi-AZ</span><span class="stat-l">무중단 설계</span></div>
+              <div class="stat-cell"><span class="stat-n" style="color:var(--blue)">5-step</span><span class="stat-l">MLOps 자동화</span></div>
+              <div class="stat-cell"><span class="stat-n" style="color:var(--trust)">3</span><span class="stat-l">AI 모델 단계</span></div>
+            </div>
+            <div class="stack">
+              <span class="st hi">SageMaker Pipeline</span><span class="st hi">Terraform</span><span class="st">YOLOv8</span>
+              <span class="st">CLIP</span><span class="st">Multi-AZ</span><span class="st">Python</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- AWARDS -->
+  <section id="awards">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">05</span><h2 class="sec-title">수상 · 발표</h2>
+        <span class="sec-sub">Recognition</span></div>
+      <div class="awards-grid">
+        <div class="aw-card gold rv">
+          <div class="aw-prize">🏆 대상 (1위)</div>
+          <div class="aw-org">2024 숙명 AWS GenAI Playground 해커톤 · 2024.11</div>
+          <div class="aw-name">YORILAB · 신메뉴 시장 반응 예측 AI</div>
+          <div class="aw-desc">B2B 도메인 재정의와 Bedrock Agent 구조 설계, 베타테스터 검증 구조로 문제 정의·기술 선택 적합성을 인정받아 대상 수상.</div>
+        </div>
+        <div class="aw-card navy rv">
+          <div class="aw-prize">🏆 우승</div>
+          <div class="aw-org">AWS Public Sector GameDay (GenAI Unicorn Party) · 2024.07</div>
+          <div class="aw-name">GenAI 실무 시나리오 트러블슈팅</div>
+          <div class="aw-desc">AWS GenAI 서비스 활용 실무 시나리오 트러블슈팅 경진대회에서 우승. 이후 2025 발표자 선정으로 이어짐.</div>
+        </div>
+        <div class="aw-card trust rv">
+          <div class="aw-prize">🥈 최우수상</div>
+          <div class="aw-org">숙명여대 × 연세대 ABC Living Lab 해커톤 · 2024.03</div>
+          <div class="aw-name">실시간 응급실 병상 조회 웹앱</div>
+          <div class="aw-desc">Elasticsearch 최단거리 기반 실시간 응급실 병상 정보 조회 통합 웹 앱을 개발해 최우수상 수상.</div>
+        </div>
+        <div class="aw-card rv">
+          <div class="aw-prize">🥉 우수상 (4위)</div>
+          <div class="aw-org">2024 춘천 AWS 딥레이서 챔피언십 · 2024.09</div>
+          <div class="aw-name">강화학습 보상함수 최적화</div>
+          <div class="aw-desc">강화학습 보상함수 최적화를 통해 자율주행 모델 성능을 개선하며 우수상 수상.</div>
+        </div>
+        <div class="aw-card rv">
+          <div class="aw-prize">🏅 입상 (SMCU상)</div>
+          <div class="aw-org">SMCU AI/Bigdata 해커톤 · 2023.09</div>
+          <div class="aw-name">1인 가구 식단 추천 챗봇</div>
+          <div class="aw-desc">레시피 데이터 기반으로 1인 가구를 대상으로 한 식단 추천 챗봇을 개발해 입상.</div>
+        </div>
+        <div class="aw-card navy rv">
+          <div class="aw-prize">🎤 발표 선정</div>
+          <div class="aw-org">AWS Public Sector Day 2025 Seoul</div>
+          <div class="aw-name">Nova Sonic 실시간 음성 서비스 발표</div>
+          <div class="aw-desc">공공부문 행사에서 사례가 거의 없는 신기술을 직접 구현한 개발 사례로 발표 팀에 선정.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="exp">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">06</span><h2 class="sec-title">경력 · 교육</h2>
+        <span class="sec-sub">Experience &amp; Training</span></div>
+
+      <div class="exp-item rv">
+        <div class="exp-period">2025.02–05</div>
+        <div>
+          <div class="exp-org">NxtCloud (넥스트클라우드)</div>
+          <div class="exp-title">Cloud Solution Architect Intern · 교육팀</div>
+          <div class="exp-desc">고객사 AI PoC를 기획·구현하고 운영 구조를 인수인계했습니다. 학사행정 RAG 챗봇 PM·개발, Face Swap 서비스 인프라 재설계와 함께 공공·교육 8개 기관의 AI·클라우드 현장 교육·해커톤을 기획·진행하며, 요구사항 해석부터 배포·전달까지 경험했습니다.</div>
+        </div>
+      </div>
+
+      <div class="exp-item rv">
+        <div class="exp-period">2024.03–05</div>
+        <div>
+          <div class="exp-org">AWS AI/MLOps Application 심화과정 <span style="font-family:var(--mono);font-size:10px;color:var(--ink3);font-weight:400;">· 72h</span></div>
+          <div class="exp-title">AWS · 숙명여대 SW중심대학사업단</div>
+          <div class="exp-desc">X-ray 위해물품 탐지 AI 자동화 서비스를 설계·구축하고, SageMaker·Bedrock 기반 MLOps를 실습했습니다.</div>
+        </div>
+      </div>
+
+      <div class="exp-item rv">
+        <div class="exp-period">2023.05–06</div>
+        <div>
+          <div class="exp-org">빅데이터 인재양성 빅.캠.프 <span style="font-family:var(--mono);font-size:10px;color:var(--ink3);font-weight:400;">· 40h</span></div>
+          <div class="exp-title">AWS · 숙명여대 빅데이터사업단</div>
+          <div class="exp-desc">AWS 클라우드 핵심 이론·아키텍처를 학습하고, 서버리스 기반 Slack 봇을 설계·구현하는 프로젝트를 수행했습니다.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTS -->
+  <section id="certs">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">07</span><h2 class="sec-title">자격 · 언어</h2>
+        <span class="sec-sub">Certifications</span></div>
+      <div class="cert-row rv">
+        <div class="cert-icon">AWS</div>
+        <div class="cert-name">AWS Certified Solutions Architect – Associate</div>
+        <div class="cert-issuer">Amazon Web Services</div>
+        <div class="cert-date">2025.02</div>
+        <div class="cert-level lv-aws">Cloud</div>
+      </div>
+      <div class="cert-row rv">
+        <div class="cert-icon">AWS</div>
+        <div class="cert-name">AWS Certified AI Practitioner</div>
+        <div class="cert-issuer">Amazon Web Services</div>
+        <div class="cert-date">2025.03</div>
+        <div class="cert-level lv-aws">AI</div>
+      </div>
+      <div class="cert-row rv">
+        <div class="cert-icon">ENG</div>
+        <div class="cert-name">OPIc · Intermediate High (IH)</div>
+        <div class="cert-issuer">English Speaking</div>
+        <div class="cert-date">Valid</div>
+        <div class="cert-level lv-eng">English</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="ft-inner">
+        <div class="ft-name">이수민 · Soomin Lee</div>
+        <div class="ft-note">FASOO AI · AI CONSULTANT PORTFOLIO · 2026 · leedooming@gmail.com</div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+  (function(){
+    var els = document.querySelectorAll('.rv');
+    if(!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      els.forEach(function(e){e.classList.add('on');}); return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('on'); io.unobserve(en.target);} });
+    },{threshold:.12});
+    els.forEach(function(e){io.observe(e);});
+  })();
+</script>
+</body>
+</html>
