@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="이수민의 AICC Product Engineer 지원 포트폴리오. RAG, Voice AI, Slack Bot, AI Serving 경험을 실제 고객 문의 흐름과 연결합니다.">
+  <meta name="theme-color" content="#f4f0e8">
+  <title>Soomin Lee — AI Product Engineer</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2317274a'/%3E%3Cpath d='M18 19h28v7H26v7h17v7H26v12h-8z' fill='%23f4f0e8'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 바로가기</a>
+  <header class="site-header">
+    <a class="wordmark" href="#top" aria-label="페이지 맨 위로">SOOMIN LEE</a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav" aria-label="주요 섹션">
+      <a href="#story">Story</a>
+      <a href="#rag">RAG</a>
+      <a href="#voice">Voice AI</a>
+      <a href="#sidebot">Sidebot</a>
+      <a href="#faceswap">AI Serving</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section id="top" class="hero section-grid">
+      <div class="eyebrow">AICC PRODUCT ENGINEER PORTFOLIO · 2026</div>
+      <div class="hero-copy">
+        <p class="hero-kicker">From a real call to a working AI product.</p>
+        <h1>사람이 반복해서 받는 문의를<br><span>실제로 쓰이는 AI 제품</span>으로 바꿉니다.</h1>
+        <p class="hero-lead">교내 대표전화에서 문의와 라우팅을 경험하고, RAG로 답변 근거를 만들고, Voice AI로 대화의 접점을 넓히고, Sidebot으로 현장의 반복 업무를 빠르게 제품화했습니다.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#story">경험의 흐름 보기</a>
+          <a class="button text-link" href="mailto:leedooming@gmail.com">leedooming@gmail.com</a>
+        </div>
+      </div>
+      <aside class="hero-index" aria-label="핵심 역량">
+        <p>RAG</p><p>Voice AI</p><p>Agent</p><p>Cloud</p>
+      </aside>
+      <div class="hero-note">I turn real user problems into AI products that can actually be used.</div>
+    </section>
+
+    <section id="story" class="story section-grid reveal">
+      <div class="section-label">THE THROUGHLINE</div>
+      <div class="section-heading">
+        <p class="kicker">기술 목록이 아니라, 문제를 해결해 온 순서입니다.</p>
+        <h2>문의의 시작부터<br>운영 가능한 제품까지</h2>
+      </div>
+      <ol class="story-track">
+        <li><span>01</span><strong>Listen</strong><p>대표전화에서 문의 유형과 담당부서 연결 흐름을 경험</p></li>
+        <li><span>02</span><strong>Ground</strong><p>변화하는 학사 데이터를 수집하고 근거 기반 답변을 구성</p></li>
+        <li><span>03</span><strong>Talk</strong><p>실시간 양방향 음성으로 자연스러운 AI 대화 경험 구현</p></li>
+        <li><span>04</span><strong>Assist</strong><p>현장의 반복 문제를 Slack 안에서 빠르게 제품화</p></li>
+        <li><span>05</span><strong>Operate</strong><p>AI 기능을 컨테이너 기반 서비스로 재설계하고 배포</p></li>
+      </ol>
+    </section>
+
+    <section id="rag" class="project section-grid reveal">
+      <div class="section-label">01 · KNOWLEDGE</div>
+      <div class="project-title">
+        <p class="kicker">Gwangju University · PM & Developer</p>
+        <h2>University RAG Chatbot</h2>
+        <p>정확히 답하거나, 불확실하면 적절한 담당 부서로 연결하기 위한 학사정보 RAG 파이프라인.</p>
+      </div>
+      <div class="project-body">
+        <div class="problem-card">
+          <span>Problem</span>
+          <p>학사 정보는 계속 바뀌고 문서 형식도 제각각입니다. 정적인 FAQ만으로는 최신성과 근거를 함께 유지하기 어렵습니다.</p>
+        </div>
+        <div class="decision-grid">
+          <article><span>01</span><h3>Dynamic collection</h3><p>대학 웹사이트의 공지·학사 데이터를 수집해 S3에 적재하고 갱신 흐름을 구성했습니다.</p></article>
+          <article><span>02</span><h3>Data processing</h3><p>문서 유형에 따라 OCR, parsing, chunking을 거쳐 벡터 인덱스에 적재 가능한 형태로 정리했습니다.</p></article>
+          <article><span>03</span><h3>RAG infrastructure</h3><p>Bedrock Knowledge Base·Agent와 Vector Store를 연결하고 Slack을 사용자 접점으로 삼았습니다.</p></article>
+        </div>
+      </div>
+      <div class="evidence-gallery">
+        <figure class="evidence rag-evidence">
+          <img src="assets/rag-architecture.png" alt="광주대학교 RAG 챗봇 AWS 아키텍처. Slack API, Lambda, DynamoDB, EventBridge, Bedrock Agent와 Knowledge Base, Aurora PostgreSQL로 구성됨" loading="lazy">
+          <figcaption><span>Architecture</span> 지속 수집, 벡터 저장소, Agent, Slack을 하나의 운영 흐름으로 연결</figcaption>
+        </figure>
+        <figure class="evidence slack-evidence">
+          <img src="assets/rag-slack-response.png" alt="광주대학교 Slack에서 라이터 챗봇이 재학증명서 발급 방법과 담당 부서 정보를 안내하는 실제 응답 화면" loading="lazy">
+          <figcaption><span>In use</span> 학사 문의에 답변하고 교무처 담당 정보까지 안내하는 실제 Slack 응답</figcaption>
+        </figure>
+      </div>
+      <div class="tech-line"><span>AWS Bedrock</span><span>Knowledge Base</span><span>Aurora PostgreSQL + pgvector</span><span>Lambda</span><span>Slack API</span></div>
+    </section>
+
+    <section id="voice" class="project dark section-grid reveal">
+      <div class="section-label">02 · CONVERSATION</div>
+      <div class="project-title">
+        <p class="kicker">Amazon Nova Sonic · Real-time Voice AI</p>
+        <h2>Voice AI that<br>keeps the conversation moving.</h2>
+        <p>상용 Speech-to-Speech 모델을 사용하는 데서 그치지 않고, 실시간 대화 데이터를 영어회화 도우미 Agent와 연결해 사용자가 말하는 동안 피드백이 쌓이는 제품 흐름을 구현했습니다.</p>
+      </div>
+      <div class="voice-flow" role="img" aria-label="Nova Sonic 대화에서 실시간 음성과 텍스트를 데이터베이스에 기록하고 Bedrock Agent가 분석해 사용자 인터페이스에 피드백하는 흐름">
+        <div><small>01</small><strong>Nova Sonic</strong><p>실시간 음성 대화</p></div>
+        <i aria-hidden="true"></i>
+        <div class="accent"><small>02</small><strong>Live logging</strong><p>음성 · 텍스트를 DB에 기록</p></div>
+        <i aria-hidden="true"></i>
+        <div><small>03</small><strong>Bedrock Agent</strong><p>영어회화 도우미 분석</p></div>
+        <i aria-hidden="true"></i>
+        <div><small>04</small><strong>Live feedback UI</strong><p>문법 교정 · 추가 질문 · 추천 표현</p></div>
+      </div>
+      <div class="nova-product-ui" aria-label="Nova Sonic 영어회화 도우미 제품 화면 재구성">
+        <div class="nova-ui-bar">
+          <div class="nova-brand"><span>✦</span><b>Nova Sonic</b></div>
+          <div class="room-title"><b>English Study Room</b><small>Live session</small></div>
+          <div class="live-pill"><i></i> AI Ready</div>
+        </div>
+        <div class="nova-ui-body">
+          <section class="conversation-pane">
+            <div class="panel-heading"><span>Conversation</span><small>VOICE + TEXT LOGGING</small></div>
+            <div class="utterance user-line"><span>YOU</span><p>I think traveling alone give me more confidence.</p><time>10:24:08</time></div>
+            <div class="utterance assistant-line"><span>AI TUTOR</span><p>That sounds meaningful. What helped you feel more confident during the trip?</p><time>10:24:11</time></div>
+            <div class="listening-line"><span class="wave"><i></i><i></i><i></i><i></i><i></i></span><b>Listening</b><small>transcribing and logging in real time</small></div>
+          </section>
+          <aside class="session-pane">
+            <div class="panel-heading"><span>Session</span><small>LIVE</small></div>
+            <div class="voice-orb"><span></span><i></i><b>Listening...</b></div>
+            <dl><div><dt>Transcript</dt><dd>Synced</dd></div><div><dt>Agent feedback</dt><dd>Streaming</dd></div></dl>
+          </aside>
+        </div>
+        <div class="feedback-heading"><div><span>AI Feedback</span><small>Bedrock Agent</small></div><b>Updated now</b></div>
+        <div class="feedback-cards">
+          <article class="grammar-card"><div><span>01</span><h3>Grammar</h3></div><p><del>traveling alone give</del></p><p class="correction">traveling alone gives</p><small>주어가 단수이므로 동사에 -s를 붙여요.</small></article>
+          <article class="expression-card"><div><span>02</span><h3>Expression</h3></div><p>More natural</p><p class="correction">Traveling alone makes me feel more confident.</p><small>의미를 유지하면서 자연스럽게 표현했어요.</small></article>
+          <article class="question-card"><div><span>03</span><h3>Next question</h3></div><p class="correction">What was the most challenging part of traveling alone?</p><small>대화를 이어갈 수 있는 추가 질문이에요.</small></article>
+        </div>
+        <p class="ui-caption"><span>PRODUCT UI</span> 실시간 대화를 유지하면서 별도 Agent가 분석한 결과를 문법·표현·추가 질문으로 나눠 표시</p>
+      </div>
+      <div class="project-body split-copy">
+        <article><span class="mini-label">PRODUCT FLOW</span><h3>대화와 분석이 동시에 보이도록 연결했습니다.</h3><p>Nova Sonic의 실시간 음성과 텍스트를 DB에 로깅하고, 축적되는 대화 내용을 Bedrock Agent에 전달했습니다. Agent의 분석 결과는 문법 교정, 추가 질문, 추천 표현으로 나눠 UI에 실시간 표시했습니다.</p></article>
+        <article><span class="mini-label">ARCHITECTURE DECISION</span><h3>대화 세션과 피드백 처리를 분리했습니다.</h3><p>처음에는 Nova Sonic의 tool calling으로 Agent를 직접 호출하려 했습니다. 하지만 도구 응답을 기다리는 동안 음성 대화도 중단되는 제약을 확인해, 대화는 계속 유지하고 분석·피드백은 별도 Agent 흐름에서 처리하도록 설계했습니다.</p></article>
+      </div>
+      <div class="tech-line"><span>Amazon Nova Sonic</span><span>Amazon Bedrock Agent</span><span>Real-time logging</span><span>Database</span><span>Live feedback UI</span></div>
+    </section>
+
+    <section id="sidebot" class="project section-grid reveal">
+      <div class="section-label">03 · OPERATIONS</div>
+      <div class="project-title">
+        <p class="kicker">Slack Sidebot · Field-driven product building</p>
+        <h2>작은 반복 문제를<br>빠르게 동작하는 도구로</h2>
+        <p>택시버디와 신문고 Sidebot을 통해 현장의 이야기를 듣고, 필요한 입력과 출력을 정리한 뒤, 사람들이 이미 쓰는 Slack 안에 해결책을 만들었습니다.</p>
+      </div>
+      <div class="sidebot-panel">
+        <div class="slack-shell" aria-label="Slack Sidebot 대화 예시">
+          <div class="slack-top"><span></span><span></span><span></span><b># sidebot</b></div>
+          <div class="message"><div class="avatar">S</div><p><strong>Sidebot</strong><small>10:24</small>반복되는 요청을 받았어요. 필요한 정보부터 정리할게요.</p></div>
+          <div class="message user"><div class="avatar">U</div><p><strong>User</strong><small>10:25</small>지금 바로 팀 안에서 확인하고 싶어요.</p></div>
+          <div class="message"><div class="avatar">S</div><p><strong>Sidebot</strong><small>10:25</small>수집 → 정리 → 응답까지 하나의 흐름으로 처리했습니다.</p></div>
+        </div>
+        <ol class="build-loop">
+          <li><b>Listen</b><span>현장 사용자의 반복 문제 파악</span></li>
+          <li><b>Define</b><span>필요한 입력·출력과 예외 흐름 정의</span></li>
+          <li><b>Build</b><span>공통 크롤러와 템플릿으로 빠르게 구현</span></li>
+          <li><b>Use</b><span>새 도구 대신 기존 Slack 흐름에 배치</span></li>
+        </ol>
+      </div>
+      <blockquote>“기술을 먼저 고르기보다, 누가 언제 무엇 때문에 멈추는지를 먼저 봅니다.”</blockquote>
+      <div class="tech-line"><span>Slack</span><span>Automation</span><span>Crawler</span><span>Rapid prototyping</span><span>User feedback</span></div>
+    </section>
+
+    <section id="faceswap" class="project pale-blue section-grid reveal">
+      <div class="section-label">04 · SERVING</div>
+      <div class="project-title">
+        <p class="kicker">NxtCloud · Cloud Solution Architect Intern</p>
+        <h2>Face Swap AI Service</h2>
+        <p>외부 엔지니어가 빠르게 만든 MVP를 분석하고, 모델 탐색부터 API와 컨테이너 아키텍처까지 내부에서 운영 가능한 서비스로 재구축했습니다.</p>
+      </div>
+      <div class="before-after">
+        <article>
+          <span>BEFORE · DEMO</span>
+          <h3>Single-request server</h3>
+          <ul><li>외부 개발 구조</li><li>수동 서버 용량 조정</li><li>낮은 내부 유지보수성</li></ul>
+        </article>
+        <div class="transition" aria-hidden="true"><span></span><b>RE-DESIGN</b><span></span></div>
+        <article class="after">
+          <span>AFTER · SERVICE</span>
+          <h3>Containerized AI serving</h3>
+          <ul><li>API request / response</li><li>Session ID 기반 병렬 처리</li><li>ECR → ECS Fargate 배포</li></ul>
+        </article>
+      </div>
+      <div class="project-body split-copy">
+        <article><span class="mini-label">INVESTIGATION</span><h3>제약을 문서에서 역추적했습니다.</h3><p>SageMaker Serverless Endpoint 배포 실패 후 공식 문서와 서비스 제약을 확인해, 4개 모델이 연결된 큰 컨테이너 이미지가 지원 범위를 넘는 원인임을 찾았습니다.</p></article>
+        <article><span class="mini-label">DECISION</span><h3>모델 특성에 맞춰 아키텍처를 바꿨습니다.</h3><p>관리형 서비스 선택을 고집하지 않고 ECS Fargate로 전환해 컨테이너 단위 관리, 요청 증가 대응, 내부 유지보수가 가능한 구조를 만들었습니다.</p></article>
+      </div>
+      <div class="tech-line"><span>Docker</span><span>Amazon ECR</span><span>Amazon ECS Fargate</span><span>Hugging Face</span><span>Inference API</span></div>
+    </section>
+
+    <section id="about" class="about section-grid reveal">
+      <div class="section-label">05 · WHY AICC</div>
+      <div class="section-heading">
+        <p class="kicker">Sookmyung Women’s University · Digital Infrastructure Team</p>
+        <h2>전화 한 통의 맥락을<br>기술의 출발점으로</h2>
+      </div>
+      <div class="about-copy">
+        <p class="large-copy">교내 대표전화 응대와 전화망 운영을 지원하며, 문의를 이해하고 적절한 담당자에게 연결하는 일이 고객 경험의 시작이라는 것을 배웠습니다.</p>
+        <p>단자 누수·부식과 같은 물리 장애를 추적해 원인을 찾는 일부터, 반복되는 문의의 흐름을 관찰하는 일까지 경험했습니다. 그래서 AICC를 단순한 음성 모델이 아니라 <strong>지식, 대화, 라우팅, 운영이 함께 맞물리는 제품</strong>으로 봅니다.</p>
+      </div>
+      <div class="fit-grid">
+        <article><span>UNDERSTAND</span><h3>문의의 맥락</h3><p>대표전화 응대와 담당부서 라우팅</p></article>
+        <article><span>BUILD</span><h3>AI 제품</h3><p>RAG · Voice AI · Agent · Slack Bot</p></article>
+        <article><span>OPERATE</span><h3>서비스 구조</h3><p>Container · Cloud · Troubleshooting</p></article>
+      </div>
+      <div class="credentials">
+        <div><span>CERTIFICATIONS</span><p>AWS Solutions Architect – Associate<br>AWS AI Practitioner · SQLD</p></div>
+        <div><span>COMMUNICATION</span><p>OPIc IH<br>사용자 문제를 구조화하는 문서화와 협업</p></div>
+        <div><span>LINKS</span><p><a href="https://github.com/leedoming">github.com/leedoming</a><br><a href="https://linkedin.com/in/soominlee-ee">linkedin.com/in/soominlee-ee</a></p></div>
+      </div>
+    </section>
+
+    <section class="closing section-grid reveal">
+      <div class="section-label">LET’S BUILD</div>
+      <h2>고객의 질문이 시작되는 곳에서,<br>쓸 수 있는 답을 만들겠습니다.</h2>
+      <div class="closing-links"><a href="mailto:leedooming@gmail.com">leedooming@gmail.com</a><a href="#top">Back to top</a></div>
+    </section>
+  </main>
+  <footer><span>SOOMIN LEE · AI PRODUCT ENGINEER</span><span>MYREALTRIP AICX AICC PORTFOLIO · 2026</span></footer>
+</body>
+</html>
