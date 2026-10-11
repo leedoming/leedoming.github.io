@@ -527,7 +527,7 @@ td.fin{background:var(--accent-soft)} td.no{color:var(--warn)}
 
 <!-- =============================== 08 RAG =============================== -->
 <div class="scaler"><section class="page" id="p8">
-  <div class="eyebrow">Case 03 · 광주대학교 학사행정 RAG 챗봇 PoC</div>
+  <div class="eyebrow">Case 03 · 광주대학교 학사행정 RAG 챗봇 PoC · 1/2</div>
   <h1>AWS 관리형 서비스 기반 RAG 아키텍처</h1>
   <div class="meta"><span><b>Role</b>PM · 주요 개발 — 고객 요구사항 구체화, 아키텍처·데이터 파이프라인 구축</span><span><b>Period</b>2025.02 – 2025.05 · NxtCloud 인턴</span><span><b>Stack</b>EventBridge · Lambda · S3 · Bedrock KB/Agent · Aurora PostgreSQL · DynamoDB</span></div>
   <div class="body" style="gap:12px">
@@ -582,13 +582,13 @@ td.fin{background:var(--accent-soft)} td.no{color:var(--warn)}
           <tr><td>Lambda (전처리)</td><td>문서 유형별 파싱·청킹. 이미지 형태 정보는 멀티모달 Claude로 텍스트 추출</td></tr>
           <tr><td>S3</td><td>원천·가공 데이터 저장소 — Knowledge Base 동기화의 기준 위치</td></tr>
           <tr><td>Bedrock KB + Aurora</td><td>벡터 저장·검색 — OpenSearch Serverless / Aurora pgvector 두 구성을 구현·검토</td></tr>
-          <tr><td>DynamoDB</td><td>대화 컨텍스트 저장 — 요청 처리 Lambda를 상태 없이 유지</td></tr>
+          <tr><td>DynamoDB</td><td>중복 이벤트 기록 · 대화 컨텍스트 저장 (TTL 자동 만료)</td></tr>
         </table>
       </div>
       <div class="col" style="flex:1">
         <div class="card" style="border-left:4px solid var(--accent)">
           <div class="tag t-impl">Post-processing</div>
-          <p class="small" style="margin-top:6px"><b>담당 부서 매핑</b> — 근거가 불확실하면 단정적으로 답하지 않고, 문의 내용과 관련된 담당 부서를 매핑해 Knowledge Base에서 연락처를 찾아 안내합니다. 교내 대표전화 응대 경험에서 출발한 설계입니다.</p>
+          <p class="small" style="margin-top:6px"><b>담당 부서 매핑</b> — 근거가 불확실하면 단정적으로 답하지 않고, 문의와 관련된 담당 부서를 함께 안내해 사용자가 다음 행동을 할 수 있게 했습니다. 교내 대표전화 응대 경험에서 출발한 설계입니다. 구현은 다음 페이지에 정리했습니다.</p>
         </div>
         <div class="card soft">
           <div class="tag t-learn">Learning</div>
@@ -600,8 +600,69 @@ td.fin{background:var(--accent-soft)} td.no{color:var(--warn)}
   <div class="pfoot"><span>CASE 03 · UNIVERSITY RAG</span><span>08</span></div>
 </section></div>
 
-<!-- =============================== 09 BLACKNIGHT =============================== -->
+<!-- =============================== 09 RAG LAMBDA =============================== -->
 <div class="scaler"><section class="page" id="p9">
+  <div class="eyebrow">Case 03 · 광주대학교 학사행정 RAG 챗봇 PoC · 2/2</div>
+  <h1>요청 처리 Lambda와 운영 이슈 대응</h1>
+  <p class="sub">직접 작성한 Slack 요청 처리 Lambda(Python · slack_bolt)에서 다룬 중복 처리, 대화 맥락, 장애 응답</p>
+  <div class="body" style="gap:12px">
+    <div class="row" style="gap:16px;flex:1;min-height:0">
+      <div class="dg" style="flex:.95">
+        <div class="dg-t">Lambda 요청 처리 순서</div>
+        <div class="vcol gap4">
+          <div class="n user">Slack 이벤트 수신<span>멘션 · DM</span></div>
+          <div class="ar">↓</div>
+          <div class="n c-compute">① 재시도 요청 확인<span>x-slack-retry-num 헤더 → 즉시 200 반환</span></div>
+          <div class="ar">↓</div>
+          <div class="flex gap6"><div class="n c-compute" style="flex:1">② 중복 이벤트 확인<span>복합 키 조회 · 기록</span></div><div class="ar">⇄</div><div class="n c-db" style="width:112px">DynamoDB<span>TTL 10분</span></div></div>
+          <div class="ar">↓</div>
+          <div class="n c-compute">③ 허용 채널 확인 · 상태 메시지 표시<span>“이전 대화 확인 중” → “응답 기다리는 중”</span></div>
+          <div class="ar">↓</div>
+          <div class="n c-compute">④ 스레드 · DM 이력 조회<span>최대 4,000자까지 프롬프트에 포함</span></div>
+          <div class="ar">↓</div>
+          <div class="flex gap6"><div class="n c-compute" style="flex:1">⑤ Bedrock Agent 호출</div><div class="ar">⇄</div><div class="n c-ml" style="width:112px">Bedrock Agent<span>KB 검색 · 응답</span></div></div>
+          <div class="ar">↓</div>
+          <div class="n c-compute">⑥ 응답 파싱 → Slack Block<span>&lt;department&gt; 태그 → 담당 부서 버튼 · 2,000자 단위 분할</span></div>
+        </div>
+      </div>
+      <div class="col" style="flex:1.35">
+        <h2>운영 이슈와 대응</h2>
+        <div class="vcol" style="gap:7px">
+          <div class="card" style="padding:9px 12px;border-left:4px solid var(--warn)">
+            <b class="small">같은 질문에 답이 여러 번 달리는 문제</b>
+            <p class="xs">Agent 응답을 기다리는 동안 Slack이 같은 이벤트를 다시 보냅니다. 재시도 헤더가 붙은 요청은 바로 200으로 끝내고, event_id · client_msg_id · ts 등을 조합한 키를 DynamoDB에 TTL과 함께 기록해 한 번만 처리되게 했습니다.</p>
+          </div>
+          <div class="card" style="padding:9px 12px;border-left:4px solid var(--accent)">
+            <b class="small">대화 맥락 유지</b>
+            <p class="xs">Agent 세션은 호출마다 새로 만들고, 맥락은 Slack 스레드 · DM 이력을 길이 제한 안에서 프롬프트에 넣어 이었습니다. DynamoDB에 저장하는 컨텍스트는 TTL로 자동 만료됩니다.</p>
+          </div>
+          <div class="card" style="padding:9px 12px;border-left:4px solid var(--accent)">
+            <b class="small">장애 시에도 사용자에게 안내</b>
+            <p class="xs">Throttling · AccessDenied · Timeout 등 오류 유형별로 안내 문구를 나누고, Slack에는 항상 200을 돌려줘 이벤트 재전송을 막았습니다. AWS · Slack 클라이언트 초기화는 핸들러 밖에서 한 번만 수행합니다.</p>
+          </div>
+          <div class="card" style="padding:9px 12px;border-left:4px solid var(--accent)">
+            <b class="small">담당 부서 안내 흐름</b>
+            <p class="xs">Agent가 응답에 담당 부서를 <code class="mono">&lt;department&gt;</code> 태그로 표시하면 Lambda가 파싱해 버튼으로 보여주고, 버튼을 누르면 코드에 정리한 부서 연락처 표에서 전화 · 업무 범위를 안내합니다.</p>
+          </div>
+        </div>
+        <div class="row" style="gap:8px;margin-top:auto">
+          <div class="card" style="flex:1;border-left:4px solid var(--ok);padding:9px 12px">
+            <div class="tag t-val">Validation</div>
+            <p class="xs" style="margin-top:5px;color:var(--ink)">단계별(Step 1–5) 처리 로그와 오류 유형을 CloudWatch Logs에 남겨, 요청이 어느 단계에서 멈췄는지 추적했습니다.</p>
+          </div>
+          <div class="card soft" style="flex:1;padding:9px 12px">
+            <div class="tag t-learn">Learning</div>
+            <p class="xs" style="margin-top:5px;color:var(--ink)">외부 서비스의 재시도 규칙을 알아야 같은 요청이 두 번 처리되지 않습니다. 이벤트 처리는 <b>멱등하게</b> 설계합니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pfoot"><span>CASE 03 · UNIVERSITY RAG</span><span>09</span></div>
+</section></div>
+
+<!-- =============================== 09 BLACKNIGHT =============================== -->
+<div class="scaler"><section class="page" id="p10">
   <div class="eyebrow">Case 04 · BlackNight (흑기사)</div>
   <h1>생성형 AI 기사 작성 서비스의 서버리스 전환</h1>
   <div class="meta"><span><b>Role</b>서버리스 전환 구성 · S3/CloudFront·Lambda 배포 · 동작 검증 (팀 공동)</span><span><b>Period</b>2025.05 · NxtCloud 인턴</span><span><b>Stack</b>CloudFront · S3 · Lambda (Function URL) · Bedrock · DynamoDB · CloudWatch Logs</span></div>
@@ -660,11 +721,11 @@ td.fin{background:var(--accent-soft)} td.no{color:var(--warn)}
       </div>
     </div>
   </div>
-  <div class="pfoot"><span>CASE 04 · BLACKNIGHT</span><span>09</span></div>
+  <div class="pfoot"><span>CASE 04 · BLACKNIGHT</span><span>10</span></div>
 </section></div>
 
 <!-- =============================== 10 RE:WEAR =============================== -->
-<div class="scaler"><section class="page" id="p10">
+<div class="scaler"><section class="page" id="p11">
   <div class="eyebrow">Case 05 · RE:WEAR Lab · Azure · 1/2</div>
   <h1>Terraform 기반 Azure 컨테이너 인프라 구성</h1>
   <div class="meta"><span><b>Role</b>Data &amp; Backend (4인 팀) — 크롤링·ETL 파이프라인 · ChromaDB 설계 · Azure 인프라 Terraform</span><span><b>Period</b>2025.09 – 2025.12</span><span><b>Stack</b>Terraform (azurerm 4.x) · VNet · Container Apps · Container Instances · Azure Files</span></div>
@@ -740,11 +801,11 @@ td.fin{background:var(--accent-soft)} td.no{color:var(--warn)}
       </div>
     </div>
   </div>
-  <div class="pfoot"><span>CASE 05 · RE:WEAR LAB (AZURE)</span><span>10</span></div>
+  <div class="pfoot"><span>CASE 05 · RE:WEAR LAB (AZURE)</span><span>11</span></div>
 </section></div>
 
 <!-- =============================== 11 RE:WEAR CODE =============================== -->
-<div class="scaler"><section class="page" id="p11">
+<div class="scaler"><section class="page" id="p12">
   <div class="eyebrow">Case 05 · RE:WEAR Lab · Azure · 2/2</div>
   <h1>코드로 본 설계 판단과 배포 검증</h1>
   <p class="sub">직접 작성한 Terraform 코드에서 네트워크 경계, 상태 저장, 비밀값 관리를 다룬 방식</p>
@@ -806,11 +867,11 @@ env {
       </div>
     </div>
   </div>
-  <div class="pfoot"><span>CASE 05 · RE:WEAR LAB (AZURE)</span><span>11</span></div>
+  <div class="pfoot"><span>CASE 05 · RE:WEAR LAB (AZURE)</span><span>12</span></div>
 </section></div>
 
 <!-- =============================== 11 IAM =============================== -->
-<div class="scaler"><section class="page" id="p12">
+<div class="scaler"><section class="page" id="p13">
   <div class="eyebrow">Supporting Experience · NxtCloud</div>
   <h1>교육용 AWS 실습 환경 IAM 운영</h1>
   <div class="meta"><span><b>Role</b>기존 Terraform 스크립트를 활용한 실습 계정 · 권한 운영 지원</span><span><b>Period</b>2025.02 – 2025.05</span><span><b>Scope</b>대학 · 기관 AWS 실습 과정</span></div>
@@ -876,11 +937,11 @@ env {
       </div>
     </div>
   </div>
-  <div class="pfoot"><span>SUPPORTING · IAM OPERATIONS</span><span>12</span></div>
+  <div class="pfoot"><span>SUPPORTING · IAM OPERATIONS</span><span>13</span></div>
 </section></div>
 
 <!-- =============================== 12 SUMMARY =============================== -->
-<div class="scaler"><section class="page" id="p13">
+<div class="scaler"><section class="page" id="p14">
   <div class="eyebrow">Summary</div>
   <h1>기술 역량 요약</h1>
   <div class="body" style="gap:14px">
@@ -918,7 +979,7 @@ env {
       </div>
     </div>
   </div>
-  <div class="pfoot"><span>SOOMIN LEE · AWS INFRASTRUCTURE &amp; OPERATIONS</span><span>13</span></div>
+  <div class="pfoot"><span>SOOMIN LEE · AWS INFRASTRUCTURE &amp; OPERATIONS</span><span>14</span></div>
 </section></div>
 
 </main>
